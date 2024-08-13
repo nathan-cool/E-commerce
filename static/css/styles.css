@@ -12,6 +12,7 @@ body {
 /* Style the navbar with a blue background color */
 .navbar {
 	background-color: #3498db;
+    padding: 0.5rem 1rem;
 }
 
 /* Set the color of the navbar brand and links to white */

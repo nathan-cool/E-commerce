@@ -7,6 +7,8 @@ const showPasswordToggle = document.getElementById('show-password-toggle'); // S
 const registerButton = document.getElementById('register'); // Register button
 
 // Call the validation functions for each input field
+console.log(hello);
+
 validateName(userName);
 validateEmail(email);
 validatePassword(userPassword);
@@ -16,17 +18,17 @@ togglePasswordVisibility();
 
 // Event listener for show/hide password toggle
 function togglePasswordVisibility() {
-    showPasswordToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPasswordToggle.style.color = 'black';
-        if (userPassword.getAttribute('type') === 'password') {
-            userPassword.setAttribute('type', 'text'); // Show password
-        } else {
-            userPassword.setAttribute('type', 'password'); // Hide password
-        }
-    });
+    if (userPassword.type === 'password') {
+        userPassword.type = 'text';
+        showPasswordToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        userPassword.type = 'password';
+        showPasswordToggle.innerHTML = '<i class="fas fa-eye"></i>';
+    }
 }
 
+// Event listener for show/hide password toggle
+showPasswordToggle.addEventListener('click', togglePasswordVisibility);
 // Event listener for user name input
 function validateName(userName) {
     userName.addEventListener('keyup', (e) => {
