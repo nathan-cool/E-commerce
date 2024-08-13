@@ -133,3 +133,97 @@ body {
 	max-width: 80%;
 	border-radius: 50%;
 }
+
+/* Card Styles */
+.card-body {
+    box-shadow: 0 4px 8px rgba(90, 35, 200, 0.3);
+}
+
+/* Text Styles */
+label,
+p {
+    font-size: 14px;
+}
+
+/* Form Group */
+.form-group {
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Signin Registration Container */
+.signin-reg-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Row Authentication */
+.rowauth {
+    height: 100%;
+}
+
+/* Authentication Button */
+.btn-auth {
+    width: 100%;
+    min-height: calc(1.9em + 1rem + calc(var(--bs-border-width) * 2));
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border-color: #2a2a2a;
+    background-color: #333533;
+}
+
+/* Google Sign-in Button */
+.btn-google {
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd;
+    align-items: center;
+}
+
+/* Card Custom Min Width */
+.card.custom-min-width {
+    min-width: 200px;
+    max-width: 500px;
+}
+
+.alert-success {
+	background-color: #1f7c4d;
+	border-color: #ffffff;
+	color: #ffffff;
+
+}
+
+/* Media Queries */
+@media only screen and (max-width: 650px) {
+    .card.custom-min-width {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .col-md-5 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 650px) {
+    .card.custom-min-width {
+        min-width: 300px;
+        max-width: 100%;
+    }
+    .col-md-5 {
+        width: 540px;
+    }
+}
+
+@media only screen and (min-width: 1824px) {
+    .card.custom-min-width {
+        min-width: 500px;
+        max-width: 500px;
+    }
+    .col-md-5 {
+        margin-top: 10px;
+        width: 540px;
+        min-width: 540px;
+    }
+}
+
