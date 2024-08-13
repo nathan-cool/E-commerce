@@ -82,193 +82,40 @@
 			<h1 class="display-4">Our Products</h1>
 			<p class="lead">Discover our amazing selection</p>
 		</div>
+
 		<div class="container my-5">
 			<div class="row">
-				<div class="col-md-3">
+				{% for product in products %}
+				<div class="col-md-3 mb-4">
 					<div class="card">
-						<div class="card-img-top"></div>
+						<img
+							class="card-img-top"
+							src="{{ product.image.url }}"
+							alt="{{ product.name }}"
+						/>
 						<div class="card-body">
-							<h5 class="card-title">Chronos Elegance Watch</h5>
+							<h5 class="card-title">{{ product.name }}</h5>
 							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="far fa-star"> </i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
 							</div>
-							<p class="card-text">€80.00 - €120.00</p>
+							<p class="card-text">€{{ product.price }}</p>
 							<a class="btn btn-outline-primary" href="#">
 								View options
 							</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">SoundWave Pro Earbuds</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-							</div>
-							<p class="card-text">
-								<s> €99.99 </s>
-								€79.99
-							</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-						<div class="card-img-overlay">
-							<span class="badge"> Sale </span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">Urban Explorer Backpack</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="far fa-star"> </i>
-							</div>
-							<p class="card-text">
-								<s> €70.00 </s>
-								€49.99
-							</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-						<div class="card-img-overlay">
-							<span class="badge"> Sale </span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">FitPro Smart Band</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-							</div>
-							<p class="card-text">€59.99</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row mt-4">
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">
-								PowerBoost Portable Charger
-							</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="far fa-star"> </i>
-								<i class="far fa-star"> </i>
-							</div>
-							<p class="card-text">
-								<s> €45.00 </s>
-								€34.99
-							</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-						<div class="card-img-overlay">
-							<span class="badge"> Sale </span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">SilentSphere Headphones</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star-half-alt"> </i>
-							</div>
-							<p class="card-text">€199.99 - €249.99</p>
-							<a class="btn btn-outline-primary" href="#">
-								View options
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">EcoFlow Water Bottle</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-							</div>
-							<p class="card-text">
-								<s> €29.99 </s>
-								€24.99
-							</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-						<div class="card-img-overlay">
-							<span class="badge"> Sale </span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card-img-top"></div>
-						<div class="card-body">
-							<h5 class="card-title">PixelMaster Pro Camera</h5>
-							<div class="mb-2">
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-								<i class="fas fa-star"> </i>
-							</div>
-							<p class="card-text">€799.99</p>
-							<a class="btn btn-outline-primary" href="#">
-								Add to basket
-							</a>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
+
 		<footer class="footer text-center">
 			<div class="container">
-				<span> Copyright © Django E-shop 2023 </span>
+				<span>Copyright © Django E-shop 2023</span>
 			</div>
 		</footer>
 		<script
