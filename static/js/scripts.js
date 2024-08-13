@@ -95,7 +95,7 @@ function validateEmail(email) {
                     }
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    console.error('Error:', error);                                  
                 });
         } else {
             email.classList.remove('is-valid');

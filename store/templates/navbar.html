@@ -1,60 +1,87 @@
 <nav class="navbar navbar-expand-lg">
-			<div class="container">
-				<a class="navbar-brand" href="{% url 'home' %}""> Django E-shop </a>
-				<button
-					aria-controls="navbarNav"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-					class="navbar-toggler"
-					data-bs-target="#navbarNav"
-					data-bs-toggle="collapse"
-					type="button"
-				>
-					<span class="navbar-toggler-icon"> </span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'home' %}""> Home </a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{% url 'about' %}"> About Us </a>
-						</li>
-						<li class="nav-item dropdown">
-							<a
-								aria-expanded="false"
-								class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown"
-								href="#"
-								id="navbarDropdown"
-								role="button"
-							>
-								Products
+	<div class="container">
+		<a class="navbar-brand" href="{% url 'home' %}">Django E-shop</a>
+		<button
+			aria-controls="navbarNav"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+			class="navbar-toggler"
+			data-bs-target="#navbarNav"
+			data-bs-toggle="collapse"
+			type="button"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'home' %}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{% url 'about' %}">About Us</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a
+						aria-expanded="false"
+						class="nav-link dropdown-toggle"
+						data-bs-toggle="dropdown"
+						href="#"
+						id="navbarDropdown"
+						role="button"
+					>
+						Products
+					</a>
+					<ul
+						aria-labelledby="navbarDropdown"
+						class="dropdown-menu"
+					>
+						<li>
+							<a class="dropdown-item" href="#">
+								All Products
 							</a>
-							<ul
-								aria-labelledby="navbarDropdown"
-								class="dropdown-menu"
-							>
-								<li>
-									<a class="dropdown-item" href="#">
-										All Products
-									</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">
-										Categories
-									</a>
-								</li>
-							</ul>
+						</li>
+						<li>
+							<a class="dropdown-item" href="#">
+								Categories
+							</a>
 						</li>
 					</ul>
-				</div>
-				<a class="btn btn-outline-light" href="#">
-					<i class="fas fa-shopping-basket"> </i>
-					Basket
-					<span class="badge bg-light text-dark ms-1 rounded-pill">
-						0
-					</span>
-				</a>
-			</div>
-		</nav>
+				</li>
+			</ul>
+		</div>
+		<div class="d-flex">
+			<ul class="navbar-nav px-3 email-display">
+				<li class="nav-item user-controls email-display">
+					{% if request.user.is_authenticated %}
+						<span class="user-email">{{ request.user.first_name }} ({{ request.user.email }})</span>
+					{% else %}
+						<a class="btn btn-outline-light" href="{% url 'login' %}">
+							Sign In
+						</a>
+					{% endif %}
+				</li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<form class="signout-btn" action="{% url 'logout' %}">
+						{% csrf_token %}
+						{% if request.user.is_authenticated %}
+							<input
+								type="submit"
+								value="Sign out"
+								class="form-control sign-out-button"
+							>
+						{% endif %}
+					</form>
+					<a class="btn btn-outline-light" href="#">
+						<i class="fas fa-shopping-basket"></i>
+						Basket
+						<span class="badge bg-light text-dark ms-1 rounded-pill">
+							0
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
