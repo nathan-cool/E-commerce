@@ -29,20 +29,20 @@
 						id="navbarDropdown"
 						role="button"
 					>
-						Products
+						Categories
 					</a>
 					<ul
 						aria-labelledby="navbarDropdown"
 						class="dropdown-menu"
 					>
 						<li>
-							<a class="dropdown-item" href="#">
+							<a class="dropdown-item" href="{% url 'home' %}">
 								All Products
 							</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="#">
-								Categories
+							<a class="dropdown-item" href={% url 'category' 'Televisions'%}">
+								Televisions	
 							</a>
 						</li>
 					</ul>
