@@ -9,10 +9,15 @@ body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style the navbar with a blue background color */
+/* Style the navbar with a blue background color and stick the nav bar */
 .navbar {
-	background-color: #3498db;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #3498db;
     padding: 0.5rem 1rem;
+    z-index: 9999; 
 }
 
 /* Set the color of the navbar brand and links to white */
