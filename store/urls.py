@@ -8,7 +8,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', views.about, name='about'),\
     path('product/<int:pk>', views.product, name='product'),
-    path('category/<slug:category_slug>/', views.category, name='category'),
+    path('category/<str:foo>/', views.category, name='category'),
 
     
 ]
