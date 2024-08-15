@@ -30,8 +30,8 @@
 							{% else %}
 							<p class="card-text">€{{ product.price }}</p>
 							{% endif %}
-							<a class="btn btn-outline-primary" href="#">
-								View options
+							<a class="btn btn-outline-primary" href="{% url 'product' product.id%}">
+								View Product
 							</a>
 						</div>
 					</div>
