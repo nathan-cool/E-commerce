@@ -17,9 +17,14 @@
 			rel="stylesheet"
 		/>
 		<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+		<script
+			src="https://code.jquery.com/jquery-3.7.1.min.js"
+			integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			crossorigin="anonymous"
+		></script>
 	</head>
 	<body>
-		 {% include 'navbar.html' %} {% include "messages.html" %}
+		{% include 'navbar.html' %} {% include "messages.html" %} 
 		{% block content %} {% endblock %}
 
 		<footer class="footer text-center">
