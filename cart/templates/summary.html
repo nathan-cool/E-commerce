@@ -1,13 +1,47 @@
-{% extends 'base.html'%}
-{% load static %}
-
-{% block content %}
-	<body>
-		<div class="jumbotron text-center">
-			<h1 class="display-4">Shopping Cart</h1>
-			<p class="lead">View your cart ...</p>
-		</div>
-		<div>
-
-		
-		{% endblock%}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="jumbotron text-center">
+	<h1 class="display-4">Shopping Cart</h1>
+	<p class="lead">View your cart ...</p>
+</div>
+<div class="container">
+	{% if products %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+			<tr>
+				<td>{{ product.name }}</td>
+				<td>{{ product.quantity }}</td>
+				<td>
+					
+					€{{ product.price }}
+					
+				</td>
+				<td> {% if product.is_sale %}
+				<div class="badge bg-danger">Sale</div>
+				<p>
+					<strike>€{{ product.price }}</strike><br />
+					€{{ product.sale_price }}
+				</p>
+				{% else %}
+				<p>€{{ product.price }}</p>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="text-end">
+		<h4>Total: €{{ cart.get_total_price }}</h4>
+	</div>
+	{% else %}
+	<p>Your cart is empty.</p>
+	{% endif %}
+</div>
+{% endblock %}
