@@ -13,10 +13,10 @@ def cart_add(request):
         product_id = int(request.POST.get('product_id'))
         product = get_object_or_404(Product, id=product_id)
         cart.add(product=product)
-         
-        response = JsonResponse({"Product Name:" :product.name})
-        return response
 
+        cart_quantity = len(cart)  # Use len() instead of __len__()
+        response = JsonResponse({"cart_quantity": cart_quantity})
+        return response
 
 
 def cart_remove(request):
