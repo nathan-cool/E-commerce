@@ -87,31 +87,31 @@
 		});
 	});
 	
-		$(document).on('click', '.update-cart', function (e) {
+$(document).on('click', '.update-cart', function (e) {
     e.preventDefault();
     
-    // Get the current total price from the DOM element
-    let total_price = $('#total_price').text(); 
+    setTimeout(function() {
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart_price" %}',
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function (json) {
+                let price = json.total_price;
+                $('#total_price').text('Total: €' + price);
+                console.log(price);
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    }, 300);  // 300ms delay
+}); 
 
-    $.ajax({
-        type: 'POST',
-        url: '{% url "cart_price" %}',
-        data: {
-            total_price: total_price,
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            action: 'post'
-        },
-        success: function (json) {
 
-            $('#total_price').text(json.total_price); 
-						console.log(json.total_price);
-        },
-        error: function () {
-            console.log('error');
-						console.log(json.total_price);
-        }
-    });
-});
+
 
 
 </script>
