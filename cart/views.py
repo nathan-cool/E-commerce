@@ -3,13 +3,11 @@ from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse
 
-
 def cart_summary(request):
     cart = Cart(request)
     products = cart.get_products()
     quantities = cart.get_quants()  # Add parentheses here
     return render(request, 'summary.html', {'cart': cart, 'products': products, 'quantities': quantities})
-
 
 def cart_add(request):
     cart = Cart(request)
@@ -22,10 +20,8 @@ def cart_add(request):
         response = JsonResponse({"cart_quantity": cart_quantity})
         return response
 
-
 def cart_remove(request):
     return render(request, 'remove.html')
-
 
 def cart_update(request):
     cart = Cart(request)

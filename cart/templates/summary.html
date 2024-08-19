@@ -79,12 +79,14 @@
 			},
 			success: function (json) {
 				document.getElementById('cart_quantity').textContent = json.cart_quantity;
-				// You might want to update the total price here as well
+
 			},
-			error: function (xhr, errmsg, err) {
-				console.log(xhr.status + ": " + xhr.responseText);
+			error: function () {
+				console.log('error');
 			}
 		});
 	});
+
+
 </script>
 {% endblock %}
