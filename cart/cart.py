@@ -35,3 +35,13 @@ class Cart:
     
     def get_total_price(self):
         return sum(float(item['price']) * item['quantity'] for item in self.cart.values())
+    
+    def update(self, product_id, quantity):
+        product_id = str(product_id)
+        product_qty = int(quantity)
+
+        ourcart = self.cart
+        ourcart[product_id] = product_qty
+        self.session.modified = True
+        thing = self.cart
+        return thing

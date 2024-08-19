@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <div class="jumbotron text-center">
 	<h1 class="display-4">Shopping Cart</h1>
 	<p class="lead">View your cart ...</p>
@@ -18,36 +20,35 @@
 			{% for product in products %}
 			<tr>
 				<td>{{ product.name }}</td>
-				<td>	<select
-									class="form-select"
-									aria-label="Quantity select" id="quantity_select"
-								>
-									{% for key, value in quantities.items %}
-										{% if key == product.id|slugify %}
-											<option selected>{{ value.quantity }}</option>
-										{% endif %}
-									{% endfor %}
-								
-								
-
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select></td>
 				<td>
-					
-					€{{ product.price }}
-					
+					<select class="form-select" aria-label="Quantity select" id="select{{product.id}}">
+						{% for key, value in quantities.items %}
+							{% if key == product.id|slugify %}
+								<option selected>{{ value.quantity }}</option>
+							{% endif %}
+						{% endfor %}
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</td>
-				<td> {% if product.is_sale %}
-				<div class="badge bg-danger">Sale</div>
-				<p>
-					<strike>€{{ product.price }}</strike><br />
-					€{{ product.sale_price }}
-				</p>
-				{% else %}
-				<p>€{{ product.price }}</p>
-				{% endif %}
+				<td>
+					€{{ product.price }}
+					<button type="button" class="btn btn-bg-secondary update-cart" data-product-id="{{product.id}}">
+						Update cart
+					</button>
+				</td>
+				<td>
+					{% if product.is_sale %}
+					<div class="badge bg-danger">Sale</div>
+					<p>
+						<strike>€{{ product.price }}</strike><br />
+						€{{ product.sale_price }}
+					</p>
+					{% else %}
+					<p>€{{ product.price }}</p>
+					{% endif %}
+				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -59,4 +60,31 @@
 	<p>Your cart is empty.</p>
 	{% endif %}
 </div>
+
+
+
+<script>
+	$(document).on('click', '.update-cart', function (e) {
+		e.preventDefault();
+		let product_id = $(this).data('product-id');
+		let quantity = $('#select' + product_id).val();
+		$.ajax({
+			type: 'POST',
+			url: '{% url "cart_update" %}',
+			data: {
+				product_id: product_id,
+				quantity: quantity,
+				csrfmiddlewaretoken: '{{ csrf_token }}',
+				action: 'post'
+			},
+			success: function (json) {
+				document.getElementById('cart_quantity').textContent = json.cart_quantity;
+				// You might want to update the total price here as well
+			},
+			error: function (xhr, errmsg, err) {
+				console.log(xhr.status + ": " + xhr.responseText);
+			}
+		});
+	});
+</script>
 {% endblock %}
