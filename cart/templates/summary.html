@@ -37,6 +37,9 @@
 					<button type="button" class="btn btn-bg-secondary update-cart" data-product-id="{{product.id}}">
 						Update cart
 					</button>
+					<button type="button" class="btn btn-bg-bg-danger delete-item" data-product-id="{{product.id}}">
+						Delete
+					</button>
 				</td>
 				<td>
 					{% if product.is_sale %}
@@ -54,7 +57,7 @@
 		</tbody>
 	</table>
 	<div class="text-end">
-		<h4 id='total_price'>Total: €{{ cart.get_total_price }}</h4>
+		<h4 id='total_price'>Grand Total: €{{ cart.get_total_price }}</h4>
 	</div>
 	{% else %}
 	<p>Your cart is empty.</p>
@@ -67,7 +70,8 @@
 	$(document).on('click', '.update-cart', function (e) {
 		e.preventDefault();
 		let product_id = $(this).data('product-id');
-		let quantity = $('#select' + product_id).val();
+		
+	let quantity = $('#select' + product_id).val();
 		$.ajax({
 			type: 'POST',
 			url: '{% url "cart_update" %}',
@@ -86,7 +90,29 @@
 			}
 		});
 	});
-	
+ $(document).on('click', '.delete-item', function (e) {
+				e.preventDefault();
+				let product_id = $(this).data('product-id');
+				$.ajax({
+						type: 'POST',
+						url: '{% url "cart_remove" %}',
+						data: {
+								product_id: product_id,
+								csrfmiddlewaretoken: '{{ csrf_token }}',
+								action: 'post'
+						},
+						success: function (json) {
+								document.getElementById('cart_quantity').textContent = json.cart_quantity;
+								location.reload();
+						},
+						error: function () {
+								console.log('error');
+						}
+				});
+		});
+
+
+
 $(document).on('click', '.update-cart', function (e) {
     e.preventDefault();
     

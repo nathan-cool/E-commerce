@@ -46,3 +46,10 @@ class Cart:
                 self.cart[product_id] = {'quantity': int(quantity), 'price': str(product.price)}
         self.save()
         return self.cart
+    
+    def remove(self, product_id):
+        product_id = str(product_id)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.save()
+        return self.cart
