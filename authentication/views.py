@@ -14,6 +14,7 @@ import os
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 @csrf_exempt
 def social_auth(request):
     """

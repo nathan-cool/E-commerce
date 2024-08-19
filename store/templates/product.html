@@ -31,7 +31,7 @@
 								{% endif %}
 								<select
 									class="form-select"
-									aria-label="Quantity select"
+									aria-label="Quantity select" id="quantity_select"
 								>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -67,6 +67,7 @@
 			url: '{% url "cart_add" %}',
 			data: {
 				product_id: $('#add-cart').val(),
+        quantity: $('#quantity_select option:selected').val(),
 				csrfmiddlewaretoken: '{{ csrf_token }}',
 				action: 'post'
 			},

@@ -18,7 +18,22 @@
 			{% for product in products %}
 			<tr>
 				<td>{{ product.name }}</td>
-				<td>{{ product.quantity }}</td>
+				<td>	<select
+									class="form-select"
+									aria-label="Quantity select" id="quantity_select"
+								>
+									{% for key, value in quantities.items %}
+										{% if key == product.id|slugify %}
+											<option selected>{{ value.quantity }}</option>
+										{% endif %}
+									{% endfor %}
+								
+								
+
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+								</select></td>
 				<td>
 					
 					€{{ product.price }}
