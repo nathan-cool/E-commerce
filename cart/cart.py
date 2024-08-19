@@ -15,33 +15,38 @@ class Cart:
             self.cart[product_id] = {'quantity': int(
                 quantity), 'price': str(product.price)}
         else:
-            self.cart[product_id]['quantity'] += int(quantity)
+            if isinstance(self.cart[product_id], dict):
+                self.cart[product_id]['quantity'] += int(quantity)
+            else:
+                self.cart[product_id] = {'quantity': int(
+                    quantity), 'price': str(product.price)}
         self.save()
 
     def save(self):
         self.session.modified = True
 
     def __len__(self):
-        return sum(item.get('quantity', 0) for item in self.cart.values())
+        return sum(item['quantity'] if isinstance(item, dict) else item for item in self.cart.values())
 
     def get_products(self):
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         return products
-    
+
     def get_quants(self):
-        quantities = self.cart
-        return quantities
-    
+        return self.cart
+
     def get_total_price(self):
-        return sum(float(item['price']) * item['quantity'] for item in self.cart.values())
-    
+        return sum(float(item['price']) * item['quantity'] if isinstance(item, dict) else 0 for item in self.cart.values())
+
     def update(self, product_id, quantity):
         product_id = str(product_id)
-        product_qty = int(quantity)
-
-        ourcart = self.cart
-        ourcart[product_id] = product_qty
-        self.session.modified = True
-        thing = self.cart
-        return thing
+        if product_id in self.cart:
+            if isinstance(self.cart[product_id], dict):
+                self.cart[product_id]['quantity'] = int(quantity)
+            else:
+                product = Product.objects.get(id=product_id)
+                self.cart[product_id] = {'quantity': int(
+                    quantity), 'price': str(product.price)}
+        self.save()
+        return self.cart
