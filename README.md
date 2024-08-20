@@ -42,7 +42,6 @@
 - **Django**: A high-level Python web framework used for developing the web application.
 - **Python Standard Library**: Various modules such as `os`, `json`, and `re`.
 - **dotenv**: Used for loading environment variables from a `.env` file.
-- **OpenAI**: API used to generate descriptions for expenses.
 - **Google OAuth**: Used for Google OAuth authentication.
 - **JSON Web Tokens (JWT)**: Used for authentication and authorization.
 - **Django Messages Framework**: Used to display success and error messages.
