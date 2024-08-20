@@ -1,6 +1,23 @@
 ## User Experience (UX)
+
 ### Project Goals
+
+The E-commerce Store project aims to create a user-friendly and secure online shopping experience. Our main objectives are:
+
+- Provide a seamless platform for browsing and purchasing products
+- Implement secure user authentication and order management
+- Offer an intuitive interface for both customers and administrators
+- Enhance the shopping experience with features like product categorization and search functionality
+
 ### Development Strategy
+
+We employed the Agile methodology to plan and manage the development of our E-commerce Store:
+
+- Used GitHub as the primary tool to demonstrate the Agile approach
+- Created User Stories as GitHub Issues, linked to Epics
+- Utilized custom issue templates for consistency and clarity
+- Followed a specific format for each User Story, including title and description
+- 
 ### Epics
 ### User Stories and Agile Methodology
 ### Agile Workflow
