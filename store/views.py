@@ -51,3 +51,6 @@ def admin_create_product(request):
     return render(request, 'create-product.html', context)
 
 
+
+
+

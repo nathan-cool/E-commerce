@@ -5,7 +5,6 @@ def cart(request):
   return {'cart': Cart(request)}
 
 
-@login_required
 def staff_status(request):
     print('staff_status')
     return {'is_staff': request.user.is_staff}
