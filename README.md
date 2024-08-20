@@ -38,8 +38,217 @@
 ### Browser Compatibility
 ### Manual Testing
 #### Search and Pagination Functionality
-#### User Authentication
-#### Input Validation
+<h3>User Authentication</h3>
+
+<details>
+<summary>Social Authentication</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Successful Google OAuth authentication and user creation</td>
+      <td>
+        1. Click "Sign in with Google"<br>
+        2. Select a Google account<br>
+        3. Grant permissions
+      </td>
+      <td>New user account created and logged in</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Successful Google OAuth authentication with existing user</td>
+      <td>
+        1. Click "Sign in with Google"<br>
+        2. Select a previously used Google account
+      </td>
+      <td>Existing user logged in successfully</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Failed Google OAuth authentication</td>
+      <td>
+        1. Click "Sign in with Google"<br>
+        2. Cancel the Google authentication process
+      </td>
+      <td>User remains on login page with error message</td>
+      <td>✅ Pass</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<details>
+<summary>User Registration</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Successful user registration with valid data</td>
+      <td>Enter valid name, email, and password</td>
+      <td>Account created, verification email sent</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Registration with invalid password</td>
+      <td>Enter valid name and email, but a password that doesn't meet requirements</td>
+      <td>Error message displayed, registration prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Registration with invalid name</td>
+      <td>Enter invalid name (e.g., numbers or special characters)</td>
+      <td>Error message displayed, registration prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Registration with invalid email</td>
+      <td>Enter an incorrectly formatted email address</td>
+      <td>Error message displayed, registration prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Registration with existing email</td>
+      <td>Attempt to register with an email already in use</td>
+      <td>Error message displayed, registration prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<h3>Input Validation</h3>
+
+<details>
+<summary>Email Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Email validation with empty email</td>
+      <td>Submit registration form with empty email field</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Email validation with existing email</td>
+      <td>Enter an email address already registered</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Email validation with invalid email format</td>
+      <td>Enter an incorrectly formatted email (e.g., missing @ symbol)</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Email validation with valid email</td>
+      <td>Enter a correctly formatted, unused email address</td>
+      <td>No error message, form submission allowed</td>
+      <td>✅ Pass</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<details>
+<summary>Name Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Name validation with empty name</td>
+      <td>Submit registration form with empty name field</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Name validation with invalid characters</td>
+      <td>Enter a name with numbers or special characters</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Name validation with valid name</td>
+      <td>Enter a name with only letters and spaces</td>
+      <td>No error message, form submission allowed</td>
+      <td>✅ Pass</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+<details>
+<summary>Password Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Password validation with short password</td>
+      <td>Enter a password shorter than the minimum required length</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Password validation with missing required characters</td>
+      <td>Enter a password without required elements (e.g., uppercase, lowercase, number)</td>
+      <td>Error message displayed, form submission prevented</td>
+      <td>✅ Pass</td>
+    </tr>
+    <tr>
+      <td>Password validation with valid password</td>
+      <td>Enter a password meeting all requirements</td>
+      <td>No error message, form submission allowed</td>
+      <td>✅ Pass</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
 #### User Verification
 #### User Login and Logout
 #### Expense Operations
