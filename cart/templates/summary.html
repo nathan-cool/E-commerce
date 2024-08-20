@@ -1,67 +1,93 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
-<div class="jumbotron text-center">
-	<h1 class="display-4">Shopping Cart</h1>
-	<p class="lead">View your cart ...</p>
-</div>
-<div class="container">
-	{% if products %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Product</th>
-				<th>Quantity</th>
-				<th>Price</th>
-				<th>Total</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for product in products %}
-			<tr>
-				<td>{{ product.name }}</td>
-				<td>
-					<select class="form-select" aria-label="Quantity select" id="select{{product.id}}">
-						{% for key, value in quantities.items %}
-							{% if key == product.id|slugify %}
-								<option selected>{{ value.quantity }}</option>
-							{% endif %}
-						{% endfor %}
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-					</select>
-				</td>
-				<td>
-					€{{ product.price }}
-					<button type="button" class="btn btn-bg-secondary update-cart" data-product-id="{{product.id}}">
-						Update cart
-					</button>
-					<button type="button" class="btn btn-bg-bg-danger delete-item" data-product-id="{{product.id}}">
-						Delete
-					</button>
-				</td>
-				<td>
-					{% if product.is_sale %}
-					<div class="badge bg-danger">Sale</div>
-					<p>
-						<strike>€{{ product.price }}</strike><br />
-						€{{ product.sale_price }}
-					</p>
-					{% else %}
-					<p>€{{ product.price }}</p>
-					{% endif %}
-				</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-	<div class="text-end">
-		<h4 id='total_price'>Grand Total: €{{ cart.get_total_price }}</h4>
-	</div>
-	{% else %}
-	<p>Your cart is empty.</p>
-	{% endif %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4 text-center mb-4">Shopping Cart</h1>
+            <p class="lead text-center mb-5">View your cart and manage your items</p>
+        </div>
+    </div>
+
+    {% if products %}
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                             <td>
+                        <div class="d-flex align-items-center">
+                            <img src="{{product.image}}" alt="{{ product.name }}" class="img-thumbnail me-3" style="max-width: 100px; max-height: 100px; object-fit: cover;">
+                            <span>{{ product.name }}</span>
+                        </div>
+                    </td>
+                            <td class="align-middle">{{ product.name }}</td>
+                            <td class="align-middle">
+                                <select class="form-select" aria-label="Quantity select" id="select{{product.id}}" style="max-width: 100px;">
+                                    {% for key, value in quantities.items %}
+                                        {% if key == product.id|slugify %}
+                                            <option selected>{{ value.quantity }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </td>
+                            <td class="align-middle">
+                                {% if product.is_sale %}
+                                <span class="badge bg-danger">Sale</span>
+                                <p class="mb-0">
+                                    <strike>€{{ product.price }}</strike><br>
+                                    €{{ product.sale_price }}
+                                </p>
+                                {% else %}
+                                <p class="mb-0">€{{ product.price }}</p>
+                                {% endif %}
+                            </td>
+                            <td class="align-middle">€{{ product.price }}</td>
+                            <td class="align-middle">
+                                <button type="button" class="btn btn-sm btn-outline-primary update-cart me-2" data-product-id="{{product.id}}">
+                                    Update
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger delete-item" data-product-id="{{product.id}}">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 text-end">
+            <h4 id='total_price' class="mb-4">Grand Total: €{{ cart.get_total_price }}</h4>
+            <a href="#" class="btn btn-primary btn-lg">Proceed to Checkout</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="lead">Your cart is empty.</p>
+            <a href="{% url 'product_list' %}" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 
