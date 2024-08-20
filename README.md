@@ -30,9 +30,34 @@
 ## Planning
 
 ## Technologies Used
+
 ### Languages Used
+- **Python 3**: The core backend programming language used for the application.
+- **HTML5**: Used for structuring the web pages of the application.
+- **CSS3**: Used to style the HTML content.
+- **JavaScript**: Employed for adding interactive behaviors to web pages.
+- **Ajax**: Used for loading information without the need to reload the page
+
 ### Frameworks, Libraries & Programs Used
+- **Django**: A high-level Python web framework used for developing the web application.
+- **Python Standard Library**: Various modules such as `os`, `json`, and `re`.
+- **dotenv**: Used for loading environment variables from a `.env` file.
+- **OpenAI**: API used to generate descriptions for expenses.
+- **Google OAuth**: Used for Google OAuth authentication.
+- **JSON Web Tokens (JWT)**: Used for authentication and authorization.
+- **Django Messages Framework**: Used to display success and error messages.
+- **Django Authentication System**: For user registration, login, and logout functionality.
+- **Django Email**: Used to send verification emails.
+
 ### Software & Web Applications Used
+- **Git**: Used for version control.
+- **GitHub**: For hosting Git repositories.
+- **Visual Studio Code**: A code editor used for development.
+- **Heroku**: Cloud platform used for deploying and hosting the web application.
+- **PostgreSQL**: Used as the primary database.
+- **Google Fonts**: Used for typography.
+- **Balsamiq**: Used for creating mockups and prototypes.
+- **Draw.io**: Used for creating visual representations of the application's architecture and user flows.
 
 ## Testing
 ### Browser Compatibility
