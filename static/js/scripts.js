@@ -150,3 +150,12 @@ function validatePassword(userPassword) {
         }
     });
 }
+
+function admin_check() {
+    let admin = document.getElementById('admin');
+    if (admin.checked) {
+        admin_check.value = '1';
+    } else {
+        admin_check.value = '0';
+    }
+}

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Product, Category
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,6 @@ def product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'product.html', {'product': product})
 
-
 def category(request, foo):
     try:
         category = get_object_or_404(Category, name=foo)
@@ -29,14 +29,13 @@ def category(request, foo):
         messages.error(request, f"Category '{foo}' not found")
         return redirect('home')
 
-
+@staff_member_required
 def admin_create_product(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         price = request.POST.get('price')
         category_id = request.POST.get('category')
         image = request.FILES.get('image')
-
         category = Category.objects.get(id=int(category_id))
         product = Product(name=name, price=price, category=category, image=image)
 
