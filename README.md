@@ -142,6 +142,22 @@ The development process was guided by user stories, managed through a Kanban boa
 
 ### Agile Workflow
 
+I managed our development process using a Kanban board on GitHub Projects:
+
+![Kanban Board]) Image
+
+Here is a link to my Kanban board: [ExpenseEase Project Board]([https://github.com/users/nathan-cool/projects/2/views/1](https://github.com/users/nathan-cool/projects/3))
+
+My workflow consisted of three stages:
+1. To Do
+2. In Progress
+3. Done
+
+This Agile approach enabled me to:
+- Prioritize features effectively
+- Track progress consistently
+- Ensure continuous delivery of value throughout development
+
 ## Features
 ### Existing Features
 #### Base Template and Layout
