@@ -28,3 +28,27 @@ def category(request, foo):
     except Category.DoesNotExist:
         messages.error(request, f"Category '{foo}' not found")
         return redirect('home')
+
+
+def admin_create_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        category_id = request.POST.get('category')
+        image = request.FILES.get('image')
+
+        category = Category.objects.get(id=int(category_id))
+        product = Product(name=name, price=price, category=category, image=image)
+
+        product.save()
+
+        messages.success(request, 'Product created successfully')
+
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+        'title': 'Create Product'
+    }
+    return render(request, 'create-product.html', context)
+
+
