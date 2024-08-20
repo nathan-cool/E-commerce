@@ -17,7 +17,42 @@
 ## Design
 ### Wireframes
 ### Site map
+
 ### Database Schema
+
+#### Product Model
+Represents a product in the e-commerce store.
+
+Fields:
+- `name`: CharField(max_length=255)
+  - Stores the name of the product.
+- `price`: FloatField(default=0)
+  - Stores the price of the product.
+- `category`: ForeignKey(Category, on_delete=models.CASCADE, default=1)
+  - Relates the product to a category.
+- `description`: CharField(max_length=255, default='', null=True, blank=True)
+  - Stores the description of the product.
+- `image`: ImageField(upload_to='uploads/products/')
+  - Stores the product image.
+- `is_sale`: BooleanField(default=False)
+  - Indicates whether the product is on sale.
+- `sale_price`: FloatField(default=0)
+  - Stores the sale price of the product.
+
+Methods:
+- `__str__()`: Returns the name of the product.
+
+- **User Model (Built-in Django User Model)**
+ - Fields:
+   - `username`: CharField for storing the username (unique).
+   - `email`: EmailField for storing the user's email address (unique).
+   - `first_name`: CharField for storing the user's first name.
+   - `last_name`: CharField for storing the user's last name.
+   - `password`: CharField for storing the hashed password.
+   - `is_active`: BooleanField indicating whether the user account is active.
+
+
+
 
 ## The Surface Plane
 ### Design
