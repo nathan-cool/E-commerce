@@ -18,8 +18,128 @@ We employed the Agile methodology to plan and manage the development of our E-co
 - Utilized custom issue templates for consistency and clarity
 - Followed a specific format for each User Story, including title and description
 - 
-### Epics
-### User Stories and Agile Methodology
+# User Stories and Agile Methodology
+
+The development process was guided by user stories, managed through a Kanban board on GitHub Projects. Here's a breakdown of our key epics and user stories:
+
+## Epics
+
+1. User Account Management (E-commerce #14)
+2. Product Browsing and Selection (E-commerce #15)
+3. Shopping Cart Management (E-commerce #16)
+4. Checkout and Order Management (E-commerce #17)
+5. Inventory Management (E-commerce #18)
+6. Order Processing (E-commerce #19)
+
+## User Stories
+
+1. Create an account so that I can manage my orders (E-commerce #1)
+   * As a user, I want to create an account to manage my orders.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * User can access a registration page
+      * User can enter necessary information
+      * Account is created successfully
+      * User can log in with new credentials
+
+2. User Login (E-commerce #2)
+   * As a user, I want to log in to access my account.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * Login page accessible
+      * User can enter credentials
+      * Successful login redirects to user dashboard
+      * Error handling for incorrect credentials
+
+3. View Product Catalog (E-commerce #3)
+   * As a customer, I want to browse available products.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * Product catalog page accessible
+      * Products displayed with basic information
+      * Smooth navigation through catalog
+
+4. Product Categories (E-commerce #4)
+   * As a customer, I want to view products by category.
+   * Priority: Should have
+   * Acceptance Criteria:
+      * Categories visible and selectable
+      * Products filtered by selected category
+      * Easy navigation between categories
+
+5. Add to Cart (E-commerce #6)
+   * As a customer, I want to add products to my shopping cart.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * "Add to Cart" button on product pages
+      * Product successfully added to cart
+      * Cart updates visibly
+
+6. View and Edit Cart (E-commerce #7)
+   * As a customer, I want to view and modify my shopping cart.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * Cart contents visible
+      * Ability to change product quantities
+      * Ability to remove items
+      * Cart total updates accordingly
+
+7. Checkout Process (E-commerce #8)
+   * As a customer, I want to complete my purchase.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * Secure checkout process
+      * Enter shipping and payment information
+      * Order review before confirmation
+
+8. Order Confirmation (E-commerce #9)
+   * As a customer, I want to receive confirmation of my order.
+   * Priority: Must-Have
+   * Acceptance Criteria:
+      * Order confirmation page displayed
+      * Order details summarized
+      * Confirmation email sent
+
+9. View Order History (E-commerce #10)
+   * As a customer, I want to view my past orders.
+   * Priority: Should have
+   * Acceptance Criteria:
+      * Order history page accessible
+      * List of past orders with basic details
+      * Ability to view individual order details
+
+10. Product Search (E-commerce #5)
+    * As a customer, I want to search for specific products.
+    * Priority: Should have
+    * Acceptance Criteria:
+      * Search bar accessible
+      * Results display relevant products
+      * Search works across product names and descriptions
+
+11. Update Profile Information (E-commerce #11)
+    * As a user, I want to update my account information.
+    * Priority: Must-Have
+    * Acceptance Criteria:
+      * Profile edit page accessible
+      * Fields for updating personal information
+      * Changes save successfully
+
+12. Manage Product Inventory (E-commerce #12)
+    * As an admin, I want to manage the product inventory.
+    * Priority: Must-Have
+    * Acceptance Criteria:
+      * Add new products
+      * Edit existing product details
+      * Update stock levels
+
+13. Order Processing (E-commerce #13)
+    * As an admin, I want to process customer orders.
+    * Priority: Must-Have
+    * Acceptance Criteria:
+      * View list of new orders
+      * Update order status
+      * Add shipping information
+
 ### Agile Workflow
 
 ## Features
