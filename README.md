@@ -52,8 +52,81 @@
 ### Known Issues
 
 ## Deployment
+
 ### How to Clone the Repository
+<details>
+<summary>Click to expand</summary>
+To clone this repository and run the E-commerce app locally, follow these steps:
+1. **Open Terminal**: Open your terminal if you are on macOS or Linux, or open CMD or PowerShell if you are on Windows.
+2. **Install Git**: Ensure you have Git installed on your system. You can download and install it from [Git's official site](https://git-scm.com/downloads).
+3. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/nathan-cool/E-commerce.git
+    ```
+4. **Navigate to the Project Directory**:
+    ```bash
+    cd E-commerce
+    ```
+5. **Create a Virtual Environment** (Recommended):
+    ```bash
+    python -m venv venv
+    ```
+    Activate the virtual environment:
+    - On macOS and Linux:
+        ```bash
+        source venv/bin/activate
+        ```
+    - On Windows:
+        ```bash
+        .\venv\Scripts\activate
+        ```
+6. **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+7. **Set Environment Variables**: Create a `.env` file in the root directory of the project and add the necessary environment variables like `DJANGO_SECRET_KEY`, `DATABASE_URL`, and any other required API keys.
+8. **Migrate Database**:
+    ```bash
+    python manage.py migrate
+    ```
+9. **Run the Development Server**:
+    ```bash
+    python manage.py runserver
+    ```
+    Once the server is running, you can access the E-commerce app at `http://127.0.0.1:8000` in your web browser.
+10. **Access the Application**: Open a browser and go to `http://127.0.0.1:8000` to start using the E-commerce app.
+</details>
+
 ### Create Application and Postgres DB on Heroku
+<details>
+<summary>Click to expand</summary>
+1. **Sign Up or Log In to Heroku**:
+    - Sign up at [Heroku's website](https://signup.heroku.com/) or log in if you already have an account.
+2. **Create a New Application**:
+    - Navigate to your Heroku dashboard.
+    - Click on the "New" button and select "Create new app."
+    - Enter a name for your application and select the region closest to your users.
+    - Click on "Create app."
+3. **Add a PostgreSQL Database**:
+    - Go to the "Resources" tab in your Heroku dashboard.
+    - In the "Add-ons" section, start typing "Heroku Postgres" and select it.
+    - Choose the free "Hobby Dev" plan for development purposes.
+    - Click "Submit Order Form" to add the PostgreSQL add-on to your application.
+4. **Configure Environment Variables**:
+    - Go to the "Settings" tab in your Heroku dashboard.
+    - Under the "Config Vars" section, click on "Reveal Config Vars."
+    - Add the necessary configuration variables such as `DJANGO_SECRET_KEY`, `DEBUG`, etc.
+5. **Deploy Your Application**:
+    - Connect your GitHub account under the "Deploy" tab by selecting "GitHub" as the deployment method.
+    - Search for your repository and connect to it.
+    - Enable Automatic Deploys or use the "Manual Deploy" section to deploy a specific branch.
+6. **Run Migrations**:
+    - After deploying, run your database migrations.
+    - In the "More" dropdown menu, select "Run console."
+    - Type `python manage.py migrate` and click "Run."
+7. **Open Your App**: Click on the "Open app" button in the top right corner of the dashboard.
+</details>
+
 
 ## Resources and Tutorials
 
