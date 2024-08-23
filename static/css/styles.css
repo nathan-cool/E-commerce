@@ -36,6 +36,11 @@ body {
 .navbar-nav {
 	display: flex;
 	align-items: center;
+    padding-left: 0px !important;
+}
+
+.navbar-toggler-icon {
+    color: white;
 }
 
 .nav-item {
@@ -91,6 +96,8 @@ body {
 
 .btn-outline-light {
 	transition: all 0.3s ease;
+    width: 150px;
+    height: 38px;
 }
 
 .btn-outline-light:hover {
@@ -101,6 +108,11 @@ body {
 #cart_quantity {
 	background-color: #007bff;
 	color: white;
+}
+
+.basket-container {
+    display: flex;
+    align-items: center;
 }
 
 /* Style the jumbotron with a dark blue background color and white text */
@@ -299,6 +311,11 @@ p {
 	transition: 500ms;
 }
 
+.loading {
+    display: none;
+    
+}
+
 /* Media Queries */
 @media only screen and (max-width: 650px) {
 	.card.custom-min-width {
@@ -330,4 +347,20 @@ p {
 		width: 540px;
 		min-width: 540px;
 	}
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+    }
+
+
+    .signout-btn {
+        margin-top: 10px;
+    }
 }

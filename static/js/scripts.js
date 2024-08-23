@@ -159,3 +159,4 @@ function admin_check() {
         admin_check.value = '0';
     }
 }
+
