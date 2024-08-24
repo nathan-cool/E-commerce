@@ -5,9 +5,12 @@ from django.http import JsonResponse
 
 def cart_summary(request):
     cart = Cart(request)
-    products = cart.get_products()
-    quantities = cart.get_quants()  # Add parentheses here
-    return render(request, 'summary.html', {'cart': cart, 'products': products, 'quantities': quantities})
+    if len(cart) > 0: 
+        products = cart.get_products()
+        quantities = cart.get_quants()  # Add parentheses here
+        return render(request, 'summary.html', {'cart': cart, 'products': products, 'quantities': quantities})
+    else:
+        return render(request, 'summary.html', {'cart': cart})
 
 def cart_add(request):
     cart = Cart(request)
