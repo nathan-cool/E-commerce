@@ -1,344 +1,373 @@
+/* General Styles */
 html,
 body {
-	height: 100%;
-	margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
-/* Set the font family for the entire body */
 body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Navbar Styles */
 .navbar {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: #0d1117;
-	padding: 0.5rem 1rem;
-	z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0d1117;
+    padding: 8px 16px;
+    z-index: 9999;
 }
+
 .signout-btn {
-	margin: 0 10px;
+    margin: 0 10px;
 }
 
 .navbar-brand,
 .nav-link {
-	color: white !important;
-	transition: color 0.3s ease;
+    color: white !important;
+    transition: color 0.3s ease;
 }
 
 .navbar-brand:hover,
 .nav-link:hover {
-	color: #cfcfcf !important;
+    color: #cfcfcf !important;
 }
 
 .navbar-nav {
-	display: flex;
-	align-items: center;
-	padding-left: 0px !important;
+    display: flex;
+    align-items: center;
+    padding-left: 0px !important;
 }
 
 .navbar-toggler-icon {
-	color: white;
+    color: white;
 }
 
 .nav-item {
-	margin: 0 10px;
-	display: flex;
-	margin-right: 20px;
+    margin: 0 10px;
+    display: flex;
+    margin-right: 20px;
 }
 
+/* Dropdown Menu Styles */
 .dropdown-menu {
-	background-color: #0d1117;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-item {
-	color: white;
+    color: white;
 }
 
 .dropdown-item:hover {
-	background-color: #1a202c;
-	color: #737373;
+    background-color: #1a202c;
+    color: #737373;
 }
 
+/* User Email and Sign Out Button Styles */
 .email-display {
-	display: flex;
-	color: white;
-	align-items: center;
+    display: flex;
+    color: white;
+    align-items: center;
 }
 
 .user-email {
-	margin-right: 15px;
+    margin-right: 15px;
 }
 
 .signout-btn {
-	border: none;
-	background: none;
-	padding: 0;
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 .sign-out-button {
-	color: white;
-	background-color: transparent;
-	border: 1px solid white;
-	padding: 5px 10px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: all 0.3s ease;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .sign-out-button:hover {
-	background-color: white;
-	color: #0d1117;
+    background-color: white;
+    color: #0d1117;
 }
 
+/* Button Styles */
 .btn-outline-light {
-	transition: all 0.3s ease;
-	width: 150px;
-	height: 38px;
+    transition: all 0.3s ease;
+    width: 150px;
+    height: 38px;
 }
 
 .btn-outline-light:hover {
-	background-color: white;
-	color: #0d1117;
+    background-color: white;
+    color: #0d1117;
 }
 
 #cart_quantity {
-	background-color: #007bff;
-	color: white;
+    background-color: #007bff;
+    color: white;
 }
 
 .basket-container {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
-/* Style the jumbotron with a dark blue background color and white text */
+/* Jumbotron Styles */
 .jumbotron {
-	background-color: #2c3e50;
-	color: white;
-	padding: 4rem 2rem;
-	margin-top: 55px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 64px 32px;
+    margin-top: 55px;
 }
 
 .mt-5 {
-
-
-	padding: 4rem 2rem;
-	margin-top: 55px;
+    padding: 64px 32px;
+    margin-top: 55px;
 }
 
-.signup-and-reg-card{
+/* Sign Up and Registration Card Styles */
+.signup-and-reg-card {
     margin-top: 150px !important;
     margin-bottom: 150px !important;
 }
 
-/* Style the card with a bottom margin, border color */
+/* Card Styles */
 .card {
-	margin-bottom: 20px;
-	border-color: #3498db;
-	display: flex;
-	flex-direction: column;
+    margin-bottom: 20px;
+    border-color: #3498db;
+    display: flex;
+    flex-direction: column;
+		height: 425px;
 }
 
-/* Set the height of the card image */
 .card-img-top {
-	height: 350px; /* Set a fixed height */
-	width: 100%; /* Full width of the card container */
-	object-fit: cover; /* Ensure the image covers the container */
-	background-color: #e0e0e0; /* Fallback background color */
-	display: flex;
-	align-items: center; /* Center content vertically */
-	justify-content: center; /* Center content horizontally */
+    max-width: 200px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
 }
 
-.card-img-top img {
-	height: 100%; /* Ensure the image fills the container height */
-	width: 100%; /* Ensure the image fills the container width */
-	object-fit: cover; /* Maintain aspect ratio and cover the container */
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 15px;
 }
 
-/* Make the card body flex to push the button to the bottom */
 .card-body {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Push the button to the bottom of the card */
 .card-body .btn {
-	margin-top: auto;
+    margin-top: auto;
 }
 
-/* Style the footer with a dark blue background color and white text */
+/* Footer Styles */
 .footer {
-	background-color: #2c3e50;
-	color: white;
-	padding: 1rem 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    background-color: #2c3e50;
+    color: white;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Set the color of the star icon to orange */
+/* Icon Styles */
 .fa-star {
-	color: #f39c12;
+    color: #f39c12;
 }
 
-/* Style the primary outline button with a blue color */
+/* Button Styles */
 .btn-outline-primary {
-	color: #3498db;
-	border-color: #3498db;
+    color: #3498db;
+    border-color: #3498db;
 }
 
-/* Change the background color and text color of the primary outline button on hover */
 .btn-outline-primary:hover {
-	background-color: #3498db;
-	color: white;
+    background-color: #3498db;
+    color: white;
 }
 
-/* Style the badge with a red background color */
+/* Badge Styles */
 .badge {
-	background-color: #e74c3c !important;
+    background-color: #e74c3c !important;
 }
 
 /* About Us Section Styles */
 .about-us-section {
-	background-color: #f9f9f9;
-	padding: 60px 0;
+    background-color: #f9f9f9;
+    padding: 60px 0;
 }
 
 .about-us-subtitle {
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
 }
 
 .about-us-title {
-	font-size: 2.5rem;
-	font-weight: bold;
-	margin-top: 20px;
-	margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .highlight {
-	background-color: #dfffd9;
+    background-color: #dfffd9;
 }
 
 .about-us-lead {
-	font-size: 1.25rem;
-	color: #555;
-	line-height: 1.6;
+    font-size: 20px;
+    color: #555;
+    line-height: 1.6;
 }
 
 .about-us-image {
-	max-width: 80%;
-	border-radius: 50%;
+    max-width: 80%;
+    border-radius: 50%;
 }
 
-/* Card Styles */
+/* Card Shadow Styles */
 .card-body {
-	box-shadow: 0 4px 8px rgba(90, 35, 200, 0.3);
+    box-shadow: 0 4px 8px rgba(90, 35, 200, 0.3);
 }
 
 /* Text Styles */
 label,
 p {
-	font-size: 14px;
+    font-size: 14px;
 }
 
-/* Form Group */
+/* Image Container Styles */
+.image-container {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.card-title {
+    height: 50px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+}
+
+/* Form Styles */
 .form-group {
-	position: relative;
-	margin-top: 20px;
+    position: relative;
+    margin-top: 20px;
 }
 
-/* Signin Registration Container */
+/* Sign In and Registration Container Styles */
 .signin-reg-container {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-/* Row Authentication */
+/* Authentication Row Styles */
 .rowauth {
-	height: 100%;
+    height: 100%;
 }
 
-/* Authentication Button */
+/* Authentication Button Styles */
 .btn-auth {
-	width: 100%;
-	min-height: calc(1.9em + 1rem + calc(var(--bs-border-width) * 2));
-	padding: 0.5rem 1rem;
-	font-size: 1rem;
-	border-radius: 5px;
-	border-color: #2a2a2a;
-	background-color: #333533;
+    width: 100%;
+    min-height: calc(30px + 16px + calc(var(--bs-border-width) * 2));
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: #2a2a2a;
+    background-color: #333533;
 }
 
-/* Google Sign-in Button */
+/* Google Sign-in Button Styles */
 .btn-google {
-	color: #545454;
-	background-color: #ffffff;
-	box-shadow: 0 1px 2px 1px #ddd;
-	align-items: center;
+    color: #545454;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 1px #ddd;
+    align-items: center;
 }
 
-/* Card Custom Min Width */
-.card.custom-min-width {
-	min-width: 200px;
-	max-width: 1000px;
+/* Card Custom Min Width Styles */
+.card{
+    min-width: 200px;
+    max-width: 1000px;
 }
 
+/* Alert Styles */
 .alert-success {
-	background-color: #1f7c4d;
-	border-color: #ffffff;
-	color: #ffffff;
-	margin-bottom: 0px;
+    background-color: #1f7c4d;
+    border-color: #ffffff;
+    color: #ffffff;
+    margin-bottom: 0px;
 }
 .alert-error {
-	background-color: #ff0000;
-	border-color: #ffffff;
-	color: #ffffff;
-	margin-bottom: 0px;
+    background-color: #ff0000;
+    border-color: #ffffff;
+    color: #ffffff;
+    margin-bottom: 0px;
 }
 
-/* Show Password Toggle */
+/* Show Password Toggle Styles */
 .show-password-toggle {
-	position: absolute;
-	right: 15px;
-	top: 57%;
-	cursor: pointer;
-	background-color: transparent;
-	border: none;
-	color: rgba(0, 0, 0, 0.365);
-	transition: 500ms;
-	font-size: 10px;
-	padding-top: 5px;
+    position: absolute;
+    right: 15px;
+    top: 57%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.365);
+    transition: 500ms;
+    font-size: 10px;
+    padding-top: 5px;
 }
 
 .show-password-toggle:hover {
-	cursor: pointer;
-	transition: 500ms;
+    cursor: pointer;
+    transition: 500ms;
 }
 
+/* Loading Styles */
 .loading {
-	display: none;
+    display: none;
 }
 
+/* Footer Styles */
 .footer {
     position: relative !important;
     padding: 20px 0 !important;
 }
 
+/* MailChimp Signup Form Styles */
 #mc_embed_signup {
-    background: #fff !important; 
-    font: 14px Helvetica, Arial, sans-serif !important; 
+    background: #fff !important;
+    font: 14px Helvetica, Arial, sans-serif !important;
     width: 400px !important;
     padding: 10px !important;
     border-radius: 5px !important;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
     margin-top: 15px !important;
     color: #0d1117;
 }
@@ -357,11 +386,13 @@ p {
     margin: 0 !important;
 }
 
+/* Copyright Styles */
 .copyright {
     text-align: center !important;
     margin-top: 15px !important;
 }
 
+/* Footer Tabs Styles */
 #footerTabs {
     margin-bottom: 15px !important;
 }
@@ -374,57 +405,57 @@ p {
 }
 
 .nav-tabs .nav-link {
-    color: #495057 
+    color: #495057;
 }
 
 .nav-tabs .nav-link.active {
-    color: #007bff 
+    color: #007bff;
 }
 
 /* Media Queries */
 @media only screen and (max-width: 650px) {
-	.card.custom-min-width {
-		min-width: 100%;
-		max-width: 100%;
-	}
-	.col-md-5 {
-		width: 100%;
-	}
+    .card.custom-min-width {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .col-md-5 {
+        width: 100%;
+    }
 }
 
 @media only screen and (min-width: 650px) {
-	.card.custom-min-width {
-		min-width: 300px;
-		max-width: 100%;
-	}
-	.col-md-5 {
-		width: 540px;
-	}
+    .card.custom-min-width {
+        min-width: 300px;
+        max-width: 100%;
+    }
+    .col-md-5 {
+        width: 540px;
+    }
 }
 
 @media only screen and (min-width: 1824px) {
-	.card.custom-min-width {
-		min-width: 500px;
-		max-width: 500px;
-	}
-	.col-md-5 {
-		margin-top: 10px;
-		width: 540px;
-		min-width: 540px;
-	}
+    .card.custom-min-width {
+        min-width: 500px;
+        max-width: 500px;
+    }
+    .col-md-5 {
+        margin-top: 10px;
+        width: 540px;
+        min-width: 540px;
+    }
 }
 
 @media (max-width: 991px) {
-	.navbar-nav {
-		flex-direction: column;
-		align-items: flex-start;
-	}
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-	.nav-item {
-		margin: 5px 0;
-	}
+    .nav-item {
+        margin: 5px 0;
+    }
 
-	.signout-btn {
-		margin-top: 10px;
-	}
+    .signout-btn {
+        margin-top: 10px;
+    }
 }
