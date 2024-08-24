@@ -2,7 +2,7 @@
 <div class="container signin-reg-container">
 	<div class="row auth justify-content-center">
 		<div class="col-md-5">
-			<div class="card mt-5 shadow signup-and-reg-card" style="min-width: 300px">
+			<div class="mt-5 shadow signup-and-reg-card" style="min-width: 300px">
 				<div class="card-body-reg-login p-5">
 					<h4 class="card-title text-left mt-3 mb-5">
 						Sign in to your account
@@ -75,7 +75,15 @@
 							data-locale="en-GB"
 							data-logo_alignment="left"
 						></div>
+							<div class="signup-prompt text-center mt-4">
+ 
+    <a href="{% url 'register' %}" class='text-muted'>
+        Don't have an account? Sign up</i>
+    </a>
+</div>
 					</form>
+				
+						</a>
 				</div>
 			</div>
 		</div>
