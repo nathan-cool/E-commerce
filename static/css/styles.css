@@ -130,6 +130,11 @@ body {
 	margin-top: 55px;
 }
 
+.signup-and-reg-card{
+    margin-top: 150px !important;
+    margin-bottom: 150px !important;
+}
+
 /* Style the card with a bottom margin, border color */
 .card {
 	margin-bottom: 20px;

@@ -303,9 +303,10 @@ class LoginView(View):
 
 
 class LogoutView(View):
+
     """Handle user logout."""
 
-    def get(self, request):
+    def post(self, request):
         """
         Log out a user.
 
@@ -316,6 +317,5 @@ class LogoutView(View):
             HttpResponse: Redirect to login page.
         """
         logout(request)
-        messages.success(request, "You have been logged out")
-        return redirect("login")
+        return redirect('home')
 
