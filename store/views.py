@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Product, Category
 from django.contrib.admin.views.decorators import staff_member_required
+import bleach
 
 # Create your views here.
 def home(request):
@@ -38,14 +39,18 @@ def admin_create_product(request):
         price = request.POST.get('price')
         category_id = request.POST.get('category')
         description = request.POST.get('description')
+        cleaned_desc = bleach.clean(description, strip=True, tags=['p', 'b', 'i', 'em', 'strong', 'a', 'ul', 'ol', 'li'],
+                                   attributes={'a': ['href']})
         product_title_description = request.POST.get('product_title_description')
         image = request.FILES.get('image')
         category = Category.objects.get(id=int(category_id))
-        product = Product(name=name, price=price, category=category, image=image, description=description, product_title_description=product_title_description)
+        product = Product(name=name, price=price, category=category, image=image,
+                          cleaned_desc=description, product_title_description=product_title_description)
 
         product.save()
 
         messages.success(request, 'Product created successfully')
+
 
     categories = Category.objects.all()
     context = {

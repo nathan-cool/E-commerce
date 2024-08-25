@@ -20,6 +20,7 @@
 				<div class="card product-card">
 					<div class="x-button-card-container">
 						{% csrf_token %}
+						{% if is_staff %}
 						<a
 							href="{% url 'delete_product' product.id %}"
 							class="btn btn-secondary x-button-card"
@@ -37,6 +38,7 @@
 								></path>
 							</svg>
 						</a>
+								{% endif %}
 					</div>
 					<a href="{% url 'product' product.id%}">
 						<img

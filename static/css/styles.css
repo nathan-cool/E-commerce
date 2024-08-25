@@ -1,3 +1,4 @@
+
 /* General Styles */
 html,
 body {
@@ -161,7 +162,7 @@ hr {
 }
 
 /* Card Styles */
-.card {
+.product-card {
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
@@ -172,7 +173,7 @@ hr {
 	transition: transform 0.3s ease;
 
 }
-.card:hover {
+.product-card:hover {
 	transition: 0.5s;
 	transform: scale(1.05);
 }
@@ -213,14 +214,73 @@ hr {
 	background-color: #2a2e35;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	height: 100vh;
+}
+
+.card-body-product-page{
+	background-color: rgba(255, 255, 255, 0);
+}
+
+.card-title-product-page{
+	font-size: 20px;
+	font-weight: 700;
+	color: white;
+	align-self: first baseline;
 }
 
 .card-body .btn {
 	margin-top: auto;
 }
 
-.product-card{
-	height: );
+.product-card-buy{
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ border: none;
+  background-color: #1d1e2200;
+	color: white;
+
+
+}
+.product-card-buy-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	margin: auto;
+	max-width: 60%;
+}
+.product-desc-container{
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0);
+}
+.btn-primary{
+	background-color: #2086f400;
+	border-color: #007bff;
+	width: 200px;
+	color: #007bff;
+	align-self: center;
+	margin: 10px;
+}
+.btn-primary:hover{
+	background-color: #2086f4;
+	color: white;
+}
+.btn-secondary-buy{
+	background-color: hsla(161, 100%, 50%, 0);
+	border-color: hsl(161, 100%, 50%);
+	width: 200px;
+	color: hsl(161, 100%, 50%);
+	align-self: center;
+	margin: 15px;
+	width: 350px;
+	height: 150px;
+	transition: 0.5s;
+}
+.btn-secondary-buy:hover{
+	transform: scale(1.1);
+
 }
 
 /* Footer Styles */
@@ -307,12 +367,8 @@ p {
 }
 
 /* Image Container Styles */
-.image-container {
-	height: 300px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 15px;
+.img-container{
+	display: contents;
 }
 
 .product-image {
@@ -385,6 +441,10 @@ p {
 	min-width: 200px;
 	max-width: 1000px;
 	border-radius: 10px;
+}
+
+.row{
+	margin-bottom: 20px;
 }
 
 /* Alert Styles */
@@ -509,7 +569,7 @@ p {
 }
 
 @media only screen and (min-width: 1824px) {
-	.card.custom-min-width {
+	.product-card-buy.custom-min-width {
 		min-width: 500px;
 		max-width: 500px;
 	}
@@ -532,14 +592,6 @@ p {
 
 	.signout-btn {
 		margin-top: 10px;
-	}
-}
-@media (min-width: 991px) {
-	.card {
-		margin-bottom: 20px;
-		display: flex;
-		flex-direction: column;
-		height: 425px;
 	}
 }
 
