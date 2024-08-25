@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from .models import Product
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Product, Category
@@ -36,9 +38,10 @@ def admin_create_product(request):
         price = request.POST.get('price')
         category_id = request.POST.get('category')
         description = request.POST.get('description')
+        product_title_description = request.POST.get('product_title_description')
         image = request.FILES.get('image')
         category = Category.objects.get(id=int(category_id))
-        product = Product(name=name, price=price, category=category, image=image, description=description)
+        product = Product(name=name, price=price, category=category, image=image, description=description, product_title_description=product_title_description)
 
         product.save()
 
@@ -50,6 +53,33 @@ def admin_create_product(request):
         'title': 'Create Product'
     }
     return render(request, 'create-product.html', context)
+
+
+def delete_product(request, pk):
+    """
+    Delete a product from the database.
+
+    Args:
+        request (HttpRequest): The request object.
+        pk (int): The ID of the product to delete.
+
+    Returns:
+        HttpResponseRedirect: A redirect to the home page or an error message.
+    """
+    if request.method == "GET":
+        try:
+            product = Product.objects.get(pk=pk)
+            product.delete()
+            messages.success(request, "Product deleted successfully")
+        except Product.DoesNotExist:
+            messages.error(request, "Product not found")
+        except Exception as e:
+            messages.error(
+                request,
+                f"An error occurred while deleting the product: {str(e)}",
+            )
+        return redirect("home")
+
 
 
 

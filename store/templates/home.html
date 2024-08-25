@@ -4,8 +4,8 @@
 {% block content %}
 	<body>
 		<div class="jumbotron text-center">
-			<h1 class="display-4">Courses</h1>
-			<p class="lead">Discover our amazing selection</p>
+			<h1 class="display-4">COURSES</h1>
+			<p class="lead">Explore our diverse range of expert-led programs tailored to your goals</p>
 			<hr></hr>
 		</div>
 		
@@ -14,7 +14,16 @@
 			<div class="row">
 				{% for product in products %}
 				<div class="col-md-3 mb-4">
-					<div class="card">
+					<div class="card product-card">
+						<div class="x-button-card-container">
+							{% csrf_token %}
+						<a href="{% url 'delete_product' product.id %}" class="btn btn-secondary x-button-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"></path>
+</svg>
+</a>
+
+						</div>
 						<a href="{% url 'product' product.id%}">
 						<img
 							class="card-img-top"
@@ -25,8 +34,8 @@
 						</a>
 						<div class="card-body">
 							<h5 class="card-title">{{ product.name }}</h5>
-
-							<p class="card-text">{{ product.description|truncatechars:80 }}</p>
+							<p class="card-text product-title-description">{{ product.product_title_description }}</p>
+							<span class="product-badge badge badge-pill badge-info">#{{product.category}}</span>
 
 						</div>
 					</div>

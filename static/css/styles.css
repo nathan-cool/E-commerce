@@ -3,23 +3,18 @@ html,
 body {
 	height: 100%;
 	margin: 0;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 body {
-	font-family: 'Ubuntu', sans-serif;
-	font-weight: 500;
-	font-style: normal;
-	background: rgb(42, 34, 54);
-	background: radial-gradient(
-		circle,
-		rgba(42, 34, 54, 1) 0%,
-		rgba(18, 24, 27, 1) 92%
-	);
+	background: rgb(18,27,19);
+background: radial-gradient(circle, rgba(18,27,19,1) 0%, rgba(18,26,27,1) 48%, rgba(18,24,27,1) 92%);
 }
 
 h1 {
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 }
 
 hr {
@@ -27,7 +22,7 @@ hr {
 	width: 6%;
 	align-items: center;
 	margin: auto;
-	margin-top: 70px;
+	margin-top: 20px;
 	border-radius: 5px;
 }
 
@@ -154,6 +149,11 @@ hr {
 	margin-top: 55px;
 }
 
+
+.lead{
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.834);
+}
 /* Sign Up and Registration Card Styles */
 .signup-and-reg-card {
 	margin-top: 150px !important;
@@ -169,6 +169,12 @@ hr {
 	background-color: #1d1e22;
 	color: white;
 	text-align: center;
+	transition: transform 0.3s ease;
+
+}
+.card:hover {
+	transition: 0.5s;
+	transform: scale(1.05);
 }
 
 .card-img-top {
@@ -186,6 +192,19 @@ hr {
 	object-fit: contain;
 	padding: 15px;
 }
+.x-button-card-container{
+	display: flex;
+	justify-content: flex-end;
+}
+.x-button-card{
+	margin: 10px;
+	width: 50px;
+	height: 40px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 
 .card-body {
 	flex-grow: 1;
@@ -198,6 +217,10 @@ hr {
 
 .card-body .btn {
 	margin-top: auto;
+}
+
+.product-card{
+	height: );
 }
 
 /* Footer Styles */
@@ -228,7 +251,10 @@ hr {
 
 /* Badge Styles */
 .badge {
-	background-color: #e74c3c !important;
+	width: 60px;
+	font-size: 10px;
+	background-color: #0099ff;
+	align-items: center;
 }
 
 /* About Us Section Styles */
@@ -270,6 +296,10 @@ hr {
 	box-shadow: 0 4px 8px rgba(10, 10, 10, 0.113);
 }
 
+.container {
+	max-width: 1550px;
+}
+
 /* Text Styles */
 label,
 p {
@@ -293,14 +323,24 @@ p {
 }
 
 .card-title {
+	margin-top: 10px;
 	height: 50px;
-	overflow: hidden;
+	font-weight: 700;
 	text-overflow: ellipsis;
 	text-align: center;
-	-webkit-line-clamp: 2;
+
+	
+
 }
 
-.create-product-container{
+.product-title-description {
+	font-weight: 600;
+	color: #ffffff9f;
+	font-size: 14px;
+  line-height: 2;
+}
+
+.create-product-container {
 	margin-bottom: 400px;
 }
 
@@ -500,15 +540,6 @@ p {
 		display: flex;
 		flex-direction: column;
 		height: 425px;
-	}
-}
-@media (min-width: 990px) {
-	.row > * {
-		flex: 0 0 auto !important;
-		width: 30%;
-	}
-	.jumbotron {
-		margin-top: 74px;
 	}
 }
 
