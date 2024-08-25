@@ -3,37 +3,36 @@ html,
 body {
 	height: 100%;
 	margin: 0;
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 body {
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	font-weight: 500;
-  font-style: normal;
-	background: rgb(42,34,54);
-	background: radial-gradient(circle, rgba(42,34,54,1) 0%, rgba(18,24,27,1) 92%);
-
-
+	font-style: normal;
+	background: rgb(42, 34, 54);
+	background: radial-gradient(
+		circle,
+		rgba(42, 34, 54, 1) 0%,
+		rgba(18, 24, 27, 1) 92%
+	);
 }
 
-h1{
-	font-weight: 800!important;
+h1 {
+	font-weight: 800 !important;
 }
 
-
-hr{
-	border-top: 5px solid rgba(255, 255, 255, 0.501)!important;
+hr {
+	border-top: 5px solid rgba(255, 255, 255, 0.501) !important;
 	width: 6%;
 	align-items: center;
 	margin: auto;
 	margin-top: 70px;
 	border-radius: 5px;
-
 }
 
 /* Navbar Styles */
 .navbar {
-	
 	top: 0;
 	left: 0;
 	right: 0;
@@ -167,8 +166,9 @@ hr{
 	display: flex;
 	flex-direction: column;
 	height: 425px;
-	background-color: #1d1e22	;
+	background-color: #1d1e22;
 	color: white;
+	text-align: center;
 }
 
 .card-img-top {
@@ -193,7 +193,7 @@ hr{
 	flex-direction: column;
 	background-color: #2a2e35;
 	border-bottom-left-radius: 10px;
-border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .card-body .btn {
@@ -267,7 +267,7 @@ border-bottom-right-radius: 10px;
 
 /* Card Shadow Styles */
 .card-body {
-	box-shadow: 0 4px 8px rgba(90, 35, 200, 0.3);
+	box-shadow: 0 4px 8px rgba(10, 10, 10, 0.113);
 }
 
 /* Text Styles */
@@ -296,8 +296,12 @@ p {
 	height: 50px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
+	text-align: center;
+	-webkit-line-clamp: 2;
+}
+
+.create-product-container{
+	margin-bottom: 400px;
 }
 
 /* Form Styles */
@@ -340,7 +344,7 @@ p {
 .card {
 	min-width: 200px;
 	max-width: 1000px;
-		border-radius: 10px;
+	border-radius: 10px;
 }
 
 /* Alert Styles */
@@ -438,12 +442,10 @@ p {
 .nav-tabs .nav-link.active {
 	color: #007bff;
 }
-.shopping-cart-container{
+.shopping-cart-container {
 	background: white;
-  border: black;
-  border-radius: 10px;
- 
-
+	border: black;
+	border-radius: 10px;
 }
 /* Media Queries */
 @media only screen and (max-width: 650px) {
@@ -495,41 +497,40 @@ p {
 @media (min-width: 991px) {
 	.card {
 		margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 425px;
+		display: flex;
+		flex-direction: column;
+		height: 425px;
 	}
 }
- @media (min-width: 990px) {
-  .row>* {
-    flex: 0 0 auto!important;
-    width: 30%;
-  }
+@media (min-width: 990px) {
+	.row > * {
+		flex: 0 0 auto !important;
+		width: 30%;
+	}
 	.jumbotron {
 		margin-top: 74px;
 	}
 }
 
 @media (max-width: 990px) {
-  .row>* {
-    flex: 0 0 auto!important;
-    width: 50%;
-  }
+	.row > * {
+		flex: 0 0 auto !important;
+		width: 50%;
+	}
 	.jumbotron {
 		margin-top: 74px;
 	}
 }
 
 @media (max-width: 575px) {
-  .row>* {
-    flex: 0 0 auto!important;
-    width: 100%;
-  }
+	.row > * {
+		flex: 0 0 auto !important;
+		width: 100%;
+	}
 }
 
 @media (max-width: 766px) {
 	.jumbotron {
 		margin-top: 114px;
 	}
-	
 }

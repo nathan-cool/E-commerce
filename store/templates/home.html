@@ -15,26 +15,19 @@
 				{% for product in products %}
 				<div class="col-md-3 mb-4">
 					<div class="card">
+						<a href="{% url 'product' product.id%}">
 						<img
 							class="card-img-top"
 							src="{{ product.image.url }}"
 							alt="{{ product.name }}"
+							
 						/>
+						</a>
 						<div class="card-body">
 							<h5 class="card-title">{{ product.name }}</h5>
 
-							{% if product.is_sale %}
-							<div class="badge bg-danger">Sale</div>
-							<p class="card-text">
-								<strike>€{{ product.price }}</strike>
-							</p>
-							<p class="card-text">€{{ product.sale_price }}</p>
-							{% else %}
-							<p class="card-text">€{{ product.price }}</p>
-							{% endif %}
-							<a class="btn btn-outline-primary" href="{% url 'product' product.id%}">
-								View Product
-							</a>
+							<p class="card-text">{{ product.description|truncatechars:80 }}</p>
+
 						</div>
 					</div>
 				</div>

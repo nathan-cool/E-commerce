@@ -35,9 +35,10 @@ def admin_create_product(request):
         name = request.POST.get('name')
         price = request.POST.get('price')
         category_id = request.POST.get('category')
+        description = request.POST.get('description')
         image = request.FILES.get('image')
         category = Category.objects.get(id=int(category_id))
-        product = Product(name=name, price=price, category=category, image=image)
+        product = Product(name=name, price=price, category=category, image=image, description=description)
 
         product.save()
 

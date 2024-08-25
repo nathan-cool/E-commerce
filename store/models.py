@@ -26,6 +26,7 @@ class Product(models.Model):
   name = models.CharField(max_length=255)
   price = models.FloatField(default=0)
   category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+  p
   description = models.CharField(max_length=255, default='', null=True, blank=True)
   image = models.ImageField(upload_to='uploads/products/')
   is_sale = models.BooleanField(default=False)
