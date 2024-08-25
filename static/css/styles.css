@@ -3,19 +3,41 @@ html,
 body {
 	height: 100%;
 	margin: 0;
+	font-family: "Ubuntu", sans-serif;
 }
 
 body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 500;
+  font-style: normal;
+	background: rgb(42,34,54);
+	background: radial-gradient(circle, rgba(42,34,54,1) 0%, rgba(18,24,27,1) 92%);
+
+
+}
+
+h1{
+	font-weight: 800!important;
+}
+
+
+hr{
+	border-top: 5px solid rgba(255, 255, 255, 0.501)!important;
+	width: 6%;
+	align-items: center;
+	margin: auto;
+	margin-top: 70px;
+	border-radius: 5px;
+
 }
 
 /* Navbar Styles */
 .navbar {
-	position: fixed;
+	
 	top: 0;
 	left: 0;
 	right: 0;
-	background-color: #12181b;
+	background-color: none;
 	padding: 8px 16px;
 	z-index: 9999;
 }
@@ -122,10 +144,10 @@ body {
 
 /* Jumbotron Styles */
 .jumbotron {
-	background-color: #12181b;
+	background-color: #12181b00;
 	color: white;
 	padding: 64px 32px;
-	margin-top: 56px;
+	margin-top: 100px;
 }
 
 .mt-5 {
@@ -142,10 +164,11 @@ body {
 /* Card Styles */
 .card {
 	margin-bottom: 20px;
-	border-color: #3498db;
 	display: flex;
 	flex-direction: column;
 	height: 425px;
+	background-color: #1d1e22	;
+	color: white;
 }
 
 .card-img-top {
@@ -168,6 +191,9 @@ body {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
+	background-color: #2a2e35;
+	border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
 }
 
 .card-body .btn {
@@ -314,6 +340,7 @@ p {
 .card {
 	min-width: 200px;
 	max-width: 1000px;
+		border-radius: 10px;
 }
 
 /* Alert Styles */
@@ -411,7 +438,13 @@ p {
 .nav-tabs .nav-link.active {
 	color: #007bff;
 }
+.shopping-cart-container{
+	background: white;
+  border: black;
+  border-radius: 10px;
+ 
 
+}
 /* Media Queries */
 @media only screen and (max-width: 650px) {
 	.card.custom-min-width {
@@ -462,13 +495,20 @@ p {
 @media (min-width: 991px) {
 	.card {
 		margin-bottom: 20px;
-  border-color: #3498db;
   display: flex;
   flex-direction: column;
   height: 425px;
 	}
 }
- 
+ @media (min-width: 990px) {
+  .row>* {
+    flex: 0 0 auto!important;
+    width: 30%;
+  }
+	.jumbotron {
+		margin-top: 74px;
+	}
+}
 
 @media (max-width: 990px) {
   .row>* {
