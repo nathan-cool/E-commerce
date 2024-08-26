@@ -43,7 +43,9 @@ def admin_create_product(request):
                                    attributes={'a': ['href']})
         product_title_description = request.POST.get('product_title_description')
         image = request.FILES.get('image')
+
         category = Category.objects.get(id=int(category_id))
+
         custom_badge = request.POST.get('custom_badge')
         product = Product(name=name, price=price, category=category, image=image,
                          
@@ -124,3 +126,16 @@ def admin_create_category(request):
         return redirect('admin_create_category')
 
     return render(request, 'create-category.html', {'categories': categories})
+
+def delete_category(request, pk):
+    if request.method == "GET":
+        category = Category.objects.get(pk=pk)
+        if Product.objects.filter(category=category).exists():
+            messages.error(
+                request,
+                "Cannot delete category with products associated with it please delete the products first",
+            )
+            return redirect("admin_create_category")
+        category.delete()
+        messages.success(request, "Category deleted successfully")
+    return redirect("admin_create_category")

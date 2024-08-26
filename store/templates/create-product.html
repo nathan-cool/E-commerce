@@ -28,12 +28,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
-                            <select class="form-select" id="category" name="category" required>
+                            <select class="form-select" id="category" name="category" >
                                 <option value="">Select a category</option>
                                 {% for category in categories %}
                                     <option value="{{ category.id }}">{{ category.name }}</option>
                                 {% endfor %}
                             </select>
+                            <a href="{% url 'admin_create_category' %}" class="btn btn-secondary">Create Category</a>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>

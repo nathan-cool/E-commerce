@@ -43,7 +43,9 @@
                             <label for="custom_badge" class="form-label">custom_badge </label>
                             <textarea class="form-control" id="custom_badge" name="custom_badge" maxlength="6" rows="1">{{product.custom_badge}}</textarea>
                         </div>
+
                         <div class="mb-3">
+                            <image src="{{product.image.url}}" alt="{{product.name}}" class="img-fluid">
                             <label for="image" class="form-label">Product Image</label>
                             <input type="file" class="form-control" id="image" name="image" accept="image/*">
                         </div>  

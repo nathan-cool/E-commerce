@@ -151,7 +151,7 @@ class RegistrationView(View):
             return redirect("home")
 
         messages.error(request, "Email already exists")
-        return render(request, "login.html", context)
+        return render(request, "register.html", context)
 
 
 class EmailValidationView(View):
@@ -299,7 +299,7 @@ class LoginView(View):
         else:
             messages.error(request, "Please fill in all fields")
 
-        return render(request, "login.html")
+        return render(request, "register.html")
 
 
 class LogoutView(View):
