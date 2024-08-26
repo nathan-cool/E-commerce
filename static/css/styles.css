@@ -200,6 +200,10 @@ hr {
 	margin: 10px;
 }
 
+.card-body-category{
+	height: 17vh!important;
+}
+
 
 .x-button-card-container{
 	display: flex;

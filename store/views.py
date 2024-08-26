@@ -113,12 +113,14 @@ def edit_product(request, pk):
     return render(request, "edit-product.html", context)
 
 
-
 def admin_create_category(request):
+    categories = Category.objects.all()
+
     if request.method == 'POST':
         name = request.POST.get('name')
         category = Category(name=name)
         category.save()
         messages.success(request, 'Category created successfully')
-    return render(request, 'create-category.html')
+        return redirect('admin_create_category')
 
+    return render(request, 'create-category.html', {'categories': categories})
