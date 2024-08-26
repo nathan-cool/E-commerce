@@ -39,13 +39,14 @@
 								<p class="card-text">€{{ product.price }}</p>
 								{% endif %}
 												<select
-									class="form-select"
-									aria-label="Quantity select" id="quantity_select"
-								>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
+													class="form-select"
+													aria-label="Quantity select" id="quantity_select"
+													style="display: none;"
+												>
+													<option selected value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+												</select>
 								<a
 									href="{% url 'home' %}"
 									class="btn btn-primary"

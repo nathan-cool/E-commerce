@@ -44,9 +44,10 @@ def admin_create_product(request):
         product_title_description = request.POST.get('product_title_description')
         image = request.FILES.get('image')
         category = Category.objects.get(id=int(category_id))
+        custom_badge = request.POST.get('custom_badge')
         product = Product(name=name, price=price, category=category, image=image,
                          
-                          description = cleaned_desc, product_title_description=product_title_description)
+                          description = cleaned_desc, product_title_description=product_title_description, custom_badge=custom_badge)
 
         product.save()
 

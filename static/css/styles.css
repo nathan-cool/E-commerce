@@ -174,10 +174,10 @@ hr {
 
 /* Card Styles */
 .product-card {
-	margin-bottom: 20px;
+	margin-bottom: 70px;
 	display: flex;
 	flex-direction: column;
-	height: 425px;
+	height: 525px;
 	background-color: #1d1e22;
 	color: white;
 	text-align: center;
@@ -225,6 +225,13 @@ hr {
 	height: 100vh;
 }
 
+.custom-badge-container{
+	display: flex;
+	justify-content: flex-start;
+
+}
+
+
 .card-body-product-page{
 	background-color: rgba(255, 255, 255, 0);
 }
@@ -239,6 +246,7 @@ hr {
 .card-body .btn {
 	margin-top: auto;
 }
+
 
 .product-card-buy{
   margin-bottom: 20px;
@@ -262,6 +270,12 @@ hr {
 .product-desc-container{
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0);
+}
+
+.create-product-card{
+	margin-top: 20px;
+	background-color: #1d1e22;
+	color: white;
 }
 .btn-primary{
 	background-color: #2086f400;
@@ -324,6 +338,15 @@ hr {
 	background-color: #0099ff;
 	align-items: center;
 	height: 20px;
+	margin-right: 10px;
+}
+
+.badge-on-product-custom{
+	width: 60px;
+	font-size: 12px;
+	background-color: #ff8400;
+	align-items: center;
+	height: 20px;
 }
 
 /* About Us Section Styles */
@@ -367,6 +390,7 @@ hr {
 
 .container {
 	max-width: 1550px;
+	
 }
 
 /* Text Styles */
@@ -566,6 +590,8 @@ p {
 	.col-md-5 {
 		width: 100%;
 	}
+		.jumbotron {
+		height: 100vh;
 }
 
 @media only screen and (min-width: 650px) {
@@ -575,6 +601,7 @@ p {
 	}
 	.col-md-5 {
 		width: 540px;
+
 	}
 }
 

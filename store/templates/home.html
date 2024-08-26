@@ -54,11 +54,19 @@
 						>
 							{{ product.product_title_description }}
 						</p>
-						<span
-							class="product-badge badge badge-pill badge-info mt-auto badge-on-product "
-							>#{{product.category}}</span
+						<div class="custom-badge-container">
+							<span
+								class="product-badge badge badge-pill badge-info mt-auto badge-on-product "
+								>#{{product.category}}</span
+							>
+						{%if product.custom_badge %}
+
+					<span
+							class="badge badge-pill badge-info mt-auto badge-on-product-custom" "
+							>#{{product.custom_badge}}</span
 						>
-					
+						{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>

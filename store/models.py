@@ -31,6 +31,7 @@ class Product(models.Model):
   image = models.ImageField(upload_to='uploads/products/')
   is_sale = models.BooleanField(default=False)
   sale_price = models.FloatField(default=0)
+  custom_badge = models.CharField(max_length=6, default='', null=True, blank=True)
   
 
   def __str__(self):

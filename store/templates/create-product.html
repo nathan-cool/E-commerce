@@ -4,8 +4,8 @@
 <div class="container mt-5 create-product-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
+            <div class="card shadow create-product-card">
+                <div class="card-header text-white">
                     <h2 class="mb-0">Create New Product</h2>
                 </div>
                 <div class="card-body">
@@ -39,22 +39,29 @@
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description" maxlength="1000" rows="3"></textarea>
                         </div>
+                         <div class="mb-3">
+                            <label for="custom_badge" class="form-label">custom_badge </label>
+                            <textarea class="form-control" id=" custom_badge " name="custom_badge" maxlength="6" rows="1"></textarea>
+                        </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Product Image</label>
                             <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
-                        </div>
+                        </div>  
+                         
+
                         <div class="mb-3 form-check">
                             <input class="form-check-input" type="checkbox" id="is_sale" name="is_sale">
                             <label class="form-check-label" for="is_sale">On Sale</label>
                         </div>
-                        <div class="mb-3" id="sale_price_group" style="display: none;">
+                        
+                        <div class="mb-3" id="sale_price_group">
                             <label for="sale_price" class="form-label">Sale Price</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
                                 <input type="number" class="form-control" id="sale_price" name="sale_price" step="0.01">
                             </div>
                         </div>
-                        <div class="d-grid">
+                        <div class="d-grid text-ali">
                             <button type="submit" class="btn btn-primary btn-lg">Create Product</button>
                         </div>
                     </form>
