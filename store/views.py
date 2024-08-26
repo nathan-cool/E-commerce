@@ -87,6 +87,30 @@ def delete_product(request, pk):
             )
         return redirect("home")
 
+def edit_product(request, pk):
+    if request.method == "POST":
+        product = Product.objects.get(pk=pk)
+        product.name = request.POST.get("name")
+        product.price = request.POST.get("price")
+        product.category = Category.objects.get(pk=request.POST.get("category"))
+        product.description = request.POST.get("description")
+        product.product_title_description = request.POST.get("product_title_description")
+        product.custom_badge = request.POST.get("custom_badge")
+        if request.FILES.get('image'):
+            product.image = request.FILES.get('image')
+        else:
+            product.image = product.image
+        product.save()
+        messages.success(request, "Product updated successfully")
+        return redirect("home")
+    
+    product = Product.objects.get(pk=pk)
+    categories = Category.objects.all()
+    context = {
+        "product": product,
+        "categories": categories,
+    }
+    return render(request, "edit-product.html", context)
 
 
 
