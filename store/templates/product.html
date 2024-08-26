@@ -1,18 +1,19 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+	
 <div class="jumbotron text-center">
 		<h1 class="display-4">{{product.name}}</h1>
 		
 		<hr></hr>
 	</div>
-		
+<main>
 <div class="product section">
-	<div class="container">
+	<div class="container-product-page">
 		<div class="row align-items-center">
 			<div class="col  product-card-buy-container">
 				<div class="card mb-3 product-card-buy">
 					<div class="row g-0 img-container">
-						<div class="col-md-4">
+						<div class="col">
 							<div class="image-container"> </div>
 							<img
 								src="{{ product.image.url }}"
@@ -69,6 +70,9 @@
 		</div>
 	</div>
 </div>
+</main>
+
+
 
 <script>
 	$(document).on('click', '#add-cart', function (e) {

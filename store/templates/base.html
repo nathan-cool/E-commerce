@@ -40,7 +40,9 @@
 		</style>
 	</head>
 	<body>
-		{% include 'navbar.html' %} {% block content %}{% endblock %}
+		{% include 'navbar.html' %} 
+		<main>{% block content %}{% endblock %}
+		</main>
 
 		<footer class="footer text-center">
 			<div class="container">

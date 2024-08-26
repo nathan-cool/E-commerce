@@ -1,14 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="jumbotron text-center">
-	<h1 class="display-4">COURhjhSES</h1>
+	<h1 class="display-4">COURSES</h1>
 	<p class="lead">
-		Explore our diverse range of expert-led programs tailored to your 
-		goals
+		Explore our diverse range of expert-led programs tailored to your goals
 	</p>
-	<hr></hr>
+	<hr />
 </div>
-
-<div class="container my-5">
+<div class="container my-5 home-page-body-container">
+	{% if products %}
 	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
 		{% for product in products %}
 		<div class="col">
@@ -51,34 +50,43 @@
 					</a>
 					{% endif %}
 				</div>
-				<a href="{% url 'product' product.id %}">
-					<img
-						class="card-img-top"
-						src="{{ product.image.url }}"
-						alt="{{ product.name }}"
-					/>
-				</a>
-				<div class="card-body d-flex flex-column">
-					<h5 class="card-title">{{ product.name }}</h5>
-					<p class="card-text product-title-description flex-grow-1">
-						{{ product.product_title_description }}
-					</p>
-					<div class="custom-badge-container">
-						<span
-							class="product-badge badge badge-pill badge-info mt-auto badge-on-product"
-							>#{{product.category}}</span
+				<div class="container-1">
+					<a href="{% url 'product' product.id %}">
+						<img
+							class="card-img-top"
+							src="{{ product.image.url }}"
+							alt="{{ product.name }}"
+						/>
+					</a>
+					<div class="card-body d-flex flex-column">
+						<h5 class="card-title">{{ product.name }}</h5>
+						<p
+							class="card-text product-title-description flex-grow-1"
 						>
-						{% if product.custom_badge %}
-						<span
-							class="badge badge-pill badge-info mt-auto badge-on-product-custom"
-							>#{{product.custom_badge}}</span
-						>
-						{% endif %}
+							{{ product.product_title_description }}
+						</p>
+						<div class="custom-badge-container">
+							<span
+								class="product-badge badge badge-pill badge-info mt-auto badge-on-product"
+								>#{{product.category}}</span
+							>
+							{% if product.custom_badge %}
+							<span
+								class="badge badge-pill badge-info mt-auto badge-on-product-custom"
+								>#{{product.custom_badge}}</span
+							>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		{% endfor %}
 	</div>
+	{% else %}
+	<div class="alert alert-info text-center" role="alert">
+		No items available at the moment. Please check back later.
+	</div>
+	{% endif %}
 </div>
 {% endblock %}
