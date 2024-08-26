@@ -45,7 +45,8 @@ def admin_create_product(request):
         image = request.FILES.get('image')
         category = Category.objects.get(id=int(category_id))
         product = Product(name=name, price=price, category=category, image=image,
-                          cleaned_desc=description, product_title_description=product_title_description)
+                         
+                          description = cleaned_desc, product_title_description=product_title_description)
 
         product.save()
 

@@ -1,4 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="jumbotron text-center">
+		<h1 class="display-4">{{product.name}}</h1>
+		
+		<hr></hr>
+	</div>
 		
 <div class="product section">
 	<div class="container">
@@ -19,7 +25,7 @@
 							<div class="card-body card-body-product-page">
 								<h5 class="card-title card-title-product-page">{{ product.name }}</h5>
 								<p class="card-text">
-									{{ product.description }}
+									{{ product.description|safe }}
 								</p>
 								{% if product.is_sale %}
 								<div class="badge bg-danger">Sale</div>
@@ -45,6 +51,7 @@
 									class="btn btn-primary"
 									>Back to Home</a
 								>
+								<h2 class="card-title card-title-product-page">Buy this course today for </h2>
 								<button
 									type="button"
 									value="{{ product.id }}"
