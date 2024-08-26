@@ -22,7 +22,13 @@
                     </form>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group>item">Category 1</li>
+              {% for category in categories %}
+						<li>
+
+								{{category.name}}
+						
+						</li>
+            {% endfor %}
             </div>
         </div>
     </div>

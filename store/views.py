@@ -114,5 +114,11 @@ def edit_product(request, pk):
 
 
 
-
+def admin_create_category(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        category = Category(name=name)
+        category.save()
+        messages.success(request, 'Category created successfully')
+    return render(request, 'create-category.html')
 
