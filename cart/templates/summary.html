@@ -72,7 +72,7 @@
         <div class="col-12 text-end">
 					<div class="mb-4 loading">hi</div>
             <h4 id='total_price' class="mb-4">Grand Total: €{{ cart.get_total_price }}</h4>
-            <a href="#" class="btn btn-primary btn-lg">Proceed to Checkout</a>
+            <a href="{% url 'checkout'%}" class="btn btn-primary btn-lg">Proceed to Checkout</a>
         </div>
     </div>
     {% else %}

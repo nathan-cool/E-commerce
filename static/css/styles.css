@@ -16,6 +16,7 @@ body {
 	font-weight: 400;
 	font-style: normal;
 	height: 100%;
+	color: white;
 	
 }
 
@@ -27,6 +28,7 @@ min-height: 100vh;
 main{
 	flex: 1 0 auto;
 	padding-bottom: 230px;
+	color: white;
 }
 
 h1 {
