@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1 class="display-4 text-center mb-4">Shopping Cart</h1>
-            <p class="lead text-center mb-5">View your cart and manage your items</p>
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Shopping Cart</h1>
+            <p class="lead">View your cart and manage your items</p>
         </div>
     </div>
 
@@ -14,10 +14,9 @@
     <div class="row">
         <div class="col-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-hover table-responsive">
-                    <thead class="table-light">
+                <table class="table table-bordered table-hover table-responsive table-dark">
+                    <thead class="table-dark">
                         <tr>
-                            <th>Image</th>
                             <th>Product</th>
                             <th>Quantity</th>
                             <th>Price</th>
@@ -28,12 +27,7 @@
                     <tbody>
                         {% for product in products %}
                         <tr>
-                             <td>
-                        <div class="d-flex align-items-center">
-                            <img src="{{product.image}}" alt="{{ product.name }}" class="img-thumbnail me-3" style="max-width: 100px; max-height: 100px; object-fit: cover;">
-                            <span>{{ product.name }}</span>
-                        </div>
-                    </td>
+            
                             <td class="align-middle">{{ product.name }}</td>
                             <td class="align-middle">
                                 <select class="form-select" aria-label="Quantity select" id="select{{product.id}}" style="max-width: 100px;">
