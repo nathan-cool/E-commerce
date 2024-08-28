@@ -7,6 +7,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 import bleach
 
 # Create your views here.
+def update_user(request):
+    return render(request, 'update-user.html')
+
 def home(request):
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products})
