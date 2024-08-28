@@ -1,1 +1,62 @@
-this is checkout
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Shopping Cart</h1>
+            <p class="lead">View your cart and manage your items</p>
+        </div>
+    </div>
+ <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow checkout-card">
+                <div class="card-header text-white">
+                    <h2 class="mb-0">Checkout</h2>
+                </div>
+                <div class="card-body bg-dark">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          
+                            <label for="name" class="form-label">Full Name</label>
+                            {% if user.is_authenticated %}
+                            <input type="text" class="form-control" id="name" name="name" maxlength="255" value="{{ user }}" required >   
+                            {% else %}
+                            <input type="text" class="form-control" id="name" name="name" maxlength="255" required>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            {% if user.is_authenticated %}
+                            <input type="email" class="form-control" id="email" name="email" maxlength="255" value="{{ user.email }}" required>
+                            {% else %}
+                            <input type="email" class="form-control" id="email" name="email" maxlength="255" required>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" maxlength="255" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city" maxlength="255" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="county" class="form-label">county</label>
+                            <input type="text" class="form-control" id="country" name="country" maxlength="255" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="zip" class="form-label">Eirode</label>
+                            <input type="text" class="form-control" id="eircode" name="eircode" maxlength="255" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" class="form-control" id="country" name="country" maxlength="255" required>
+                        </div>
+
+    
+    
+               {% endblock %}
