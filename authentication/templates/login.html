@@ -1,14 +1,19 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+{% csrf_token %} {% include "messages.html" %}
+ <div class="jumbotron text-center">
+	<h1 class="display-4">Login</h1>
+	<p class="lead">
+		Login to your account
+	</p>
+	<hr />
 <div class="container signin-reg-container">
 	<div class="row auth justify-content-center">
 		<div class="col-md-5">
-			<div class="mt-5 shadow signup-and-reg-card" style="min-width: 300px">
+			<div class="shadow signup-and-reg-card" style="min-width: 300px">
 				<div class="card-body-reg-login p-5">
-					<h4 class="card-title text-left mt-3 mb-5">
-						Sign in to your account
 					</h4>
 					<form id="form" action="{% url 'login' %}" method="post">
-						{% csrf_token %} {% include "messages.html" %}
+						{% csrf_token %} 
 
 						<div class="form-group mb-3">
 							<label for="email" class="form-label">Email</label>
@@ -75,9 +80,9 @@
 							data-locale="en-GB"
 							data-logo_alignment="left"
 						></div>
-							<div class="signup-prompt text-center mt-4">
+							<div class="text-center mt-4">
  
-    <a href="{% url 'register' %}" class='text-muted'>
+    <a href="{% url 'register' %}" class='signup-prompt' >
         Don't have an account? Sign up</i>
     </a>
 </div>

@@ -177,8 +177,12 @@ hr {
 }
 /* Sign Up and Registration Card Styles */
 .signup-and-reg-card {
-	margin-top: 150px !important;
 	margin-bottom: 150px !important;
+}
+.signup-prompt {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* Card Styles */

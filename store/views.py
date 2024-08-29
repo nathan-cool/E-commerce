@@ -32,6 +32,7 @@ class ProfileView(LoginRequiredMixin, View):
         addressline2 = request.POST.get('address_line2')
         city = request.POST.get('city')
         county = request.POST.get('county')
+        country = request.POST.get('country')
         eircode = request.POST.get('eircode')
         context = {"fieldValues": request.POST, "profile": profile}
 
@@ -65,19 +66,40 @@ class ProfileView(LoginRequiredMixin, View):
             user.set_password(password)
         
         if addressline1:
+            if len (addressline1) > 100:
+                messages.error(request, "Address Line 1 must be less than 100 characters")
+                return render(request, self.profile_template, context)
             profile.billing_address_line1 = addressline1
         
         if addressline2:
+            if len (addressline2) > 100:
+                messages.error(request, "Address Line 2 must be less than 100 characters")
+                return render(request, self.profile_template, context)
             profile.billing_address_line2 = addressline2
         
         if city:
+            if len (city) > 100:
+                messages.error(request, "City must be less than 500 characters")
+                return render(request, self.profile_template, context)
             profile.city = city
         
         if county:
+            if len (county) > 100:
+                messages.error(request, "County must be less than 100 characters")
+                return render(request, self.profile_template, context)
             profile.county = county
 
         if eircode:
+            if len (eircode) > 12:
+                messages.error(request, "Eircode must be less than 12 characters")
+                return render(request, self.profile_template, context)
             profile.eircode = eircode
+
+        if country:
+            if len (country) > 100:
+                messages.error(request, "Country must be less than 100 characters")
+                return render(request, self.profile_template, context)  
+            profile.country = country
 
 
 

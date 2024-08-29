@@ -1,13 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block content %} 
 <!-- Registration Form -->
+ <div class="jumbotron text-center">
+	<h1 class="display-4">Update Profile</h1>
+	<p class="lead">
+		Update your user profile
+	</p>
+	<hr />
 <div class="container signin-reg-container">
 	<div class="row auth justify-content-center">
 		<div class="col-md-5">
-			<div class="mt-5 shadow signup-and-reg-card " style="min-width: 300px">
+			<div class=" shadow signup-and-reg-card " style="min-width: 300px">
 				<div class="card-body-reg-login p-5">
-					<h4 class="card-title text-left mt-3 mb-5">
-						Update User Profile
-					</h4>
 					<form id="form" action="{% url 'update_user' %}" method="post">
 						{% csrf_token %} {% include "messages.html" %}
 						<!-- Name Field -->
@@ -96,6 +99,16 @@
 								required
 							/>
 						</div>
+            <div class="form-group mb-3">
+              <label for="country" class="form-label">Country</label>
+              <input
+                type="text"
+                name="country"
+                class="form-control form-control-lg"
+                id="country"
+                value="{{ user.profile.country }}"
+                required
+              />
 						<!-- Update account --> 
 						<div class="form-group mb-4">
 							<button
