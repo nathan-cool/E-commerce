@@ -1,3 +1,4 @@
+
 import re
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,7 +7,7 @@ from django.http import HttpResponse
 from .models import Product
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Product, Category
+from store.models import Product, Category, Profile
 from django.contrib.admin.views.decorators import staff_member_required
 import bleach
 from django.views import View
@@ -18,14 +19,21 @@ class ProfileView(LoginRequiredMixin, View):
     profile_template = 'profile.html'
 
     def get(self, request):
-        return render(request, self.profile_template, {'user': request.user})
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        return render(request, self.profile_template, {'user': request.user, 'profile': profile})
 
     def post(self, request):
+        profile, created = Profile.objects.get_or_create(user=request.user)
         user = request.user
         email = request.POST.get('email')
         first_name = request.POST.get('first_name')
         password = request.POST.get('password')
-        context = {"fieldValues": request.POST}
+        addressline1 = request.POST.get('address_line1')
+        addressline2 = request.POST.get('address_line2')
+        city = request.POST.get('city')
+        county = request.POST.get('county')
+        eircode = request.POST.get('eircode')
+        context = {"fieldValues": request.POST, "profile": profile}
 
         if email and email != user.email:
             if User.objects.filter(email=email).exclude(id=user.id).exists():
@@ -55,8 +63,26 @@ class ProfileView(LoginRequiredMixin, View):
                 return render(request, self.profile_template, context)
 
             user.set_password(password)
+        
+        if addressline1:
+            profile.billing_address_line1 = addressline1
+        
+        if addressline2:
+            profile.billing_address_line2 = addressline2
+        
+        if city:
+            profile.city = city
+        
+        if county:
+            profile.county = county
+
+        if eircode:
+            profile.eircode = eircode
+
+
 
         user.save()
+        profile.save()
         messages.success(request, 'Profile updated successfully.')
         return redirect('profile')
 

@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 
 # Category model represents a product category
 class Category(models.Model):
@@ -50,5 +51,19 @@ class Order(models.Model):
 
   def __str__(self):
     return self.product.name
+  
+class Profile(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  billing_address_line1 = models.CharField(max_length=100)
+  billing_address_line2 = models.CharField(max_length=100, blank=True, null=True)
+  city = models.CharField(max_length=500)
+  county = models.CharField(max_length=500)
+  eircode = models.CharField(max_length=12)  
+  country = models.CharField(max_length=100, default='Ireland')
+
+
+
+  def __str__(self):
+      return self.user.username
   
  
