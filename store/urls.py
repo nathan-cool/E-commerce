@@ -1,6 +1,6 @@
 from django import views
 from django.urls import path 
-from .views import home
+from .views import ProfileView, home
 from . import views
 
 
@@ -14,5 +14,6 @@ urlpatterns = [
     path('edit-product/<int:pk>', views.edit_product, name='edit_product'),
     path('create-category/', views.admin_create_category, name='admin_create_category'),
     path('delete-category/<int:pk>', views.delete_category, name='delete_category'),
-    path('update-user/', views.update_user, name='update_user'),
+    path('update-user/', ProfileView.as_view(), name='update_user'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 ]

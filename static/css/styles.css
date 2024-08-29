@@ -461,10 +461,7 @@ p {
 }
 
 /* Sign In and Registration Container Styles */
-.signin-reg-container {
-	display: flex;
-	justify-content: center;
-}
+
 
 /* Authentication Row Styles */
 .rowauth {
