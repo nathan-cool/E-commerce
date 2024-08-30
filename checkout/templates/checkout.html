@@ -1,62 +1,101 @@
 {% extends 'base.html' %}
-{% block content %}
-
 {% load static %}
+{% block content %}
+<!-- Checkout Form -->
+<div class="jumbotron text-center">
+    <h1 class="display-4">Checkout</h1>
+    <p class="lead">Complete your order</p>
+    <hr />
+</div>
+<div class="container signin-reg-container">
+    <div class="row auth justify-content-center">
+        <div class="col-md-8">
+            <div class="shadow signup-and-reg-card" style="min-width: 300px">
+                <div class="card-body-reg-login p-5">
+                    <form id="checkout-form" method="post" action="{% url 'checkout' %}">
+                        {% csrf_token %}
+                        {% include "messages.html" %}
+                        
+                        <h4 class="mb-4">Billing Information</h4>
+                        <!-- Name Fields -->
+                        <div class="form-group mb-3">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" name="first_name" class="form-control form-control-lg" id="first_name" value="{{ user.first_name }}" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" name="last_name" class="form-control form-control-lg" id="last_name" value="{{ user.last_name }}" required />
+                        </div>
 
-<div class="container">
-    <div class="row">
-        <div class="jumbotron text-center">
-            <h1 class="display-4">Shopping Cart</h1>
-            <p class="lead">View your cart and manage your items</p>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control form-control-lg" id="email" value="{{ user.email }}" required />
+                        </div>
+
+                        <h5 class="mt-4 mb-3">Billing Address</h5>
+                        <div class="form-group mb-3">
+                            <label for="address_line1" class="form-label">Address Line 1</label>
+                            <input type="text" name="address_line1" class="form-control form-control-lg" id="address_line1" value="{{ profile.billing_address_line1 }}" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="address_line2" class="form-label">Address Line 2</label>
+                            <input type="text" name="address_line2" class="form-control form-control-lg" id="address_line2" value="{{ profile.billing_address_line2 }}" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="city" class="form-label">City/Town</label>
+                            <input type="text" name="city" class="form-control form-control-lg" id="city" value="{{ profile.city }}" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="county" class="form-label">County</label>
+                            <input type="text" name="county" class="form-control form-control-lg" id="county" value="{{ profile.county }}" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="eircode" class="form-label">Eircode</label>
+                            <input type="text" name="eircode" class="form-control form-control-lg" id="eircode" value="{{ profile.eircode }}" required />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" name="country" class="form-control form-control-lg" id="country" value="{{ profile.country }}" required />
+                        </div>
+
+                        <h4 class="mt-5 mb-4">Order Summary</h4>
+                        <table class="table table-bordered table-hover table-responsive table-dark">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in cart.get_products %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ cart|length}}</td>
+                                    <td>€{{ product.price }}</td>
+                                    <td>€{{ cart.get_total_price  }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <h4 class="text-end mt-4" id="total_price">
+                            Grand Total: €{{ cart.get_total_price }}
+                        </h4>
+
+                        <!-- Place Order Button -->
+                        <div class="form-group mb-4">
+                            <button type="submit" class="btn btn-success form-control-lg btn-auth" id="place-order">
+                                Place Order
+                            </button>
+                        </div>
+                        <hr />
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
- <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow checkout-card">
-                <div class="card-header text-white">
-                    <h2 class="mb-0">Checkout</h2>
-                </div>
-                <div class="card-body bg-dark">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                          
-                            <label for="name" class="form-label">Full Name</label>
-                            {% if user.is_authenticated %}
-                            <input type="text" class="form-control" id="name" name="name" maxlength="255" value="{{ user }}" required >   
-                            {% else %}
-                            <input type="text" class="form-control" id="name" name="name" maxlength="255" required>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            {% if user.is_authenticated %}
-                            <input type="email" class="form-control" id="email" name="email" maxlength="255" value="{{ user.email }}" required>
-                            {% else %}
-                            <input type="email" class="form-control" id="email" name="email" maxlength="255" required>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" maxlength="255" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" name="city" maxlength="255" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="county" class="form-label">county</label>
-                            <input type="text" class="form-control" id="country" name="country" maxlength="255" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="zip" class="form-label">Eirode</label>
-                            <input type="text" class="form-control" id="eircode" name="eircode" maxlength="255" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="country" name="country" maxlength="255" required>
-                        </div>
-
-    
-    
-               {% endblock %}
+</div>
+<!-- Scripts -->
+<script src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}

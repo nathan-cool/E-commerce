@@ -31,6 +31,7 @@ class Cart:
         return products
     
     def get_quants(self):
+    
         return self.cart
     
     def get_total_price(self):
