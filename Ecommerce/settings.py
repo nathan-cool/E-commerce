@@ -15,6 +15,8 @@ import os
 import environ
 import venv
 import django_heroku
+import os
+from django.core.wsgi import get_wsgi_application
 
 
 from dotenv import load_dotenv
@@ -156,3 +158,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
 
 ALLOWED_HOSTS = ['*']
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'E-commerce.settings')
+
+application = get_wsgi_application()
