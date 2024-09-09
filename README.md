@@ -1,6 +1,8 @@
 # ExpenseEase
 E-commerce is a user-friendly and secure website designed to provide customers with a seamless online shopping experience. With features like user account creation, product categorization, and a streamlined checkout process, E-commerce makes it easy for customers to browse, select, and purchase products from the comfort of their homes.
 
+https://e-commerce-website-django-d6e595fc9613.herokuapp.com/
+
 ## Table of Contents
 - [User Experience (UX)](#user-experience-ux)
   - [Project Goals](#project-goals)
