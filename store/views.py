@@ -123,18 +123,20 @@ def product(request, pk):
     return render(request, 'product.html', {'product': product})
 
 
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import Category, Product
+
 def category(request, foo):
-    try:
-        category = get_object_or_404(Category, name=foo)
-        products = Product.objects.filter(category=category)
-        context = {
-            'products': products,
-            'category': category
-        }
-        return render(request, 'category.html', context)
-    except Category.DoesNotExist:
-        messages.error(request, f"Category '{foo}' not found")
-        return redirect('home')
+    category = get_object_or_404(Category, name=foo)
+    products = Product.objects.filter(category=category)
+    categories = Category.objects.all()
+    context = {
+        'products': products,
+        'category': category,
+        'categories': categories
+    }
+    return render(request, 'category.html', context)
 
 
 @staff_member_required
@@ -248,3 +250,7 @@ def delete_category(request, pk):
         category.delete()
         messages.success(request, "Category deleted successfully")
     return redirect("admin_create_category")
+
+
+
+    
