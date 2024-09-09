@@ -160,6 +160,6 @@ django_heroku.settings(locals())
 ALLOWED_HOSTS = ['*']
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'E-commerce.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ecommerce.settings')
 
 application = get_wsgi_application()
