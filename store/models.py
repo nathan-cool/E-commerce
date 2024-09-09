@@ -1,3 +1,4 @@
+from time import timezone
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
@@ -40,13 +41,15 @@ class Product(models.Model):
 
 # Order model represents an order placed by a customer
 class Order(models.Model):
+  user = models.ForeignKey(
+      User, on_delete=models.CASCADE, null=True, blank=True)
   product = models.ForeignKey(Product, on_delete=models.CASCADE)
-  customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
   quantity = models.IntegerField(default=1)
-  price = models.FloatField()
+  price = models.DecimalField(max_digits=10, decimal_places=2)
   address = models.CharField(max_length=255)
-  phone = models.CharField(max_length=255, default='', null=True, blank=True)
-  date = models.DateField(default=datetime.datetime.today)
+  phone = models.CharField(max_length=255, blank=True, null=True)
+
+  date = models.DateTimeField(default='django.utils.timezone.now')
   status = models.BooleanField(default=False)
 
   def __str__(self):
