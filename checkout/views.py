@@ -13,6 +13,7 @@ def checkout(request):
         messages.error(
             request, "Your cart is empty. Add some products before checking out.")
         return redirect('cart_summary')
+    
 
     profile, created = Profile.objects.get_or_create(user=request.user)
 
