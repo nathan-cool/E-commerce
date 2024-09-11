@@ -1,12 +1,15 @@
-{% extends 'base.html' %} {% load static %} {% block content %} {% include
-"messages.html" %}
+{% extends 'base.html' %} {% load static %} {% block content %} 
+{% include "messages.html" %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Create category</h1>
+    <p class="lead">Explore our courses tailored to your goals</p>
+    <hr />
+</div>
 <div class="container mt-5 create-product-container">
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<div class="card shadow create-product-card">
-				<div class="card-header text-white">
-					<h2 class="mb-0">Create New Product</h2>
-				</div>
+
 				<div class="card-body card-body-category">
 					<form method="POST" enctype="multipart/form-data">
 						{% csrf_token %}

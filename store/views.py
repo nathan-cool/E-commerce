@@ -214,7 +214,7 @@ def edit_product(request, pk):
             product.image = product.image
         product.save()
         messages.success(request, "Product updated successfully")
-        return redirect("home")
+
 
     product = Product.objects.get(pk=pk)
     categories = Category.objects.all()

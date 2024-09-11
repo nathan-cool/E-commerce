@@ -243,7 +243,14 @@ hr {
 	background-color: #2a2e35;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	max-height: 450px;
+
+}
+
+.create-product{
+	background-color: #2a2e35;
+	border: 10px;
+	padding: 20px;
+	
 }
 
 .custom-badge-container{
@@ -374,8 +381,8 @@ hr {
 
 /* About Us Section Styles */
 .about-us-section {
-	background-color: #f9f9f9;
-	padding: 60px 0;
+	background-color: #000000;
+	padding: 60px;
 }
 
 .about-us-subtitle {
@@ -450,12 +457,12 @@ p {
 	text-align: start;
 }
 
-.ontainer-product-page{
+.container-product-page{
 	height: 100%;
 }
 
 .create-product-container {
-	margin-bottom: 400px;
+
 }
 
 /* Form Styles */

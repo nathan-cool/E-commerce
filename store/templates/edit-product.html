@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% include "messages.html" %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Edit product</h1>
+    <p class="lead">Edit your product here</p>
+    <hr />
+</div>
 <div class="container mt-5 create-product-container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow create-product-card">
-                <div class="card-header text-white">
-                    <h2 class="mb-0">Create New Product</h2>
-                </div>
-                <div class="card-body">
+
+                <div class="card-body create-product">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="mb-3">
@@ -22,7 +25,7 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
                             <div class="input-group">
-                                <span class="input-group-text">$</span>
+                                <span class="input-group-text">€</span>
                                 <input type="number" class="form-control" id="price" name="price" step="0.01" required value="{{product.price}}">
                             </div>
                         </div>
@@ -40,7 +43,7 @@
                             <textarea class="form-control" id="description" name="description" maxlength="2000" rows="3">{{product.description}}</textarea>
                         </div>
                          <div class="mb-3">
-                            <label for="custom_badge" class="form-label">custom_badge </label>
+                            <label for="custom_badge" class="form-label">Custom Badge </label>
                             <textarea class="form-control" id="custom_badge" name="custom_badge" maxlength="6" rows="1">{{product.custom_badge}}</textarea>
                         </div>
 
@@ -58,7 +61,7 @@
                         <div class="mb-3" id="sale_price_group">
                             <label for="sale_price" class="form-label">Sale Price</label>
                             <div class="input-group">
-                                <span class="input-group-text">$</span>
+                                <span class="input-group-text">€</span>
                                 <input type="number" class="form-control" id="sale_price" name="sale_price" step="0.01" value="{{product.sale_price}}">
                             </div>
                         </div>
