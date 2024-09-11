@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-{% include "messages.html" %}
+{% extends 'base.html' %} {% load static %} {% block content %} {% include
+"messages.html" %}
 <div class="container mt-5 create-product-container">
 	<div class="row justify-content-center">
 		<div class="col-md-8">
@@ -36,11 +36,10 @@
 				</div>
 				<ul class="list-group list-group-flush">
 					{% for category in categories %}
-          <div class="card-body">
 					<li class="list-group-item">
 						{{ category.name }}
 						<a
-							href="{% url 'delete_category' category.pk%}"
+							href="{% url 'delete_category' category.pk %}"
 							class="btn btn-secondary x-button-card"
 						>
 							<svg
