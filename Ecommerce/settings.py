@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
 
+
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -180,10 +181,3 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ecommerce.settings')
 
 application = get_wsgi_application()
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'

@@ -3,7 +3,7 @@ const userName = document.getElementById('users-name'); // User name input field
 const email = document.getElementById('email'); // Email input field
 const userPassword = document.getElementById('password'); // Password input field
 const feedbackElements = document.getElementsByClassName('invalid-feedback'); // Invalid feedback elements
-const showPasswordToggle = document.getElementById('show-password-toggle'); // Show/hide password toggle button
+
 const registerButton = document.getElementById('register'); // Register button
 
 // Call the validation functions for each input field
@@ -17,15 +17,26 @@ validatePassword(userPassword);
 togglePasswordVisibility();
 
 // Event listener for show/hide password toggle
-function togglePasswordVisibility() {
-    if (userPassword.type === 'password') {
-        userPassword.type = 'text';
-        showPasswordToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
-    } else {
-        userPassword.type = 'password';
-        showPasswordToggle.innerHTML = '<i class="fas fa-eye"></i>';
+document.addEventListener('DOMContentLoaded', function() {
+    const showPasswordToggle = document.getElementById('show-password-toggle');
+    const userPassword = document.getElementById('password');
+
+    function togglePasswordVisibility() {
+        if (userPassword.type === 'password') {
+            userPassword.type = 'text';
+            showPasswordToggle.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+            userPassword.type = 'password';
+            showPasswordToggle.innerHTML = '<i class="fas fa-eye"></i>';
+        }
     }
-}
+
+    if (showPasswordToggle) {
+        showPasswordToggle.addEventListener('click', togglePasswordVisibility);
+    } else {
+        console.error('Password toggle button not found');
+    }
+});
 
 // Event listener for show/hide password toggle
 showPasswordToggle.addEventListener('click', togglePasswordVisibility);
