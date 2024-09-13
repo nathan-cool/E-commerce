@@ -34,6 +34,7 @@ class Product(models.Model):
   is_sale = models.BooleanField(default=False)
   sale_price = models.FloatField(default=0)
   custom_badge = models.CharField(max_length=6, default='', null=True, blank=True)
+  qty = models.IntegerField(default=0)
   
 
   def __str__(self):

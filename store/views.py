@@ -143,6 +143,7 @@ def category(request, foo):
 def admin_create_product(request):
     if request.method == 'POST':
         name = request.POST.get('name')
+        qty = request.POST.get("qty")
         price = request.POST.get('price')
         category_id = request.POST.get('category')
         description = request.POST.get('description')
@@ -157,7 +158,7 @@ def admin_create_product(request):
         custom_badge = request.POST.get('custom_badge')
         product = Product(name=name, price=price, category=category, image=image,
 
-                          description=cleaned_desc, product_title_description=product_title_description, custom_badge=custom_badge)
+                          description=cleaned_desc, product_title_description=product_title_description, custom_badge=custom_badge, qty=qty)
 
         product.save()
 
@@ -202,8 +203,14 @@ def edit_product(request, pk):
         product = Product.objects.get(pk=pk)
         product.name = request.POST.get("name")
         product.price = request.POST.get("price")
-        product.category = Category.objects.get(
-            pk=request.POST.get("category"))
+        qty = int(request.POST.get("qty", 0))
+        if qty < 100:
+            product.qty = qty
+        elif product.qty is None:
+            product.qty = 0
+        else:
+            messages.error(request, "Quantity must be less than 100, this has defaulted to 1")
+            product.qty = 1
         product.description = request.POST.get("description")
         product.product_title_description = request.POST.get(
             "product_title_description")

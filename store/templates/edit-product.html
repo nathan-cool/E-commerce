@@ -34,7 +34,7 @@
                             <select class="form-select" id="category" name="category" required>
                                 <option value="">Select a category</option>
                                 {% for category in categories %}
-                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                    <option value="{{ category.name }}">{{ category.name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -65,6 +65,9 @@
                                 <input type="number" class="form-control" id="sale_price" name="sale_price" step="0.01" value="{{product.sale_price}}">
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="qty" name="qty" value="{{product.qty}}">
                         <div class="d-grid text-ali">
                             <button type="submit" class="btn btn-primary btn-lg">Confirm Edit</button>
                         </div>

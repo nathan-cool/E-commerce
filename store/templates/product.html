@@ -39,20 +39,19 @@
 								{% else %}
 								<p class="card-text">€{{ product.price }}</p>
 								{% endif %}
-												<select
-													class="form-select"
-													aria-label="Quantity select" id="quantity_select"
-													style="display: none;"
-												>
-													<option selected value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-												</select>
-								<a
-									href="{% url 'home' %}"
-									class="btn btn-primary"
-									>Back to Home</a
-								>
+								{% if product.qty > 0 %}
+    <select class="form-select" aria-label="Quantity select" id="quantity_select">
+        {% for i in product.qty|add:"0"|rjust:product.qty %}
+            <option value="{{ forloop.counter }}" {% if forloop.first %}selected{% endif %}>
+                {{ forloop.counter }}
+            </option>
+        {% endfor %}
+    </select>
+{% else %}
+    <select class="form-select" aria-label="Quantity select" id="quantity_select" disabled>
+        <option selected value="0">Out of stock</option>
+    </select>
+{% endif %}
 								<h2 class="card-title card-title-product-page">Buy this course today for </h2>
 								<button
 									type="button"

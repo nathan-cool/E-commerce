@@ -7,7 +7,7 @@ def cart_summary(request):
     cart = Cart(request)
     if len(cart) > 0: 
         products = cart.get_products()
-        quantities = cart.get_quants()  # Add parentheses here
+        quantities = cart.get_quants()
         return render(request, 'summary.html', {'cart': cart, 'products': products, 'quantities': quantities})
     else:
         return render(request, 'summary.html', {'cart': cart})
