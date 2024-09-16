@@ -187,3 +187,5 @@ application = get_wsgi_application()
 STRIPE_PUBLIC_KEY = 'pk_test_51PzZ5QRpfuezrOZmwiYkEeCFYmwQacIiDwCFcDK4k9yRijX4JyU67ii7MxcVNC1gHFRfBuG3GKMa217qXrAKUwqU00RKawagDJ'
 
 STRIPE_SECRET_KEY = 'sk_test_51PzZ5QRpfuezrOZmDqrlwco1vsWMG1gYH0XywMc6kTYeYsMM5iB3FVDKk3gUiIkebJ8L0LaYgC7T3OdiNK9GYyr700nKPmPTwc'
+
+STRIPE_WEBHOOK_SECRET = 'whsec_EHT39vJ7e4xcekxzE0qQKy4l82ChRbw7'
