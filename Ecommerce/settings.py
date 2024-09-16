@@ -174,7 +174,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 django_heroku.settings(locals())
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['e-commerce-website-django-d6e595fc9613.herokuapp.com']
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ecommerce.settings')
