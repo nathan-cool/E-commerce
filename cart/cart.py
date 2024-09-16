@@ -8,6 +8,14 @@ class Cart:
             cart = self.session['session_key'] = {}
         self.cart = cart
 
+    def __iter__(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in=product_ids)
+        for product in products:
+            cart_item = self.cart[str(product.id)].copy()
+            cart_item['product'] = product
+            yield cart_item
+
     def add(self, product, quantity):
         product_id = str(product.id)
         if product_id not in self.cart:
