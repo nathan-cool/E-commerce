@@ -49,7 +49,6 @@ def checkout(request):
             status=False,
             price=cart.get_total_price()
         )
-        print(f"Order created: {order}")
 
 
 
