@@ -5,6 +5,10 @@ from django.utils import timezone
 from store.models import Order, Profile, Product
 from cart.cart import Cart
 from checkout.models import Payment
+import stripe
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def checkout(request):

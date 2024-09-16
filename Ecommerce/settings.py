@@ -181,3 +181,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ecommerce.settings')
 
 application = get_wsgi_application()
 
+# settings.py
+
+
+STRIPE_PUBLIC_KEY = 'pk_test_51PzZ5QRpfuezrOZmwiYkEeCFYmwQacIiDwCFcDK4k9yRijX4JyU67ii7MxcVNC1gHFRfBuG3GKMa217qXrAKUwqU00RKawagDJ'
+
+STRIPE_SECRET_KEY = 'sk_test_51PzZ5QRpfuezrOZmDqrlwco1vsWMG1gYH0XywMc6kTYeYsMM5iB3FVDKk3gUiIkebJ8L0LaYgC7T3OdiNK9GYyr700nKPmPTwc'

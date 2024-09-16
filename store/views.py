@@ -1,9 +1,12 @@
 
+from decimal import Decimal, InvalidOperation
+from .models import Category, Product
+from django.shortcuts import render, get_object_or_404, redirect
 import re
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from .models import Product
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
@@ -64,44 +67,48 @@ class ProfileView(LoginRequiredMixin, View):
                 return render(request, self.profile_template, context)
 
             user.set_password(password)
-        
+
         if addressline1:
-            if len (addressline1) > 100:
-                messages.error(request, "Address Line 1 must be less than 100 characters")
+            if len(addressline1) > 100:
+                messages.error(
+                    request, "Address Line 1 must be less than 100 characters")
                 return render(request, self.profile_template, context)
             profile.billing_address_line1 = addressline1
-        
+
         if addressline2:
-            if len (addressline2) > 100:
-                messages.error(request, "Address Line 2 must be less than 100 characters")
+            if len(addressline2) > 100:
+                messages.error(
+                    request, "Address Line 2 must be less than 100 characters")
                 return render(request, self.profile_template, context)
             profile.billing_address_line2 = addressline2
-        
+
         if city:
-            if len (city) > 100:
-                messages.error(request, "City must be less than 500 characters")
+            if len(city) > 100:
+                messages.error(
+                    request, "City must be less than 500 characters")
                 return render(request, self.profile_template, context)
             profile.city = city
-        
+
         if county:
-            if len (county) > 100:
-                messages.error(request, "County must be less than 100 characters")
+            if len(county) > 100:
+                messages.error(
+                    request, "County must be less than 100 characters")
                 return render(request, self.profile_template, context)
             profile.county = county
 
         if eircode:
-            if len (eircode) > 12:
-                messages.error(request, "Eircode must be less than 12 characters")
+            if len(eircode) > 12:
+                messages.error(
+                    request, "Eircode must be less than 12 characters")
                 return render(request, self.profile_template, context)
             profile.eircode = eircode
 
         if country:
-            if len (country) > 100:
-                messages.error(request, "Country must be less than 100 characters")
-                return render(request, self.profile_template, context)  
+            if len(country) > 100:
+                messages.error(
+                    request, "Country must be less than 100 characters")
+                return render(request, self.profile_template, context)
             profile.country = country
-
-
 
         user.save()
         profile.save()
@@ -123,52 +130,110 @@ def product(request, pk):
     return render(request, 'product.html', {'product': product})
 
 
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
-from .models import Category, Product
-
 def category(request, foo):
-    category = get_object_or_404(Category, name=foo)
-    products = Product.objects.filter(category=category)
-    categories = Category.objects.all()
-    context = {
-        'products': products,
-        'category': category,
-        'categories': categories
-    }
-    return render(request, 'category.html', context)
+    try:
+        category = get_object_or_404(Category, name=foo)
+
+        products = Product.objects.filter(category=category)
+        if not products.exists():
+            pass
+
+        categories = Category.objects.all()
+        context = {
+            'categories': categories,
+            'title': 'Create Product'
+        }
+        if not categories.exists():
+            raise ValueError("No categories found in the database")
+        context = {
+            'products': products,
+            'category': category,
+            'categories': categories
+        }
+
+        return render(request, 'category.html', context)
+
+    except Category.DoesNotExist:
+        return HttpResponseBadRequest(f"Category '{foo}' does not exist")
+    except ValueError as e:
+        return HttpResponseBadRequest(str(e))
+    except Exception as e:
+        return HttpResponseBadRequest(f"An unexpected error occurred: {str(e)}")
 
 
 @staff_member_required
 def admin_create_product(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        qty = request.POST.get("qty")
-        price = request.POST.get('price')
-        category_id = request.POST.get('category')
-        description = request.POST.get('description')
-        cleaned_desc = bleach.clean(description, strip=True, tags=['p', 'b', 'i', 'em', 'strong', 'a', 'ul', 'ol', 'li'],
-                                    attributes={'a': ['href']})
-        product_title_description = request.POST.get(
-            'product_title_description')
-        image = request.FILES.get('image')
-
-        category = Category.objects.get(id=int(category_id))
-
-        custom_badge = request.POST.get('custom_badge')
-        product = Product(name=name, price=price, category=category, image=image,
-
-                          description=cleaned_desc, product_title_description=product_title_description, custom_badge=custom_badge, qty=qty)
-
-        product.save()
-
-        messages.success(request, 'Product created successfully')
-
     categories = Category.objects.all()
     context = {
         'categories': categories,
         'title': 'Create Product'
     }
+
+    if request.method == 'POST':
+        try:
+            name = request.POST.get('name')
+            qty = request.POST.get("qty")
+            price = request.POST.get('price')
+            category_id = request.POST.get('category')
+            description = request.POST.get('description')
+            product_title_description = request.POST.get(
+                'product_title_description')
+            custom_badge = request.POST.get('custom_badge')
+            image = request.FILES.get('image')
+
+            # Validate required fields
+            if not all([name, qty, price, category_id, description]):
+                raise ValueError("All fields are required")
+
+            # convert number fields
+            try:
+                qty = int(qty)
+                if qty < 0:
+                    raise ValueError
+            except ValueError:
+                raise ValueError("Quantity must be a non-negative integer")
+
+            try:
+                price = Decimal(price)
+                if price <= 0:
+                    raise ValueError
+            except (InvalidOperation, ValueError):
+                raise ValueError("Price must be a positive number")
+
+            # Clean description
+            cleaned_desc = bleach.clean(
+                description,
+                strip=True,
+                tags=['p', 'b', 'i', 'em', 'strong', 'a', 'ul', 'ol', 'li'],
+                attributes={'a': ['href']}
+            )
+
+            # Get category
+            category = get_object_or_404(Category, id=int(category_id))
+
+            # Create and save product
+            product = Product(
+                name=name,
+                price=price,
+                category=category,
+                image=image,
+                description=cleaned_desc,
+                product_title_description=product_title_description,
+                custom_badge=custom_badge,
+                qty=qty
+            )
+            product.save()
+
+            messages.success(request, 'Product created successfully')
+            return render(request, 'create-product.html', context)
+
+        except ValueError as e:
+            messages.error(request, str(e))
+        except Category.DoesNotExist:
+            messages.error(request, "Selected category does not exist")
+        except Exception as e:
+            messages.error(request, f"An unexpected error occurred: {str(e)}")
+
     return render(request, 'create-product.html', context)
 
 
@@ -209,7 +274,8 @@ def edit_product(request, pk):
         elif product.qty is None:
             product.qty = 0
         else:
-            messages.error(request, "Quantity must be less than 100, this has defaulted to 1")
+            messages.error(
+                request, "Quantity must be less than 100, this has defaulted to 1")
             product.qty = 1
         product.description = request.POST.get("description")
         product.product_title_description = request.POST.get(
@@ -221,7 +287,6 @@ def edit_product(request, pk):
             product.image = product.image
         product.save()
         messages.success(request, "Product updated successfully")
-
 
     product = Product.objects.get(pk=pk)
     categories = Category.objects.all()
@@ -257,7 +322,3 @@ def delete_category(request, pk):
         category.delete()
         messages.success(request, "Category deleted successfully")
     return redirect("admin_create_category")
-
-
-
-    
