@@ -12,3 +12,6 @@ typing_extensions==4.12.2
 webencodings==0.5.1
 whitenoise==6.7.0
 gunicorn
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
