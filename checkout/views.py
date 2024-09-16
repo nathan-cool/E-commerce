@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
-from store.models import Order, Profile, Product
+from store.models import Order, OrderItem, Profile, Product
 from cart.cart import Cart
 from checkout.models import Payment
 import stripe
@@ -18,6 +18,16 @@ def checkout(request):
             request, "Your cart is empty. Add some products before checking out.")
         return redirect('cart_summary')
     
+    order = Order.objects.create(
+        user=request.user,
+        address=billing_address,
+        phone=request.POST.get('phone', ''),
+        date=timezone.now(),
+        status=False,
+        total_price=cart.get_total_price()
+    )
+
+    
 
     profile, created = Profile.objects.get_or_create(user=request.user)
 
@@ -29,33 +39,36 @@ def checkout(request):
                    f"{request.POST.get('county')}, "
                    f"{request.POST.get('eircode')}, "
                    f"{request.POST.get('country')}")
+        
 
         for product_id, item in cart.cart.items():
             product = Product.objects.get(id=product_id)
-            order, created = Order.objects.update_or_create(
-                user=request.user,
-                defaults={
-                    'product': product,
-                    'quantity': item['quantity'],
-                    'price': float(item['price']) * item['quantity'],
-                    'address': billing_address,
-                    'phone': request.POST.get('phone', ''),
-                    'date': timezone.now(),
-                    'status': False
-                }
-            )
-            order.save()
+            OrderItem.objects.create(
+            order=order,
+            product=product,
+            quantity=item['quantity'],
+            price=float(item['price']) * item['quantity']
+        )
+
+            try:
+                intent = stripe.PaymentIntent.create(
+                    amount=int(cart.get_total_price() * 100),
+                    currency='eur',
+                    metadata={'order_id': order.id},
+                )
+            except Exception as e:
+                messages.error(request, f"An error occurred: {e}")
+                return redirect('checkout')
 
 
-        payment = Payment(
+        payment = Payment.objects.create(
             user=request.user,
             order=order,
             profile=profile,
             amount=cart.get_total_price(),
-            stripe_payment_intent_id='123',
-            status='paid'
+            stripe_payment_intent_id=intent.id,
+            status='pending'
         )
-        
 
         profile.billing_address_line1 = request.POST.get('address_line1')
         profile.billing_address_line2 = request.POST.get('address_line2', '')
@@ -65,11 +78,14 @@ def checkout(request):
         profile.country = request.POST.get('country')
         profile.save()
 
-        cart.cart.clear()
-        cart.save()
-
-        messages.success(request, "Your order has been placed successfully!")
-        return redirect('home')
+        context = {
+            'client_secret': intent.client_secret,
+            'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
+            'cart': cart,
+            'profile': profile,
+            'total_price': cart.get_total_price(),
+        }
+        return render(request, 'payment.html', context)
 
 
     products = cart.get_products()
