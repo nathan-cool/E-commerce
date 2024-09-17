@@ -204,7 +204,10 @@ This Agile approach enabled me to:
 
 ## Design
 ### Wireframes
+
 ### Site map
+
+![image](https://github.com/user-attachments/assets/22fa47b4-11d5-4051-9d48-6a0f3b4e9b43)
 
 ### Database Schema
 
