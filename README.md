@@ -208,36 +208,173 @@ This Agile approach enabled me to:
 
 ### Database Schema
 
-#### Product Model
+<details>
+  <summary><strong>Category Model</strong></summary>
+
+Represents a product category in the e-commerce store.
+
+**Fields**:
+- `name`: CharField(max_length=255)
+  - Stores the name of the category.
+
+**Methods**:
+- `__str__()`: Returns the name of the category.
+
+**Meta**:
+- `verbose_name_plural`: Changes the plural name of the model to 'categories'.
+
+</details>
+
+<details>
+  <summary><strong>Customer Model</strong></summary>
+
+Represents a customer in the e-commerce store.
+
+**Fields**:
+- `name`: CharField(max_length=255)
+  - Stores the name of the customer.
+- `email`: EmailField
+  - Stores the email address of the customer.
+- `phone`: CharField(max_length=255)
+  - Stores the phone number of the customer.
+- `password`: CharField(max_length=500)
+  - Stores the customer's password (hashed).
+
+**Methods**:
+- `__str__()`: Returns the name of the customer.
+
+</details>
+
+<details>
+  <summary><strong>Product Model</strong></summary>
+
 Represents a product in the e-commerce store.
 
-Fields:
-- `name`: CharField(max_length=255)
+**Fields**:
+- `name`: CharField(max_length=100)
   - Stores the name of the product.
-- `price`: FloatField(default=0)
+- `price`: DecimalField(max_digits=10, decimal_places=2, default=0)
   - Stores the price of the product.
 - `category`: ForeignKey(Category, on_delete=models.CASCADE, default=1)
   - Relates the product to a category.
-- `description`: CharField(max_length=255, default='', null=True, blank=True)
-  - Stores the description of the product.
+- `product_title_description`: CharField(max_length=355, default='', null=True, blank=True)
+  - Stores a short title or description of the product.
+- `description`: CharField(max_length=2000, default='', null=True, blank=True)
+  - Stores the detailed description of the product.
 - `image`: ImageField(upload_to='uploads/products/')
   - Stores the product image.
 - `is_sale`: BooleanField(default=False)
   - Indicates whether the product is on sale.
 - `sale_price`: FloatField(default=0)
   - Stores the sale price of the product.
+- `custom_badge`: CharField(max_length=6, default='', null=True, blank=True)
+  - Stores a custom badge for the product, like "NEW" or "SALE".
+- `qty`: IntegerField(default=0)
+  - Stores the quantity of the product in stock.
 
-Methods:
+**Methods**:
 - `__str__()`: Returns the name of the product.
 
-- **User Model (Built-in Django User Model)**
- - Fields:
-   - `username`: CharField for storing the username (unique).
-   - `email`: EmailField for storing the user's email address (unique).
-   - `first_name`: CharField for storing the user's first name.
-   - `last_name`: CharField for storing the user's last name.
-   - `password`: CharField for storing the hashed password.
-   - `is_active`: BooleanField indicating whether the user account is active.
+</details>
+
+<details>
+  <summary><strong>Order Model</strong></summary>
+
+Represents an order placed by a customer.
+
+**Fields**:
+- `user`: ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+  - Relates the order to a user.
+- `quantity`: IntegerField(default=1)
+  - Stores the quantity of the products ordered.
+- `price`: DecimalField(max_digits=10, decimal_places=2)
+  - Stores the total price of the order.
+- `address`: CharField(max_length=255)
+  - Stores the shipping address for the order.
+- `phone`: CharField(max_length=255, blank=True, null=True)
+  - Stores the customer's phone number.
+- `date`: DateTimeField(default='django.utils.timezone.now')
+  - Stores the date and time the order was placed.
+- `status`: BooleanField(default=False)
+  - Indicates the status of the order (e.g., completed or pending).
+
+**Methods**:
+- `__str__()`: Returns the name of the product in the order.
+
+</details>
+
+<details>
+  <summary><strong>OrderItem Model</strong></summary>
+
+Represents an individual item within an order.
+
+**Fields**:
+- `order`: ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+  - Relates the order item to an order.
+- `product`: ForeignKey(Product, on_delete=models.CASCADE)
+  - Relates the order item to a product.
+- `quantity`: PositiveIntegerField
+  - Stores the quantity of the product in the order.
+- `price`: DecimalField(max_digits=10, decimal_places=2)
+  - Stores the price of the product.
+
+**Methods**:
+- `__str__()`: Returns a string in the format `quantity x product name`.
+
+</details>
+
+<details>
+  <summary><strong>Profile Model</strong></summary>
+
+Represents a user profile containing billing information.
+
+**Fields**:
+- `user`: OneToOneField(User, on_delete=models.CASCADE)
+  - Relates the profile to a user.
+- `billing_address_line1`: CharField(max_length=100)
+  - Stores the first line of the billing address.
+- `billing_address_line2`: CharField(max_length=100, blank=True, null=True)
+  - Stores the second line of the billing address (optional).
+- `city`: CharField(max_length=500)
+  - Stores the city for the billing address.
+- `county`: CharField(max_length=100)
+  - Stores the county for the billing address.
+- `eircode`: CharField(max_length=12)
+  - Stores the postal code (Eircode).
+- `country`: CharField(max_length=100, default='Ireland')
+  - Stores the country for the billing address.
+
+**Methods**:
+- `__str__()`: Returns the username of the associated user.
+
+</details>
+
+<details>
+  <summary><strong>Payment Model</strong></summary>
+
+Represents a payment transaction.
+
+**Fields**:
+- `user`: ForeignKey(User, on_delete=models.CASCADE)
+  - Relates the payment to a user.
+- `order`: ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+  - Relates the payment to an order.
+- `profile`: ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+  - Relates the payment to a user's profile.
+- `amount`: DecimalField(max_digits=10, decimal_places=2)
+  - Stores the amount of the payment.
+- `stripe_payment_intent_id`: CharField(max_length=255)
+  - Stores the Stripe payment intent ID.
+- `status`: CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+  - Stores the status of the payment (e.g., pending, paid, failed).
+- `timestamp`: DateTimeField(auto_now_add=True)
+  - Stores the date and time when the payment was created.
+
+**Methods**:
+- `__str__()`: Returns a string showing the payment amount and user's username.
+
+</details>
+
 
 
 
