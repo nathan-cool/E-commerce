@@ -193,8 +193,75 @@ This Agile approach enabled me to:
 - Track progress consistently
 - Ensure continuous delivery of value throughout development
 
-## Features
-### Existing Features
+# Features
+
+## Existing Features
+
+### 1. User Registration and Authentication
+
+#### Registration:
+- Users can create an account by providing their **name**, **email**, and **password**.
+- Passwords are **securely hashed** before storage.
+- **Email validation** ensures correct email format.
+
+#### Login:
+- Users can log in using their **email and password**.
+- **Error handling** for incorrect credentials.
+
+### 2. Product Catalog
+
+#### Product Listing:
+- Displays all available products with **images**, **names**, **prices**, and **brief descriptions**.
+- **Pagination** implemented to improve load times and user experience.
+
+#### Product Categories:
+- Products are organized into **categories**.
+- Users can **filter products** by selecting a category from the navigation menu.
+
+### 3. Product Detail Page
+
+#### Detailed View:
+- Each product has a dedicated page showing **detailed information**.
+- Includes **images**, **full descriptions**, **price**, and **stock availability**.
+- Users can select the **quantity** and **add the product to their cart**.
+
+### 4. Shopping Cart
+
+#### Add to Cart:
+- Users can **add products to their cart** from the product detail page.
+- A **confirmation message** is displayed upon adding an item.
+
+#### View Cart:
+- The cart displays all selected items with **quantities**, **individual prices**, and **total cost**.
+- Users can **update quantities** or **remove items** directly from the cart.
+
+### 5. Checkout Process
+
+#### Secure Checkout:
+- Users can **proceed to checkout** from their cart.
+- Securely enter **shipping details** and **payment information**.
+- Integration with **Stripe** for payment processing.
+
+#### Order Review:
+- Users can **review their order** before final confirmation.
+- Displays all items, shipping information, and total cost.
+
+### 8. Responsive Design
+
+- The website is **fully responsive**, providing an optimal experience on **desktops**, **tablets**, and **mobile devices**.
+
+### 9. Admin Panel
+
+#### Product Management:
+- Admins can **add new products** with details like **name**, **description**, **price**, **category**, and **images**.
+- **Edit or delete existing products** via the home page.
+
+#### Category Management:
+- Admins can **create**, **edit**, or **delete product categories**.
+
+#### Order Management:
+- **View all orders** placed by customers.
+
 #### Base Template and Layout
 #### Authentication System and Security
 #### Expense Management
