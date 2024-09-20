@@ -2,4 +2,4 @@
 __pycache__
 .DS_Store
 .env
-.your_venv_name
+/your_venv_name/

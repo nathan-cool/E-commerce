@@ -1,4 +1,6 @@
 from django.urls import path
+
+from authentication.views import LoginView
 from . import views
 
 urlpatterns = [
@@ -7,4 +9,6 @@ urlpatterns = [
     path('remove/', views.cart_remove, name='cart_remove'),
     path('update/', views.cart_update, name='cart_update'),
     path('price/', views.price, name='cart_price'),
+    path('accounts/login/', LoginView.as_view(), name='login'),
+
 ]

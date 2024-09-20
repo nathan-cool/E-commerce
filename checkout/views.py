@@ -1,3 +1,4 @@
+import uuid
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -15,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-
+@login_required
 def checkout(request):
     cart = Cart(request)
 
@@ -24,7 +25,11 @@ def checkout(request):
             request, "Your cart is empty. Add some products before checking out.")
         return redirect('cart_summary')
 
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    if request.user.is_authenticated:
+        profile, created = Profile.objects.get_or_create(user=request.user)
+        user_id = request.user.id
+    else:
+        return redirect('login')
 
     if request.method == 'POST':
         billing_address = (f"{request.POST.get('address_line1')}, "
@@ -34,26 +39,19 @@ def checkout(request):
                            f"{request.POST.get('eircode')}, "
                            f"{request.POST.get('country')}")
 
-        phone = request.POST.get('phone', '').strip()
-
-
         if not billing_address:
             messages.error(
                 request, "Please provide all required billing information.")
             return redirect('checkout')
 
-
         order = Order.objects.create(
-            user=request.user,
+            # Use None for guest users
+            user=request.user if request.user.is_authenticated else None,
             address=billing_address,
             date=timezone.now(),
             status=False,
             price=cart.get_total_price()
         )
-
-
-
-
 
         for item in cart:
             product = item['product']
@@ -66,13 +64,16 @@ def checkout(request):
                 quantity=quantity,
                 price=price
             )
-        profile.billing_address_line1 = request.POST.get('address_line1')
-        profile.billing_address_line2 = request.POST.get('address_line2', '')
-        profile.city = request.POST.get('city')
-        profile.county = request.POST.get('county')
-        profile.eircode = request.POST.get('eircode')
-        profile.country = request.POST.get('country')
-        profile.save()
+
+        if request.user.is_authenticated:
+            profile.billing_address_line1 = request.POST.get('address_line1')
+            profile.billing_address_line2 = request.POST.get(
+                'address_line2', '')
+            profile.city = request.POST.get('city')
+            profile.county = request.POST.get('county')
+            profile.eircode = request.POST.get('eircode')
+            profile.country = request.POST.get('country')
+            profile.save()
 
         try:
             line_items = []
@@ -105,9 +106,10 @@ def checkout(request):
             return redirect('checkout')
 
         payment = Payment.objects.create(
-            user=request.user,
+            # Use None for guest users
+            user=request.user if request.user.is_authenticated else None,
             order=order,
-            profile=profile,
+            profile=profile if request.user.is_authenticated else None,  # Use None for guest users
             amount=cart.get_total_price(),
             stripe_payment_intent_id='',
             status='pending'
@@ -116,6 +118,9 @@ def checkout(request):
         return redirect(checkout_session.url, code=303)
 
     else:
+        # Handle profile for authenticated users only
+        profile = Profile.objects.get(
+            user=request.user) if request.user.is_authenticated else Profile()
         billing_address = (f"{profile.billing_address_line1}, "
                            f"{profile.billing_address_line2}, "
                            f"{profile.city}, "

@@ -11,7 +11,6 @@ from django.views.decorators.csrf import csrf_exempt
 from authentication import views
 
 
-
 urlpatterns = [
     path("register/", RegistrationView.as_view(), name="register"),
     path(
