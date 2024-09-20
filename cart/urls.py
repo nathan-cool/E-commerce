@@ -1,4 +1,18 @@
 from django.urls import path
+"""
+URL configuration for the cart application.
+
+This module defines the URL patterns for the cart-related views in the e-commerce application.
+
+URL patterns:
+- 'summary/': Displays the cart summary.
+- 'add/': Adds an item to the cart.
+- 'remove/': Removes an item from the cart.
+- 'update/': Updates the quantity of an item in the cart.
+- 'price/': Retrieves the price details of the cart.
+- 'accounts/login/': Displays the login view.
+
+"""
 
 from authentication.views import LoginView
 from . import views
