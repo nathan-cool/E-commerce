@@ -40,7 +40,7 @@ def checkout(request):
         profile, created = Profile.objects.get_or_create(user=request.user)
         user_id = request.user.id
     else:
-        return redirect('login')
+        return redirect('login/')
 
     if request.method == 'POST':
         """
