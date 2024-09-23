@@ -1,4 +1,3 @@
-from django.urls import path
 """
 URL configuration for the cart application.
 
@@ -14,6 +13,8 @@ URL patterns:
 
 """
 
+
+from django.urls import path
 from authentication.views import LoginView
 from . import views
 

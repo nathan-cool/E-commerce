@@ -1,25 +1,36 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container my-5">
-    <!-- Cancel message -->
-    <div class="row">
-        <div class="col-12">
-            <div class="jumbotron text-center bg-light p-5 rounded">
-                <h1 class="display-4">Payment Cancelled</h1>
-                <p class="lead">Your payment was not completed. You can return to checkout to try again.</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <a href="{% url 'checkout' %}" class="btn btn-primary btn-lg me-2" role="button" aria-label="Return to Checkout">
-                Return to Checkout
-            </a>
-            <a href="{% url 'home' %}" class="btn btn-secondary btn-lg" role="button" aria-label="Continue Shopping">
-                Continue Shopping
-            </a>
-        </div>
-    </div>
-{% endblock %}
+	<!-- Cancel message -->
+	<div class="row">
+		<div class="col-12">
+			<div class="jumbotron text-center bg-light p-5 rounded">
+				<h1 class="display-4">Payment Cancelled</h1>
+				<p class="lead">
+					Your payment was not completed. You can return to checkout
+					to try again.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 text-center">
+			<a
+				href="{% url 'checkout' %}"
+				class="btn btn-primary btn-lg me-2"
+				role="button"
+				aria-label="Return to Checkout"
+			>
+				Return to Checkout
+			</a>
+			<a
+				href="{% url 'home' %}"
+				class="btn btn-secondary btn-lg"
+				role="button"
+				aria-label="Continue Shopping"
+			>
+				Continue Shopping
+			</a>
+		</div>
+	</div>
+	{% endblock %}
+</div>

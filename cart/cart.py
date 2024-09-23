@@ -2,7 +2,7 @@ from store.models import Product
 
 
 class Cart:
-    """A shopping cart class that handles cart operations within a user's session."""
+    """A shopping cart class that handles cart op within a user's session."""
 
     def __init__(self, request):
         """Initialize the cart"""
@@ -16,7 +16,7 @@ class Cart:
         self.cart = cart
 
     def __iter__(self):
-        """Iterate over the items in the cart and attach the Product instances."""
+        """Iterate over the items in the cart and attach the Product."""
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
@@ -33,7 +33,7 @@ class Cart:
             if quantity <= 0:
                 raise ValueError("The quantity must be a positive integer.")
         except (ValueError, TypeError) as e:
-            raise ValueError("Invalid quantity provided. Please enter a positive integer.") from e
+            raise ValueError("Please enter a positive integer.") from e
 
         product_id = str(product.id)
         if product_id not in self.cart:
@@ -96,7 +96,7 @@ class Cart:
                 self.remove(product_id)
                 return self.cart
         except (ValueError, TypeError) as e:
-            raise ValueError("Invalid quantity provided. Please enter a positive integer.") from e
+            raise ValueError("Please enter a positive integer.") from e
 
         if product_id in self.cart:
             if isinstance(self.cart[product_id], dict):

@@ -10,6 +10,16 @@ from .views import (
 from django.views.decorators.csrf import csrf_exempt
 from authentication import views
 
+"""
+This module defines URL patterns for the Checkout application.
+
+The `urlpatterns` list routes URLs to views. The available paths include:
+- The root path ('') routed to the `checkout` view.
+- The 'success/' path routed to the `payment_success` view.
+- The 'cancelled/' path routed to the `payment_cancelled` view.
+- The 'webhook/' path routed to the `stripe_webhook` view.
+"""
+
 
 urlpatterns = [
     path("register/", RegistrationView.as_view(), name="register"),

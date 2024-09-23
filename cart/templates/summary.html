@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -15,28 +16,29 @@
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-responsive table-dark">
+                    <caption class="sr-only">Shopping Cart Items</caption>
                     <thead class="table-dark">
                         <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Total</th>
-                            <th>Actions</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for product in products %}
                         <tr>
-            
                             <td class="align-middle">{{ product.name }}</td>
                             <td class="align-middle">
+                                <!-- Quantity select dropdown -->
+                                <label for="select{{product.id}}" class="form-label visually-hidden">Quantity</label>
                                 <select class="form-select" aria-label="Quantity select" id="select{{product.id}}" style="max-width: 100px;">
                                     {% for key, value in quantities.items %}
                                         {% if key == product.id|slugify %}
                                             <option selected>{{ value.quantity }}</option>
                                         {% endif %}
                                     {% endfor %}
-                                    
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -52,9 +54,9 @@
                                 {% else %}
                                 <p class="mb-0">€{{ product.price }}</p>
                                 {% endif %}
-                            </td>
-                            <td class="align-middle">€{{ product.price }}</td>
+                            <td class="align-middle">€{{ product.price}}</td>
                             <td class="align-middle">
+                                <!-- Update and Delete buttons -->
                                 <button type="button" class="btn btn-sm btn-outline-primary update-cart me-2" data-product-id="{{product.id}}">
                                     Update
                                 </button>
@@ -71,7 +73,7 @@
     </div>
     <div class="row mt-4 cart-amount">
         <div class="col-12 text-end">
-					<div class="mb-4 loading">hi</div>
+            <div class="mb-4 loading">hi</div>
             <h4 id='total_price' class="mb-4">Grand Total: €{{ cart.get_total_price }}</h4>
             <a href="{% url 'checkout'%}" class="btn btn-primary btn-lg">Proceed to Checkout</a>
         </div>
@@ -86,83 +88,74 @@
     {% endif %}
 </div>
 
-
-
 <script>
-	$(document).on('click', '.update-cart', function (e) {
-		e.preventDefault();
-		let product_id = $(this).data('product-id');
-		
-	let quantity = $('#select' + product_id).val();
-		$.ajax({
-			type: 'POST',
-			url: '{% url "cart_update" %}',
-			data: {
-				product_id: product_id,
-				quantity: quantity,
-				csrfmiddlewaretoken: '{{ csrf_token }}',
-				action: 'post'
-			},
-			success: function (json) {
-				document.getElementById('cart_quantity').textContent = json.cart_quantity;
-
-			},
-			error: function () {
-				console.log('error');
-			}
-		});
-	});
- $(document).on('click', '.delete-item', function (e) {
-				e.preventDefault();
-				let product_id = $(this).data('product-id');
-				$.ajax({
-						type: 'POST',
-						url: '{% url "cart_remove" %}',
-						data: {
-								product_id: product_id,
-								csrfmiddlewaretoken: '{{ csrf_token }}',
-								action: 'post'
-						},
-						success: function (json) {
-								document.getElementById('cart_quantity').textContent = json.cart_quantity;
-								location.reload();
-						},
-						error: function () {
-								console.log('error');
-						}
-				});
-		});
-
-
-
-$(document).on('click', '.update-cart', function (e) {
-    e.preventDefault();
-		
-		$('#total_price').text('Updating...');
-    
-    setTimeout(function() {
+    // Update cart quantity
+    $(document).on('click', '.update-cart', function (e) {
+        e.preventDefault();
+        let product_id = $(this).data('product-id');
+        let quantity = $('#select' + product_id).val();
         $.ajax({
             type: 'POST',
-            url: '{% url "cart_price" %}',
+            url: '{% url "cart_update" %}',
             data: {
+                product_id: product_id,
+                quantity: quantity,
                 csrfmiddlewaretoken: '{{ csrf_token }}',
                 action: 'post'
             },
             success: function (json) {
-                let price = json.total_price;
-                $('#total_price').text('Total: €' + price);
-                console.log(price);
+                document.getElementById('cart_quantity').textContent = json.cart_quantity;
             },
             error: function () {
                 console.log('error');
             }
         });
-    }, 300);  // 300ms delay
-}); 
+    });
 
+    // Delete item from cart
+    $(document).on('click', '.delete-item', function (e) {
+        e.preventDefault();
+        let product_id = $(this).data('product-id');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart_remove" %}',
+            data: {
+                product_id: product_id,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function (json) {
+                document.getElementById('cart_quantity').textContent = json.cart_quantity;
+                location.reload();
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    });
 
-
-
-
+    // Update total price
+    $(document).on('click', '.update-cart', function (e) {
+        e.preventDefault();
+        $('#total_price').text('Updating...');
+        setTimeout(function() {
+            $.ajax({
+                type: 'POST',
+                url: '{% url "cart_price" %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+                },
+                success: function (json) {
+                    let price = json.total_price;
+                    $('#total_price').text('Total: €' + price);
+                    console.log(price);
+                },
+                error: function () {
+                    console.log('error');
+                }
+            });
+        }, 300);  // 300ms delay
+    });
 </script>
 {% endblock %}
