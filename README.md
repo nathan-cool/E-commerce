@@ -197,22 +197,66 @@ This Agile approach enabled me to:
 
 ## Existing Features
 
-### 1. User Registration and Authentication
+### Base Template and Layout
 
-#### Registration:
-- Users can create an account by providing their **name**, **email**, and **password**.
-- Passwords are **securely hashed** before storage.
-- **Email validation** ensures correct email format.
+- **Responsive Design:** Built with Bootstrap 5.3.3 to ensure the site looks great on all devices. Custom CSS adds unique styling to make the design stand out.
+  
+- **Navigation:** 
+  - A sticky top navbar with a dark theme makes navigation easy and accessible.
+  - A collapsible sidebar menu adapts seamlessly to mobile devices, enhancing user experience on smaller screens.
+  - The header displays the user's name and email
+  - A convenient sign-out button is always available in the header for quick access.
 
-#### Login:
-- Users can log in using their **email and password**.
-- **Error handling** for incorrect credentials.
+- **Footer:** 
+  - Includes a news letter signup
+  - Provides a link to the GitHub repository for easy access to the source code.
+  - Credits the creator, acknowledging their hard work and contributions.
 
-### 2. Product Catalog
+### Authentication System and Security
+
+#### Registration System
+
+- **User Account Creation:** Users can easily create a new account by entering their name, email, and password. The system automatically splits the name into first and last names for better organization.
+
+- **Form Validation:** 
+  - Ensures that email addresses are in the correct format.
+  - Requires strong passwords to enhance security.
+  - Provides real-time error messages to help users fix any input mistakes.
+
+- **Security Measures:** 
+  - Implements CSRF protection to guard against cross-site request forgery attacks.
+  - Uses Django's secure authentication mechanisms to handle user credentials safely.
+
+- **Google Sign-In Integration:** Users have the option to sign up using their Google accounts, making the registration process quicker and more secure through Google's Identity Services.
+
+#### Login System
+
+- **User Authentication:** Allows users to log in using their registered email and password with robust form validation to ensure security.
+
+- **Password Management:** Includes a password visibility toggle, so users can easily show or hide their passwords for convenience.
+
+- **Security Measures:** 
+  - Protects against CSRF attacks with built-in tokens.
+  - Utilizes Django's secure protocols to manage user sessions safely.
+
+- **Google Sign-In Integration:** Users can also log in using their Google accounts
+
+### Messaging System
+
+- **Dynamic Messages Display:** Uses Django's messaging framework to show success, error, and informational messages. These messages are styled with Bootstrap alerts for clear and attractive feedback.
+
+### Security Enhancements
+
+- **CSRF Protection:** All forms include CSRF tokens to protect against cross-site request forgery attacks.
+
+- **Input Validation:** Validates and sanitizes all user inputs to prevent malicious data entry and enhance overall security.
+
+- **Secure Authentication:** Relies on Django's built-in authentication system to manage user credentials and sessions securely.
+
+### 1. Product Catalog
 
 #### Product Listing:
 - Displays all available products with **images**, **names**, **prices**, and **brief descriptions**.
-- **Pagination** implemented to improve load times and user experience.
 
 #### Product Categories:
 - Products are organized into **categories**.
@@ -229,7 +273,7 @@ This Agile approach enabled me to:
 
 #### Add to Cart:
 - Users can **add products to their cart** from the product detail page.
-- A **confirmation message** is displayed upon adding an item.
+- A **confirmation ** the cart icon updates with the amount 
 
 #### View Cart:
 - The cart displays all selected items with **quantities**, **individual prices**, and **total cost**.
@@ -239,12 +283,12 @@ This Agile approach enabled me to:
 
 #### Secure Checkout:
 - Users can **proceed to checkout** from their cart.
-- Securely enter **shipping details** and **payment information**.
+- Securely enter **billing details**.
 - Integration with **Stripe** for payment processing.
 
 #### Order Review:
 - Users can **review their order** before final confirmation.
-- Displays all items, shipping information, and total cost.
+- Displays all items, shipping information, and total cost via stripe
 
 ### 8. Responsive Design
 
@@ -262,11 +306,6 @@ This Agile approach enabled me to:
 #### Order Management:
 - **View all orders** placed by customers.
 
-#### Base Template and Layout
-#### Authentication System and Security
-#### Expense Management
-#### Error Handling
-#### User Preferences
 ### Future Features
 
 ## Design
