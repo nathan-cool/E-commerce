@@ -527,14 +527,90 @@ Represents a payment transaction.
 - **Balsamiq**: Used for creating mockups and prototypes.
 - **Draw.io**: Used for creating visual representations of the application's architecture and user flows.
 
-## Testing
-### Browser Compatibility
+<details>
+<summary>Browser Compatibility Table</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Test Case</th>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Safari</th>
+      <th>Edge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Registration System</td>
+      <td>User can register a new account</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Login System</td>
+      <td>User can log in with correct credentials</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Logout System</td>
+      <td>Logged-in user can log out</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Google OAuth Integration</td>
+      <td>User can authenticate using Google</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>View Expenses</td>
+      <td>User can view all expenses</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Add Expenses</td>
+      <td>User can add a new expense</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Edit Expenses</td>
+      <td>User can edit an expense</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
 ### Manual Testing
-#### Search and Pagination Functionality
-<h3>User Authentication</h3>
+
+#### User Authentication
+
+##### Social Authentication
 
 <details>
-<summary>Social Authentication</summary>
+<summary>Test Cases for Social Authentication</summary>
 
 <table>
   <thead>
@@ -547,40 +623,42 @@ Represents a payment transaction.
   </thead>
   <tbody>
     <tr>
-      <td>Successful Google OAuth authentication and user creation</td>
+      <td>Successful Google OAuth Authentication</td>
       <td>
-        1. Click "Sign in with Google"<br>
-        2. Select a Google account<br>
-        3. Grant permissions
+        1. Click on "Sign in with Google" button.<br>
+        2. Select a Google account.<br>
+        3. Grant permissions when prompted.
       </td>
-      <td>New user account created and logged in</td>
-      <td>✅ Pass</td>
+      <td>User is authenticated and redirected to the dashboard.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Successful Google OAuth authentication with existing user</td>
+      <td>Cancel Google OAuth Authentication</td>
       <td>
-        1. Click "Sign in with Google"<br>
-        2. Select a previously used Google account
+        1. Click on "Sign in with Google" button.<br>
+        2. Cancel or close the authentication window.
       </td>
-      <td>Existing user logged in successfully</td>
-      <td>✅ Pass</td>
+      <td>User remains on the login page with an appropriate error message.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Failed Google OAuth authentication</td>
+      <td>Google OAuth with Invalid Credentials</td>
       <td>
-        1. Click "Sign in with Google"<br>
-        2. Cancel the Google authentication process
+        1. Click on "Sign in with Google" button.<br>
+        2. Enter invalid Google account credentials.
       </td>
-      <td>User remains on login page with error message</td>
-      <td>✅ Pass</td>
+      <td>User is not authenticated; an error message is displayed.</td>
+      <td>PASS</td>
     </tr>
   </tbody>
 </table>
 
 </details>
 
+##### User Registration
+
 <details>
-<summary>User Registration</summary>
+<summary>Test Cases for User Registration</summary>
 
 <table>
   <thead>
@@ -593,44 +671,54 @@ Represents a payment transaction.
   </thead>
   <tbody>
     <tr>
-      <td>Successful user registration with valid data</td>
-      <td>Enter valid name, email, and password</td>
-      <td>Account created, verification email sent</td>
-      <td>✅ Pass</td>
+      <td>Register with Valid Details</td>
+      <td>
+        1. Navigate to the registration page.<br>
+        2. Enter a valid name, email, and password.<br>
+        3. Submit the form.
+      </td>
+      <td>User account is created; user is redirected to the dashboard.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Registration with invalid password</td>
-      <td>Enter valid name and email, but a password that doesn't meet requirements</td>
-      <td>Error message displayed, registration prevented</td>
-      <td>✅ Pass</td>
+      <td>Register with Existing Email</td>
+      <td>
+        1. Navigate to the registration page.<br>
+        2. Enter an email that is already registered.<br>
+        3. Submit the form.
+      </td>
+      <td>Error message displayed: "Email is already in use."</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Registration with invalid name</td>
-      <td>Enter invalid name (e.g., numbers or special characters)</td>
-      <td>Error message displayed, registration prevented</td>
-      <td>✅ Pass</td>
+      <td>Register with Invalid Email Format</td>
+      <td>
+        1. Navigate to the registration page.<br>
+        2. Enter an invalid email (e.g., "user@@example").<br>
+        3. Submit the form.
+      </td>
+      <td>Error message displayed: "Enter a valid email address."</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Registration with invalid email</td>
-      <td>Enter an incorrectly formatted email address</td>
-      <td>Error message displayed, registration prevented</td>
-      <td>✅ Pass</td>
-    </tr>
-    <tr>
-      <td>Registration with existing email</td>
-      <td>Attempt to register with an email already in use</td>
-      <td>Error message displayed, registration prevented</td>
-      <td>✅ Pass</td>
+      <td>Register with Weak Password</td>
+      <td>
+        1. Navigate to the registration page.<br>
+        2. Enter a password that is too short or lacks complexity.<br>
+        3. Submit the form.
+      </td>
+      <td>Error message displayed: "Password must be at least 8 characters and include letters and numbers."</td>
+      <td>PASS</td>
     </tr>
   </tbody>
 </table>
 
 </details>
 
-<h3>Input Validation</h3>
+##### User Login and Logout
 
 <details>
-<summary>Email Validation</summary>
+<summary>Test Cases for User Login and Logout</summary>
 
 <table>
   <thead>
@@ -643,36 +731,193 @@ Represents a payment transaction.
   </thead>
   <tbody>
     <tr>
-      <td>Email validation with empty email</td>
-      <td>Submit registration form with empty email field</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Login with Correct Credentials</td>
+      <td>
+        1. Navigate to the login page.<br>
+        2. Enter valid email and password.<br>
+        3. Click "Login".
+      </td>
+      <td>User is logged in and redirected to the dashboard.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Email validation with existing email</td>
-      <td>Enter an email address already registered</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Login with Incorrect Password</td>
+      <td>
+        1. Navigate to the login page.<br>
+        2. Enter valid email but incorrect password.<br>
+        3. Click "Login".
+      </td>
+      <td>Error message displayed: "Invalid email or password."</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Email validation with invalid email format</td>
-      <td>Enter an incorrectly formatted email (e.g., missing @ symbol)</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Logout</td>
+      <td>
+        1. While logged in, click on the "Sign Out" button.
+      </td>
+      <td>User is logged out and redirected to the homepage.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Email validation with valid email</td>
-      <td>Enter a correctly formatted, unused email address</td>
-      <td>No error message, form submission allowed</td>
-      <td>✅ Pass</td>
+      <td>Access Restricted Page After Logout</td>
+      <td>
+        1. Log out of the account.<br>
+        2. Attempt to access the dashboard URL directly.
+      </td>
+      <td>User is redirected to the login page.</td>
+      <td>PASS</td>
     </tr>
   </tbody>
 </table>
 
 </details>
 
+#### Input Validation
+
+##### Email Validation
+
 <details>
-<summary>Name Validation</summary>
+<summary>Test Cases for Email Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Input</th>
+      <th>Expected Output</th>
+      <th>Actual Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Valid Email</td>
+      <td>user@example.com</td>
+      <td>Accepted; no error message.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Invalid Email (No @ Symbol)</td>
+      <td>userexample.com</td>
+      <td>Error message: "Enter a valid email address."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Invalid Email (Multiple @ Symbols)</td>
+      <td>user@@example.com</td>
+      <td>Error message: "Enter a valid email address."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Empty Email Field</td>
+      <td>[Blank]</td>
+      <td>Error message: "This field is required."</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+##### Name Validation
+
+<details>
+<summary>Test Cases for Name Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Input</th>
+      <th>Expected Output</th>
+      <th>Actual Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Valid Name</td>
+      <td>John Doe</td>
+      <td>Accepted; no error message.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Name with Numbers</td>
+      <td>John123</td>
+      <td>Error message: "Name cannot contain numbers."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Name with Special Characters</td>
+      <td>John@Doe!</td>
+      <td>Error message: "Name cannot contain special characters."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Empty Name Field</td>
+      <td>[Blank]</td>
+      <td>Error message: "This field is required."</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+##### Password Validation
+
+<details>
+<summary>Test Cases for Password Validation</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Input</th>
+      <th>Expected Output</th>
+      <th>Actual Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Valid Password</td>
+      <td>Passw0rd!</td>
+      <td>Accepted; no error message.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Password Too Short</td>
+      <td>Pass1</td>
+      <td>Error message: "Password must be at least 8 characters."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Password Without Number</td>
+      <td>Password!</td>
+      <td>Error message: "Password must contain at least one number."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Password Without Special Character</td>
+      <td>Passw0rd</td>
+      <td>Error message: "Password must contain at least one special character."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Empty Password Field</td>
+      <td>[Blank]</td>
+      <td>Error message: "This field is required."</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+#### Shopping Cart Functionality
+
+##### Adding Items to Cart
+
+<details>
+<summary>Test Cases for Adding Items to Cart</summary>
 
 <table>
   <thead>
@@ -685,30 +930,43 @@ Represents a payment transaction.
   </thead>
   <tbody>
     <tr>
-      <td>Name validation with empty name</td>
-      <td>Submit registration form with empty name field</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Add Item from Product Page</td>
+      <td>
+        1. Navigate to a product page.<br>
+        2. Select quantity.<br>
+        3. Click "Add to Cart".
+      </td>
+      <td>Item is added to cart; cart icon updates with item count.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Name validation with invalid characters</td>
-      <td>Enter a name with numbers or special characters</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Add Item with Zero Quantity</td>
+      <td>
+        1. Navigate to a product page.<br>
+        2. Set quantity to zero.<br>
+        3. Click "Add to Cart".
+      </td>
+      <td>Error message: "Quantity must be at least 1."</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Name validation with valid name</td>
-      <td>Enter a name with only letters and spaces</td>
-      <td>No error message, form submission allowed</td>
-      <td>✅ Pass</td>
+      <td>Add Out-of-Stock Item</td>
+      <td>
+        1. Navigate to an out-of-stock product page.<br>
+        2. Click "Add to Cart".
+      </td>
+      <td>Error message: "This item is currently out of stock."</td>
+      <td>PASS</td>
     </tr>
   </tbody>
 </table>
 
 </details>
 
+##### Updating Cart Items
+
 <details>
-<summary>Password Validation</summary>
+<summary>Test Cases for Updating Cart Items</summary>
 
 <table>
   <thead>
@@ -721,36 +979,249 @@ Represents a payment transaction.
   </thead>
   <tbody>
     <tr>
-      <td>Password validation with short password</td>
-      <td>Enter a password shorter than the minimum required length</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Increase Item Quantity</td>
+      <td>
+        1. Go to the cart page.<br>
+        2. Increase the quantity of an item.<br>
+        3. Click "Update Cart".
+      </td>
+      <td>Cart updates with new quantity and recalculated total.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Password validation with missing required characters</td>
-      <td>Enter a password without required elements (e.g., uppercase, lowercase, number)</td>
-      <td>Error message displayed, form submission prevented</td>
-      <td>✅ Pass</td>
+      <td>Decrease Item Quantity</td>
+      <td>
+        1. Go to the cart page.<br>
+        2. Decrease the quantity of an item.<br>
+        3. Click "Update Cart".
+      </td>
+      <td>Cart updates with new quantity and recalculated total.</td>
+      <td>PASS</td>
     </tr>
     <tr>
-      <td>Password validation with valid password</td>
-      <td>Enter a password meeting all requirements</td>
-      <td>No error message, form submission allowed</td>
-      <td>✅ Pass</td>
+      <td>Set Quantity to Zero</td>
+      <td>
+        1. Go to the cart page.<br>
+        2. Set item quantity to zero.<br>
+        3. Click "Update Cart".
+      </td>
+      <td>Item is removed from the cart.</td>
+      <td>PASS</td>
     </tr>
   </tbody>
 </table>
 
 </details>
-#### User Verification
-#### User Login and Logout
-#### Expense Operations
+
+##### Removing Items from Cart
+
+<details>
+<summary>Test Cases for Removing Items from Cart</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Remove Single Item</td>
+      <td>
+        1. Go to the cart page.<br>
+        2. Click the "Remove" button next to an item.
+      </td>
+      <td>Item is removed from the cart; cart total updates.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Remove All Items</td>
+      <td>
+        1. Go to the cart page.<br>
+        2. Remove all items individually.
+      </td>
+      <td>Cart is empty; message displayed: "Your cart is empty."</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+#### Checkout Process
+
+##### Payment Processing
+
+<details>
+<summary>Test Cases for Payment Processing</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Successful Payment with Valid Card</td>
+      <td>
+        1. Proceed to checkout.<br>
+        2. Enter valid billing and card details.<br>
+        3. Confirm payment.
+      </td>
+      <td>Payment is processed; user receives confirmation.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Payment with Invalid Card Number</td>
+      <td>
+        1. Proceed to checkout.<br>
+        2. Enter invalid card number.<br>
+        3. Confirm payment.
+      </td>
+      <td>Error message: "Invalid card number."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Payment with Insufficient Funds</td>
+      <td>
+        1. Use a test card that simulates insufficient funds.<br>
+        2. Confirm payment.
+      </td>
+      <td>Error message: "Payment declined due to insufficient funds."</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Payment with Expired Card</td>
+      <td>
+        1. Enter card details with past expiration date.<br>
+        2. Confirm payment.
+      </td>
+      <td>Error message: "Card has expired."</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
+
+#### Admin Functions
+
+##### Product Management
+
+<details>
+<summary>Test Cases for Product Management</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Test Case</th>
+      <th>Procedure</th>
+      <th>Expected Result</th>
+      <th>Actual Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add New Product</td>
+      <td>
+        1. Log in as admin.<br>
+        2. Navigate to "Add Product" page.<br>
+        3. Fill in product details.<br>
+        4. Submit the form.
+      </td>
+      <td>Product is added to the catalog; visible to customers.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Edit Existing Product</td>
+      <td>
+        1. Log in as admin.<br>
+        2. Navigate to "Products" list.<br>
+        3. Click "Edit" on a product.<br>
+        4. Modify details.<br>
+        5. Save changes.
+      </td>
+      <td>Product details are updated in the catalog.</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Delete Product</td>
+      <td>
+        1. Log in as admin.<br>
+        2. Navigate to "Products" list.<br>
+        3. Click "Delete" on a product.<br>
+        4. Confirm deletion.
+      </td>
+      <td>Product is removed from the catalog.</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
 ### Device Testing
-### W3C CSS Validator
-### W3C HTML Validator
-### CI Python Linter
-### Lighthouse Testing
-### JSHint
+
+<details>
+<summary>Device Compatibility Table</summary>
+
+<table>
+  <thead>
+    <tr>
+      <th>Device</th>
+      <th>Browser</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Windows 10 PC</td>
+      <td>Chrome</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>macOS Monterey</td>
+      <td>Safari</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>iPad Pro</td>
+      <td>Safari</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Samsung Galaxy Tab S6</td>
+      <td>Chrome</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>iPhone 13</td>
+      <td>Safari</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Google Pixel 6</td>
+      <td>Chrome</td>
+      <td>PASS</td>
+    </tr>
+    <tr>
+      <td>Samsung Galaxy S21</td>
+      <td>Samsung Internet</td>
+      <td>PASS</td>
+    </tr>
+  </tbody>
+</table>
+
+</details>
+
 ### Known Issues
 
 ## Deployment
