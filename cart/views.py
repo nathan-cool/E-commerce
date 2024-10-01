@@ -3,17 +3,21 @@ from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse, HttpResponseBadRequest
 
+
 def cart_summary(request):
     """
     View to display the cart summary.
     """
     cart = Cart(request)
-    if len(cart) > 0: 
+    if len(cart) > 0:
         products = cart.get_products()
         quantities = cart.get_quants()
-        return render(request, 'summary.html', {'cart': cart, 'products': products, 'quantities': quantities})
+        return render(request, 'summary.html', {
+            'cart': cart, 'products': products, 'quantities': quantities
+        })
     else:
         return render(request, 'summary.html', {'cart': cart})
+
 
 def cart_add(request):
     """
@@ -27,12 +31,15 @@ def cart_add(request):
             product = get_object_or_404(Product, id=product_id)
             cart.add(product=product, quantity=product_quantity)
             cart_quantity = len(cart)
-            response = JsonResponse(
-                {"cart_quantity": cart_quantity, 'total_price': cart.get_total_price()})
+            response = JsonResponse({
+                "cart_quantity": cart_quantity,
+                'total_price': cart.get_total_price()
+            })
             return response
         except (ValueError, Product.DoesNotExist) as e:
             return HttpResponseBadRequest(str(e))
     return HttpResponseBadRequest("Invalid request")
+
 
 def cart_remove(request):
     """
@@ -50,6 +57,7 @@ def cart_remove(request):
             return HttpResponseBadRequest(str(e))
     return HttpResponseBadRequest("Invalid request")
 
+
 def cart_update(request):
     """
     View to update the quantity of a product in the cart.
@@ -66,6 +74,7 @@ def cart_update(request):
         except ValueError as e:
             return HttpResponseBadRequest(str(e))
     return HttpResponseBadRequest("Invalid request")
+
 
 def price(request):
     """
