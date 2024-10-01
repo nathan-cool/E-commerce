@@ -1,5 +1,30 @@
-# Ecommerce
-E-commerce is a user-friendly and secure website designed to provide customers with a seamless online shopping experience. With features like user account creation, product categorization, and a streamlined checkout process, E-commerce makes it easy for customers to browse, select, and purchase products from the comfort of their homes.
+# CodeCommerce
+
+## Overview:
+Our **e-commerce platform** is all about making online shopping super smooth and secure. We want customers to enjoy browsing and buying products without any hassle. With user-friendly features like account management, product categories, and an easy checkout process, we're focused on keeping things simple and efficient.
+
+## Goals:
+1. **User experience first** – Customers should find what they need easily, shop quickly, and check out without issues.
+2. **Secure transactions** – Safety matters, so we’ve integrated secure user authentication and payment processing via Stripe.
+3. **Built to grow** – Our site looks great on all devices, whether it’s a phone, tablet, or desktop.
+
+## Key Features:
+- **User Accounts** – Quick registration, easy profile updates, and the ability to track orders in one place.
+- **Admin-friendly Management** – Simple tools to handle inventory, orders, and product updates.
+- **Smooth Checkout** – Secure payments with Stripe, and a real-time cart that reflects product availability.
+
+## Looking Ahead:
+- **SEO Focus** – We’re working on improving how our site shows up in search engines to bring in more traffic.
+
+## Check out our Facebook page:
+<details>
+  <summary>Click here to see a mockup of our Facebook page</summary>
+
+  ![image](https://github.com/user-attachments/assets/acc75be6-4c69-4dfb-93a2-2cc5588a21cc)
+
+</details>
+
+
 
 https://e-commerce-website-django-d6e595fc9613.herokuapp.com/
 
@@ -1154,6 +1179,9 @@ Represents a payment transaction.
 </details>
 
 
+
+
+
 #### Admin Functions
 
 ##### Product Management
@@ -1263,6 +1291,118 @@ Represents a payment transaction.
 </table>
 
 </details>
+
+### CI Python Linter
+
+<details>
+  <summary>$ pep8 context_processor.py</summary>
+  
+  ![pep8 context_processor.py](https://github.com/user-attachments/assets/03b25ea5-4f35-4f92-a7a1-061c9e104b07)
+</details>
+
+<details>
+  <summary>$ pep8 Ecommerce/URLS.py</summary>
+  
+  ![pep8 Ecommerce/URLS.py](https://github.com/user-attachments/assets/34602937-b261-480c-950d-beac7864e803)
+</details>
+
+<details>
+  <summary>$ pep8 Wsgi.py</summary>
+  
+  ![pep8 Wsgi.py](https://github.com/user-attachments/assets/de88fc1c-33cd-49be-9faf-a86c9998935e)
+</details>
+
+<details>
+  <summary>$ pep8 authentication/apps.py</summary>
+  
+  ![pep8 authentication/apps.py](https://github.com/user-attachments/assets/724859b6-9841-4516-8ee9-c72b866495e6)
+</details>
+
+<details>
+  <summary>$ pep8 authentication/urls.py</summary>
+  
+  ![pep8 authentication/urls.py](https://github.com/user-attachments/assets/f24fa6bc-1ba9-4358-98a5-9c5637dfbc38)
+</details>
+
+<details>
+  <summary>$ pep8 authentication/views.py</summary>
+  
+  ![pep8 authentication/views.py](https://github.com/user-attachments/assets/c9f51618-97f1-4ff8-b596-fcc75e458f04)
+</details>
+
+<details>
+  <summary>$ pep8 cart/apps.py</summary>
+  
+  ![pep8 cart/apps.py](https://github.com/user-attachments/assets/219baa08-ad8f-490a-bb19-f947bc752c51)
+</details>
+
+<details>
+  <summary>$ pep8 cart/cart.py</summary>
+  
+  ![pep8 cart/cart.py](https://github.com/user-attachments/assets/d5bb8aa7-315f-4c2d-8970-d6f31cb924b2)
+</details>
+
+<details>
+  <summary>$ pep8 cart/context.py</summary>
+  
+  ![pep8 cart/context.py](https://github.com/user-attachments/assets/d09e1001-3edf-43bb-9145-c5cb079c033f)
+</details>
+
+<details>
+  <summary>$ pep8 cart/urls.py</summary>
+  
+  ![pep8 cart/urls.py](https://github.com/user-attachments/assets/4eb8985c-cf61-4cac-aaf9-1e7e2f8da2de)
+</details>
+
+<details>
+  <summary>$ pep8 cart/views.py</summary>
+  
+  ![pep8 cart/views.py](https://github.com/user-attachments/assets/63194bd5-5a95-4797-ba7d-950d2fc4649c)
+</details>
+
+<details>
+  <summary>$ pep8 checkout/apps.py</summary>
+  
+  ![pep8 checkout/apps.py](https://github.com/user-attachments/assets/ec88bcb9-c8f8-4597-89bc-19ebd6343d41)
+</details>
+
+<details>
+  <summary>$ pep8 checkout/models.py</summary>
+  
+  ![pep8 checkout/models.py](https://github.com/user-attachments/assets/bd90cd2f-1cf4-42a8-84f4-8e86ca1815c1)
+</details>
+
+<details>
+  <summary>$ pep8 checkout/urls.py</summary>
+  
+  ![pep8 checkout/urls.py](https://github.com/user-attachments/assets/b90d743c-0c6f-48f5-ae22-c7f42aa6a40d)
+</details>
+
+<details>
+  <summary>$ pep8 checkout/views.py</summary>
+  
+  ![pep8 checkout/views.py](https://github.com/user-attachments/assets/a0c896fc-c299-4c0d-8b11-e9a9e91d7f5b)
+</details>
+
+<details>
+  <summary>$ pep8 store/admin.py</summary>
+  
+  ![pep8 store/admin.py](https://github.com/user-attachments/assets/5929f96b-1d50-4a9b-9b4c-9a43d3481889)
+</details>
+
+<details>
+  <summary>$ pep8 Store/models.py</summary>
+  
+  No issues found.
+</details>
+
+<details>
+  <summary>$ pep8 store/urls.py</summary>
+  
+  ![pep8 store/urls.py](https://github.com/user-attachments/assets/8ebee36a-39
+
+</details>
+
 
 ### Known Issues
 
