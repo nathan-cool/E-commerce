@@ -1,7 +1,8 @@
 """
 URL configuration for the cart application.
 
-This module defines the URL patterns for the cart-related views in the e-commerce application.
+This module defines the URL patterns for the cart-related views in the 
+e-commerce application.
 
 URL patterns:
 - 'summary/': Displays the cart summary.
