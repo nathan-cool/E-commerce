@@ -1,4 +1,4 @@
-# ExpenseEase
+# Ecommerce
 E-commerce is a user-friendly and secure website designed to provide customers with a seamless online shopping experience. With features like user account creation, product categorization, and a streamlined checkout process, E-commerce makes it easy for customers to browse, select, and purchase products from the comfort of their homes.
 
 https://e-commerce-website-django-d6e595fc9613.herokuapp.com/
@@ -204,13 +204,23 @@ This Agile approach enabled me to:
 - **Navigation:** 
   - A sticky top navbar with a dark theme makes navigation easy and accessible.
   - A collapsible sidebar menu adapts seamlessly to mobile devices, enhancing user experience on smaller screens.
-  - The header displays the user's name and email
+  - Hovering the logout button displays the email of logged in user
   - A convenient sign-out button is always available in the header for quick access.
+ 
+
+  ![image](https://github.com/user-attachments/assets/0f32a6a2-11ac-4e53-851f-6cb83ec7fdb6)
+
+  ![image](https://github.com/user-attachments/assets/35875205-8fd0-4b5b-ac05-49fea4c7a51e)
+
+  ![image](https://github.com/user-attachments/assets/02186368-385c-4637-a545-83679d5e5c42)
+
+
 
 - **Footer:** 
   - Includes a news letter signup
-  - Provides a link to the GitHub repository for easy access to the source code.
-  - Credits the creator, acknowledging their hard work and contributions.
+
+![image](https://github.com/user-attachments/assets/eb86598a-d891-42d1-8663-eafe6d68a63d)
+
 
 ### Authentication System and Security
 
@@ -222,6 +232,9 @@ This Agile approach enabled me to:
   - Ensures that email addresses are in the correct format.
   - Requires strong passwords to enhance security.
   - Provides real-time error messages to help users fix any input mistakes.
+ 
+  ![image](https://github.com/user-attachments/assets/34497d18-bf59-473c-9e79-5e85b67f9400)
+
 
 - **Security Measures:** 
   - Implements CSRF protection to guard against cross-site request forgery attacks.
@@ -233,17 +246,23 @@ This Agile approach enabled me to:
 
 - **User Authentication:** Allows users to log in using their registered email and password with robust form validation to ensure security.
 
+![image](https://github.com/user-attachments/assets/47c630c1-3fad-416a-ac2b-cb19aed6dd0e)
+
+
 - **Password Management:** Includes a password visibility toggle, so users can easily show or hide their passwords for convenience.
+
+![image](https://github.com/user-attachments/assets/5bde6511-0d55-4e44-b1be-7cca4ac06f1d)
+
 
 - **Security Measures:** 
   - Protects against CSRF attacks with built-in tokens.
   - Utilizes Django's secure protocols to manage user sessions safely.
 
-- **Google Sign-In Integration:** Users can also log in using their Google accounts
-
 ### Messaging System
 
 - **Dynamic Messages Display:** Uses Django's messaging framework to show success, error, and informational messages. These messages are styled with Bootstrap alerts for clear and attractive feedback.
+
+
 
 ### Security Enhancements
 
@@ -258,41 +277,61 @@ This Agile approach enabled me to:
 #### Product Listing:
 - Displays all available products with **images**, **names**, **prices**, and **brief descriptions**.
 
+  ![image](https://github.com/user-attachments/assets/2d8aa0d1-eb2b-43b4-a4cf-f6c843c62325)
+
+
 #### Product Categories:
 - Products are organized into **categories**.
 - Users can **filter products** by selecting a category from the navigation menu.
+
+![image](https://github.com/user-attachments/assets/faa81a19-114c-4ca8-bbe4-a4bb8a900ec4)
+
 
 ### 3. Product Detail Page
 
 #### Detailed View:
 - Each product has a dedicated page showing **detailed information**.
-- Includes **images**, **full descriptions**, **price**, and **stock availability**.
+- Includes **images**, **full descriptions**, **price**.
 - Users can select the **quantity** and **add the product to their cart**.
+
+![image](https://github.com/user-attachments/assets/f9f984a0-2f2c-471c-9126-7efea5a15337)
+
 
 ### 4. Shopping Cart
 
 #### Add to Cart:
 - Users can **add products to their cart** from the product detail page.
-- A **confirmation ** the cart icon updates with the amount 
+- A **confirmation ** the cart icon updates with the amount
+
+![image](https://github.com/user-attachments/assets/8133c0dc-de4b-4361-aaa8-5726cfb1ce43)
+
 
 #### View Cart:
 - The cart displays all selected items with **quantities**, **individual prices**, and **total cost**.
 - Users can **update quantities** or **remove items** directly from the cart.
+
+![image](https://github.com/user-attachments/assets/0831a04d-8fd3-420b-901b-b468bb9876cc)
+
+
+
 
 ### 5. Checkout Process
 
 #### Secure Checkout:
 - Users can **proceed to checkout** from their cart.
 - Securely enter **billing details**.
-- Integration with **Stripe** for payment processing.
-
-#### Order Review:
 - Users can **review their order** before final confirmation.
 - Displays all items, shipping information, and total cost via stripe
+- Integration with **Stripe** for payment processing.
+
+![image](https://github.com/user-attachments/assets/920fca61-e0b7-4432-b316-89bdbeb81791)
+
 
 ### 8. Responsive Design
 
 - The website is **fully responsive**, providing an optimal experience on **desktops**, **tablets**, and **mobile devices**.
+
+
 
 ### 9. Admin Panel
 
@@ -300,11 +339,14 @@ This Agile approach enabled me to:
 - Admins can **add new products** with details like **name**, **description**, **price**, **category**, and **images**.
 - **Edit or delete existing products** via the home page.
 
+![image](https://github.com/user-attachments/assets/232317bc-5249-4b6e-b1c1-17cbcabbb266)
+
+
 #### Category Management:
 - Admins can **create**, **edit**, or **delete product categories**.
 
-#### Order Management:
-- **View all orders** placed by customers.
+![image](https://github.com/user-attachments/assets/e3ecc87c-b462-413a-a8ea-2772bed19a8e)
+
 
 ### Future Features
 
