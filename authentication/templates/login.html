@@ -1,99 +1,94 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 {% csrf_token %} {% include "messages.html" %}
  <div class="jumbotron text-center">
-	<h1 class="display-4">Login</h1>
-	<p class="lead">
-		Login to your account
-	</p>
-	<hr />
-<div class="container signin-reg-container">
-	<div class="row auth justify-content-center">
-		<div class="col-md-5">
-			<div class="shadow signup-and-reg-card" style="min-width: 300px">
-				<div class="card-body-reg-login p-5">
-					</h4>
-					<form id="form" action="{% url 'login' %}" method="post">
-						{% csrf_token %} 
+    <h1 class="display-4">Login</h1>
+    <p class="lead">Login to your account</p>
+    <hr>
+    <div class="container signin-reg-container">
+        <div class="row auth justify-content-center">
+            <div class="col-md-5">
+                <div class="shadow signup-and-reg-card" style="min-width: 300px">
+                    <div class="card-body-reg-login p-5">
+                        <form id="form" action="{% url 'login' %}" method="post">
+                            {% csrf_token %} 
 
-						<div class="form-group mb-3">
-							<label for="email" class="form-label">Email</label>
-							<input
-								type="email"
-								name="email"
-								class="form-control form-control-lg"
-								id="email"
-								value="{{ fieldValues.email }}"
-								required
-							/>
-							<p></p>
-						</div>
-						<div class="form-group mb-3">
-							<label for="password" class="form-label"
-								>Password</label
-							>
-							<input
-								type="password"
-								name="password"
-								class="form-control form-control-lg"
-								id="password"
-								required
-							/>
-							<button
-								type="button"
-								id="show-password-toggle"
-								class="float-end show-password-toggle"
-							>
-								<i class="fas fa-eye"></i>
-							</button>
-						</div>
-						<div class="invalid-feedback" style="display: none">
-							<p></p>
-						</div>
+                            <!-- Email Field -->
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control form-control-lg"
+                                    id="email"
+                                    value="{{ fieldValues.email }}"
+                                    required>
+                                <p></p>
+                            </div>
 
-						<br />
-						<div class="form-group mb-4">
-							<button
-								type="submit"
-								class="btn btn-success btn-auth form-control-lg btn-auth"
-								id="login"
-							>
-								Login
-							</button>
-							<hr />
-						</div>
-						<!-- Google Sign-In -->
-						<div
-							id="g_id_onload"
-							data-client_id="343290659263-gpt0ifba9s1u2be5qkh2dcnhebur5a7f.apps.googleusercontent.com"
-							data-context="signup"
-							data-ux_mode="redirect"
-							data-login_uri="https://e-commerce-website-django-d6e595fc9613.herokuapp.com/login/"
-							data-auto_prompt="false"
-						></div>
-						<div
-							class="g_id_signin"
-							data-type="standard"
-							data-shape="pill"
-							data-theme="outline"
-							data-text="signin_with"
-							data-size="large"
-							data-locale="en-GB"
-							data-logo_alignment="left"
-						></div>
-							<div class="text-center mt-4">
- 
-    <a href="{% url 'register' %}" class='signup-prompt' >
-        Don't have an account? Sign up</i>
-    </a>
+                            <!-- Password Field -->
+                            <div class="form-group mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control form-control-lg"
+                                    id="password"
+                                    required>
+                                <button
+                                    type="button"
+                                    id="show-password-toggle"
+                                    class="float-end show-password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback" style="display: none">
+                                <p></p>
+                            </div>
+
+                            <br>
+                            <div class="form-group mb-4">
+                                <button
+                                    type="submit"
+                                    class="btn btn-success btn-auth form-control-lg btn-auth"
+                                    id="login">
+                                    Login
+                                </button>
+                                <hr>
+                            </div>
+
+                            <!-- Google Sign-In -->
+                            <div
+                                id="g_id_onload"
+                                data-client_id="343290659263-gpt0ifba9s1u2be5qkh2dcnhebur5a7f.apps.googleusercontent.com"
+                                data-context="signup"
+                                data-ux_mode="redirect"
+                                data-login_uri="https://e-commerce-website-django-d6e595fc9613.herokuapp.com/login/"
+                                data-auto_prompt="false">
+                            </div>
+                            <div
+                                class="g_id_signin"
+                                data-type="standard"
+                                data-shape="pill"
+                                data-theme="outline"
+                                data-text="signin_with"
+                                data-size="large"
+                                data-locale="en-GB"
+                                data-logo_alignment="left">
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <a href="{% url 'register' %}" class='signup-prompt'>
+                                    Don't have an account? Sign up
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-					</form>
-				
-						</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 
 <!-- Scripts -->
 <script src="{% static 'js/scripts.js' %}"></script>
