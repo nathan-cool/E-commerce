@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
-    const userName = document.getElementById('users-name'); // User name input field
-    const email = document.getElementById('email'); // Email input field
-    const userPassword = document.getElementById('password'); // Password input field
-    const feedbackElements = document.getElementsByClassName('invalid-feedback'); // Invalid feedback elements
-    const showPasswordToggle = document.getElementById('show-password-toggle'); // Show/hide password toggle button
-    const registerButton = document.getElementById('register'); // Register button
+    var userName = document.getElementById('users-name'); // User name input field
+    var email = document.getElementById('email'); // Email input field
+    var userPassword = document.getElementById('password'); // Password input field
+    var feedbackElements = document.getElementsByClassName('invalid-feedback'); // Invalid feedback elements
+    var showPasswordToggle = document.getElementById('show-password-toggle'); // Show/hide password toggle button
+    var registerButton = document.getElementById('register'); // Register button
 
-    console.log('DOM elements loaded:', { userName, email, userPassword, showPasswordToggle, registerButton });
+    console.log('DOM elements loaded:', { userName: userName, email: email, userPassword: userPassword, showPasswordToggle: showPasswordToggle, registerButton: registerButton });
 
     // Call the validation functions for each input field
     if (userName) validateName(userName);
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for user name input
     function validateName(userName) {
-        userName.addEventListener('keyup', (e) => {
-            const userNameValue = e.target.value;
+        userName.addEventListener('keyup', function(e) {
+            var userNameValue = e.target.value;
 
             if (userNameValue.length > 0) {
                 fetch('/authentication/validate-name', {
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify({ users_name: userNameValue })
                 })
-                    .then((res) => res.json())
-                    .then((data) => {
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
                         if (data.users_name_valid) {
                             userName.classList.add('is-valid');
                             userName.classList.remove('is-invalid');
@@ -51,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             userName.classList.remove('is-valid');
                             userName.classList.add('is-invalid');
                             feedbackElements[0].style.display = 'block'; // Show invalid feedback
-                            feedbackElements[0].innerHTML = `<p>${data.users_name_error}</p>`; // Display error message
+                            feedbackElements[0].innerHTML = '<p>' + data.users_name_error + '</p>'; // Display error message
                             registerButton.disabled = true; // Disable register button
                         }
                     })
-                    .catch((error) => {
+                    .catch(function(error) {
                         console.error('Error:', error);
                     });
             } else {
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for email input
     function validateEmail(email) {
-        email.addEventListener('keyup', (e) => {
-            const emailValue = e.target.value;
+        email.addEventListener('keyup', function(e) {
+            var emailValue = e.target.value;
 
             if (emailValue.length > 0) {
                 fetch('/authentication/validate-email', {
@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify({ email: emailValue })
                 })
-                    .then((res) => res.json())
-                    .then((data) => {
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
                         if (data.email_valid) {
                             email.classList.add('is-valid');
                             email.classList.remove('is-invalid');
@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             email.classList.remove('is-valid');
                             email.classList.add('is-invalid');
                             feedbackElements[1].style.display = 'block'; // Show invalid feedback
-                            feedbackElements[1].innerHTML = `<p>${data.email_error}</p>`; // Display error message
+                            feedbackElements[1].innerHTML = '<p>' + data.email_error + '</p>'; // Display error message
                             registerButton.disabled = true; // Disable register button
                         }
                     })
-                    .catch((error) => {
-                        console.error('Error:', error);                                  
+                    .catch(function(error) {
+                        console.error('Error:', error);
                     });
             } else {
                 email.classList.remove('is-valid');
@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for password input
     function validatePassword(userPassword) {
-        userPassword.addEventListener('keyup', (e) => {
-            const userPasswordValue = e.target.value;
+        userPassword.addEventListener('keyup', function(e) {
+            var userPasswordValue = e.target.value;
 
             if (userPasswordValue.length > 0) {
                 showPasswordToggle.style.color = 'black';
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     body: JSON.stringify({ password: userPasswordValue })
                 })
-                    .then((res) => res.json())
-                    .then((data) => {
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
                         if (data.password_valid) {
                             userPassword.classList.add('is-valid');
                             userPassword.classList.remove('is-invalid');
@@ -130,11 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             userPassword.classList.remove('is-valid');
                             userPassword.classList.add('is-invalid');
                             feedbackElements[2].style.display = 'block'; // Show invalid feedback
-                            feedbackElements[2].innerHTML = `<p>${data.password_error}</p>`; // Display error message
+                            feedbackElements[2].innerHTML = '<p>' + data.password_error + '</p>'; // Display error message
                             registerButton.disabled = true; // Disable register button
                         }
                     })
-                    .catch((error) => {
+                    .catch(function(error) {
                         console.error('Error:', error);
                     });
             } else {
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function admin_check() {
-        let admin = document.getElementById('admin');
+        var admin = document.getElementById('admin');
         if (admin) {
             if (admin.checked) {
                 admin.value = '1';
