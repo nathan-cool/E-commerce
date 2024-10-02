@@ -1427,6 +1427,12 @@ Represents a payment transaction.
 
 ### Known Issues
 
+- When selecting the cart, users will notice that the quantity and price do not update correctly.
+- Users must be logged in to complete a purchase.
+- If a user logs in after adding items to the cart, they will need to re-add those items.
+
+
+
 ## Deployment
 
 ### How to Clone the Repository
