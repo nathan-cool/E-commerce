@@ -1,5 +1,7 @@
 # CodeCommerce
 
+https://e-commerce-website-django-d6e595fc9613.herokuapp.com/
+
 ## Overview:
 Our **e-commerce platform** is all about making online shopping super smooth and secure. We want customers to enjoy browsing and buying products without any hassle. With user-friendly features like account management, product categories, and an easy checkout process, we're focused on keeping things simple and efficient.
 
@@ -25,8 +27,6 @@ Our **e-commerce platform** is all about making online shopping super smooth and
 </details>
 
 
-
-https://e-commerce-website-django-d6e595fc9613.herokuapp.com/
 
 ## Table of Contents
 - [User Experience (UX)](#user-experience-ux)
