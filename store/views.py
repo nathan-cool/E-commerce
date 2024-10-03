@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from decimal import Decimal, InvalidOperation
 import re
 import bleach
@@ -357,3 +358,7 @@ def delete_category(request, pk):
         category.delete()
         messages.success(request, "Category deleted successfully")
     return redirect("admin_create_category")
+
+
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)

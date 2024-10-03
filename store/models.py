@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 # Category model represents a product category
 class Category(models.Model):
   name = models.CharField(max_length=255)
+  updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
     return self.name
