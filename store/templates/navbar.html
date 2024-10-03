@@ -34,13 +34,12 @@
 
 				<!-- Admin dropdown menu (visible only to staff) -->
 				{% if is_staff %}
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown navbarDropdown">
 					<a
 						aria-expanded="false"
 						class="nav-link dropdown-toggle"
 						data-bs-toggle="dropdown"
 						href="#"
-						id="navbarDropdown"
 						role="button"
 					>
 						Admin
@@ -69,13 +68,12 @@
 				{% endif %}
 
 				<!-- Categories dropdown menu -->
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown navbarDropdown">
 					<a
 						aria-expanded="false"
 						class="nav-link dropdown-toggle"
 						data-bs-toggle="dropdown"
 						href="#"
-						id="navbarDropdown"
 						role="button"
 					>
 						Categories
@@ -98,8 +96,6 @@
     {% endfor %}
 </ul>
 					</ul>
-				</li>
-			</ul>
 		</div>
 		<!-- User controls and shopping basket -->
 		<div class="d-flex basket-container">
