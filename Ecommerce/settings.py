@@ -38,9 +38,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-aay9@hya(kh_59l*u@yz6f*cc1rz8abe990v($4(3z8p%w#@b0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'e-commerce-website-django-d6e595fc9613.herokuapp.com']
 
 
 # Application definition
@@ -191,3 +191,6 @@ STRIPE_SECRET_KEY = 'sk_test_51PzZ5QRpfuezrOZmDqrlwco1vsWMG1gYH0XywMc6kTYeYsMM5i
 STRIPE_WEBHOOK_SECRET = 'whsec_0eDFI4j7vxWslnJHe34SGkS32lwUoFgh'
 
 LOGIN_URL = '/login/'
+
+
+
