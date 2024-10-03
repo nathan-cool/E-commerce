@@ -13,3 +13,6 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('stripe-webhook/', stripe_webhook, name='stripe_webhook'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'store.views.custom_404_view'

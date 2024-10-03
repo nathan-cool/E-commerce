@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include "messages.html" %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">404 - Page Not Found</h1>
+    <p class="lead">Oops! The page you're looking for doesn't exist.</p>
+    <hr />
+    <img src="{% static 'images/404.svg' %}" alt="404 Error" class="img-fluid" style="max-width: 400px;">
+</div>
+<div class="container mt-5">
+                </form>
+                <p class="text-center">Or use the links below to navigate:</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{% url 'home' %}">Go to Homepage</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
