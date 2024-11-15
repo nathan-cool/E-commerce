@@ -60,6 +60,9 @@ INSTALLED_APPS = [
 
 
 ]
+
+AWS_S3_CUSTOM_DOMAIN = 'bucket4462.s3.amazonaws.com'
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
