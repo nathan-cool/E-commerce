@@ -2,7 +2,8 @@ from django import views
 from django.urls import path
 from .views import ProfileView, home
 from . import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 # URL patterns for the app
 # Includes home, about, product, and category views.
 # Admin views include create, delete, and edit functionality
@@ -36,3 +37,4 @@ urlpatterns = [
     path('update-user/', ProfileView.as_view(), name='update_user'),
     path('profile/', ProfileView.as_view(), name='profile'),
 ]
+

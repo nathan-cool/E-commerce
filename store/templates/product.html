@@ -1,98 +1,91 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-	
 <div class="jumbotron text-center">
-		<h1 class="display-4">{{product.name}}</h1>
-		
-		<hr></hr>
-	</div>
-<main>
-<div class="product section">
-	<div class="container-product-page">
-		<div class="row align-items-center">
-			<div class="col  product-card-buy-container">
-				<div class="card  product-card-buy">
-					<div class="row img-container">
-						<div class="col">
-							<div class="image-container"> </div>
-							<img
-								src="{{ product.image.url }}"
-								class="img-fluid rounded-start product-image"
-								alt="{{ product.name }}"
-							/>
-							</div>
-						</div>
-						<div class="col-md-8 product-desc-container">
-							<div class="card-body card-body-product-page">
-								<h5 class="card-title card-title-product-page">{{ product.name }}</h5>
-								<p class="card-text">
-									{{ product.description|safe }}
-								</p>
-								{% if product.is_sale %}
-								<div class="badge bg-danger">Sale</div>
-								<p class="card-text">
-									<strike>€{{ product.price }}</strike>
-								</p>
-								<p class="card-text">
-									€{{ product.sale_price }}
-								</p>
-								{% else %}
-								<p class="card-text">€{{ product.price }}</p>
-								{% endif %}
-								{% if product.qty > 0 %}
-    <select class="form-select" aria-label="Quantity select" id="quantity_select">
-        {% for i in product.qty|add:"0"|rjust:product.qty %}
-            <option value="{{ forloop.counter }}" {% if forloop.first %}selected{% endif %}>
-                {{ forloop.counter }}
-            </option>
-        {% endfor %}
-    </select>
-{% else %}
-    <select class="form-select" aria-label="Quantity select" id="quantity_select" disabled>
-        <option selected value="0">Out of stock</option>
-    </select>
-{% endif %}
-								<h2 class="card-title card-title-product-page">Buy this course today for </h2>
-								<button
-									type="button"
-									value="{{ product.id }}"
-									class="btn btn-secondary"
-									id="add-cart"
-								>
-									Buy this course today for €{{ product.price }}
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <h1 class="display-4">{{ product.name }}</h1>
+    <hr />
 </div>
+
+<main>
+    <div class="product section">
+        <div class="container-product-page">
+            <div class="row align-items-center">
+                <div class="col product-card-buy-container">
+                    <div class="card product-card-buy">
+                        <div class="row img-container">
+                            <div class="col">
+                                <div class="image-container"> </div>
+                                <img
+                                    src="{{ product.image.url }}"
+                                    class="img-fluid rounded-start product-image"
+                                    alt="{{ product.name }}"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-8 product-desc-container">
+                            <div class="card-body card-body-product-page">
+                                <h5 class="card-title card-title-product-page">{{ product.name }}</h5>
+                                <p class="card-text">
+                                    {{ product.description|safe }}
+                                </p>
+                                {% if product.is_sale %}
+                                <div class="badge bg-danger">Sale</div>
+                                <p class="card-text">
+                                    <strike>€{{ product.price }}</strike>
+                                </p>
+                                <p class="card-text">
+                                    €{{ product.sale_price }}
+                                </p>
+                                {% else %}
+                                <p class="card-text">€{{ product.price }}</p>
+                                {% endif %}
+                                {% if product.qty > 0 %}
+                                <select class="form-select" aria-label="Quantity select" id="quantity_select">
+                                    {% for i in product.qty|add:"0"|rjust:product.qty %}
+                                    <option value="{{ forloop.counter }}" {% if forloop.first %}selected{% endif %}>
+                                        {{ forloop.counter }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                {% else %}
+                                <select class="form-select" aria-label="Quantity select" id="quantity_select" disabled>
+                                    <option selected value="0">Out of stock</option>
+                                </select>
+                                {% endif %}
+                                <h2 class="card-title card-title-product-page">Buy this course today for </h2>
+                                <button type="button" value="{{ product.id }}" class="btn btn-secondary" id="add-cart">
+                                    Buy this course today for €{{ product.price }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
-
-
 <script>
-	$(document).on('click', '#add-cart', function (e) {
-		e.preventDefault();
-		$.ajax({
-			type: 'POST',
-			url: '{% url "cart_add" %}',
-			data: {
-				product_id: $('#add-cart').val(),
-        quantity: $('#quantity_select option:selected').val(),
-				csrfmiddlewaretoken: '{{ csrf_token }}',
-				action: 'post'
-			},
-			success: function (json) {
-				document.getElementById('cart_quantity').textContent =
-					json.cart_quantity;
-			},
-			error: function () {
-				console.log('error');
-			}
-		});
-	});
+    $(document).on('click', '#add-cart', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "cart_add" %}',
+            data: {
+                product_id: $('#add-cart').val(),
+                quantity: $('#quantity_select option:selected').val(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+            success: function (json) {
+                document.getElementById('cart_quantity').textContent = json.cart_quantity;
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    });
 </script>
+
 {% endblock %}

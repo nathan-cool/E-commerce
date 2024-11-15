@@ -53,9 +53,12 @@
 				<div class="container-1">
 					
 					<a href="{% url 'product' product.id %}">
+						
+						<pre>{{ product|dictsort:"0" }}</pre>
+
 						<img
 							class="card-img-top"
-							src="{{ product.image.url }}"
+							src="{{product.image.url}}"
 							alt="image"
 						/>
 					</a>

@@ -31,7 +31,7 @@ class Product(models.Model):
   category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
   product_title_description = models.CharField(max_length=355, default='', null=True, blank=True)
   description = models.CharField(max_length=2000, default='', null=True, blank=True)
-  image = models.ImageField(upload_to='uploads/products/')
+  image = models.ImageField(upload_to='products/')
   is_sale = models.BooleanField(default=False)
   sale_price = models.FloatField(default=0)
   custom_badge = models.CharField(max_length=6, default='', null=True, blank=True)
