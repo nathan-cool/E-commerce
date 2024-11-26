@@ -120,3 +120,12 @@ class Cart:
             del self.cart[product_id]
             self.save()
         return self.cart
+    
+
+    def clear(self):
+        """
+        Clear all items from the cart and update the session.
+        """
+        self.cart = {}
+        self.session['session_key'] = self.cart
+        self.session.modified = True

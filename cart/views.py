@@ -86,3 +86,6 @@ def price(request):
         return JsonResponse({"total_price": total_price})
     except Exception as e:
         return HttpResponseBadRequest(str(e))
+    
+
+

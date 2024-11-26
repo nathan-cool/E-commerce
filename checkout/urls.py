@@ -15,7 +15,7 @@ from checkout.views import stripe_webhook
 
 urlpatterns = [
     path('', checkout_views.checkout, name='checkout'),
-    path('success/', checkout_views.payment_success, name='payment_success'),
+    path('payment_success', checkout_views.payment_success, name='payment_success'),
     path(
         'cancelled/',
         checkout_views.payment_cancelled,

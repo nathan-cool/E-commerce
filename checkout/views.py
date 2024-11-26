@@ -11,6 +11,8 @@ import stripe
 from django.conf import settings
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+import logging
+logger = logging.getLogger(__name__)
 
 # Set the Stripe API key
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -18,10 +20,13 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def checkout(request):
+    
+
     """
     Handle the checkout process for authenticated users.
     """
     cart = Cart(request)
+    
 
     """
     Check if the cart is empty.
@@ -101,6 +106,7 @@ def checkout(request):
                 profile.county = request.POST.get('county')
                 profile.eircode = request.POST.get('eircode')
                 profile.country = request.POST.get('country')
+
                 profile.save()
 
             """
@@ -183,6 +189,8 @@ def checkout(request):
 
 
 def payment_success(request):
+    logger.debug(
+        f"Session ID during payment_success: {request.session.session_key}")
     """
     Handle successful payment by updating order and payment records.
     """
@@ -208,8 +216,14 @@ def payment_success(request):
             """
             Clear the user's cart after successful payment.
             """
-            cart = Cart(request)
-            cart.clear()
+            try:
+                cart = Cart(request)
+                cart.clear()
+            except Exception as e:
+                messages.error(
+                    request, "An issue occurred while clearing your cart.")
+
+            return render(request, 'payment_success.html', {'order': order})
 
         except stripe.error.StripeError as e:
             messages.error(request, f"Stripe error: {str(e)}")
@@ -224,7 +238,7 @@ def payment_success(request):
             messages.error(request, f"An error occurred: {str(e)}")
             return redirect('home')
 
-    return render(request, 'payment_success.html')
+    
 
 
 def payment_cancelled(request):
@@ -232,6 +246,7 @@ def payment_cancelled(request):
     Inform the user that the payment was cancelled.
     """
     messages.info(request, "Payment was cancelled.")
+    
     return render(request, 'payment_cancelled.html')
 
 
