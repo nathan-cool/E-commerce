@@ -4,6 +4,7 @@ from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.contrib import messages
+from django.shortcuts import render, redirect
 
 
 
@@ -22,28 +23,39 @@ def cart_summary(request):
         return render(request, 'summary.html', {'cart': cart})
 
 
+from django.shortcuts import get_object_or_404, redirect
+from django.http import JsonResponse, HttpResponseBadRequest
+from django.contrib import messages
+from .cart import Cart
+from store.models import Product
+
 def cart_add(request):
     """
     View to add a product to the cart.
     """
     cart = Cart(request)
-    if request.POST.get('action') == 'post':
+    if request.method == "POST" and request.POST.get('action') == 'post':
         try:
             product_id = int(request.POST.get('product_id'))
             product_quantity = int(request.POST.get('quantity'))
             product = get_object_or_404(Product, id=product_id)
             cart.add(product=product, quantity=product_quantity)
-            cart_quantity = len(cart)
-            response = JsonResponse({
-                "cart_quantity": cart_quantity,
-                'total_price': cart.get_total_price()
-            })
             messages.success(request, "The product was added to the cart")
-            return response
             
-        except (ValueError, Product.DoesNotExist) as e:
-            return HttpResponseBadRequest(str(e))
-    return HttpResponseBadRequest("Invalid request")
+            # Return JSON response with a redirect URL
+            return JsonResponse({
+                "cart_quantity": len(cart),
+                "total_price": cart.get_total_price(),
+                "redirect_url": "/"  # Homepage URL or any other page
+            })
+        
+        except (ValueError, Product.DoesNotExist):
+            return JsonResponse({
+                "error": "An error occurred while adding the product."
+            }, status=400)
+
+    return JsonResponse({"error": "Invalid request."}, status=400)
+
 
 
 def cart_remove(request):

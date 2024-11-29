@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var feedbackElements = document.getElementsByClassName('invalid-feedback'); // Invalid feedback elements
     var showPasswordToggle = document.getElementById('show-password-toggle'); // Show/hide password toggle button
     var registerButton = document.getElementById('register'); // Register button
+    var add_cart = document.getElementById('add_cart');
 
     console.log('DOM elements loaded:', { userName: userName, email: email, userPassword: userPassword, showPasswordToggle: showPasswordToggle, registerButton: registerButton });
 
@@ -160,3 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+    

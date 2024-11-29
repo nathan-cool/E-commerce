@@ -85,6 +85,8 @@
             },
             success: function (json) {
                 document.getElementById('cart_quantity').textContent = json.cart_quantity;
+
+                window.location.reload();
             },
             error: function () {
                 console.log('error');
