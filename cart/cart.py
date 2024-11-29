@@ -1,6 +1,11 @@
 from store.models import Product
 
 
+
+
+
+
+
 class Cart:
     """A shopping cart class that handles cart op within a user's session."""
 

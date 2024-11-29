@@ -1,7 +1,10 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse, HttpResponseBadRequest
+from django.contrib import messages
+
 
 
 def cart_summary(request):
@@ -35,7 +38,9 @@ def cart_add(request):
                 "cart_quantity": cart_quantity,
                 'total_price': cart.get_total_price()
             })
+            messages.success(request, "The product was added to the cart")
             return response
+            
         except (ValueError, Product.DoesNotExist) as e:
             return HttpResponseBadRequest(str(e))
     return HttpResponseBadRequest("Invalid request")
