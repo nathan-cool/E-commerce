@@ -2,15 +2,13 @@ from django.shortcuts import render
 from decimal import Decimal, InvalidOperation
 import re
 import bleach
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponseBadRequest
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views import View
-
 from store.models import Product, Category, Profile
 
 
@@ -270,6 +268,7 @@ def admin_create_product(request):
     return render(request, 'create-product.html', context)
 
 
+@staff_member_required
 def delete_product(request, pk):
     """
     Delete a product from the database.
@@ -289,6 +288,7 @@ def delete_product(request, pk):
         return redirect("home")
 
 
+@staff_member_required
 def edit_product(request, pk):
     """Allow users to edit a product."""
     if request.method == "POST":
@@ -330,6 +330,7 @@ def edit_product(request, pk):
     return render(request, "edit-product.html", context)
 
 
+@staff_member_required
 def admin_create_category(request):
     """Allow staff members to create a new category."""
     categories = Category.objects.all()
@@ -344,6 +345,7 @@ def admin_create_category(request):
     return render(request, 'create-category.html', {'categories': categories})
 
 
+@staff_member_required
 def delete_category(request, pk):
     """Delete a category from the database."""
     if request.method == "GET":

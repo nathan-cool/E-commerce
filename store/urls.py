@@ -22,6 +22,7 @@ urlpatterns = [
         'delete-product/<int:pk>', views.delete_product,
         name='delete_product'
     ),
+
     path(
         'edit-product/<int:pk>', views.edit_product,
         name='edit_product'
