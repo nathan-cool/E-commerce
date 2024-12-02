@@ -1,9 +1,11 @@
-
 from django.contrib import admin
-from django.urls import path, include 
-from . import settings
-from django.conf.urls.static import static
-from checkout.views import stripe_webhook  
+from django.urls import path, include
+from django.views.generic import TemplateView
+from django.contrib.sitemaps.views import sitemap
+
+
+from Ecommerce.sitemaps import sitemaps
+from checkout.views import stripe_webhook
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,8 +21,7 @@ urlpatterns = [
             content_type="text/plain"
         )
     ),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
-
 handler404 = 'store.views.custom_404_view'
-
