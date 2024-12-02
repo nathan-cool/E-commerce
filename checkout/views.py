@@ -21,13 +21,10 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 @login_required
 def checkout(request):
     
-
     """
     Handle the checkout process for authenticated users.
     """
     cart = Cart(request)
-    
-
     """
     Check if the cart is empty.
     """
@@ -37,7 +34,6 @@ def checkout(request):
             "Your cart is empty. Add some products before checking out."
         )
         return redirect('cart_summary')
-
     """
     Ensure the user is authenticated and retrieve or create their profile.
     """
@@ -48,6 +44,7 @@ def checkout(request):
         return redirect('login/')
 
     if request.method == 'POST':
+
         """
         Collect and validate billing address from POST data.
         """
@@ -68,6 +65,7 @@ def checkout(request):
             return redirect('checkout')
 
         try:
+
             """
             Create a new order with the provided billing address and cart total.
             """
@@ -239,8 +237,6 @@ def payment_success(request):
             return redirect('home')
 
     
-
-
 def payment_cancelled(request):
     """
     Inform the user that the payment was cancelled.

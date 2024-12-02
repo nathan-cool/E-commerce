@@ -12,6 +12,13 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
     path('stripe-webhook/', stripe_webhook, name='stripe_webhook'),
+    path(
+        "robots.txt",
+        TemplateView.as_view(
+            template_name="robots.txt",
+            content_type="text/plain"
+        )
+    ),
 ]
 
 

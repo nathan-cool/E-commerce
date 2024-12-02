@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="text-center mt-4">
-                                <a href="{% url 'register' %}" class='signup-prompt'>
+                                <a href="{% url 'register' %}" class='signup-prompt' rel="noopener noreferrer">
                                     Don't have an account? Sign up
                                 </a>
                             </div>
@@ -92,6 +92,6 @@
 
 
 <!-- Scripts -->
-<script src="{% static 'js/scripts.js' %}"></script>
-<script src="https://accounts.google.com/gsi/client" async></script>
+<script src="{% static 'js/scripts.js' %}" rel="noopener noreferrer"></script>
+<script src="https://accounts.google.com/gsi/client" async rel="noopener noreferrer"></script>
 {% endblock %}
