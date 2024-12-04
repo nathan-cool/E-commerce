@@ -9,7 +9,8 @@ from django.http import HttpResponseBadRequest
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views import View
-from store.models import Product, Category, Profile
+from store.models import Product, Category
+from users.models import Profile
 
 
 class ProfileView(LoginRequiredMixin, View):

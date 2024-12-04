@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from store.models import Order, Profile
 
 
 class Payment(models.Model):
@@ -13,18 +12,16 @@ class Payment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Linked to User
     order = models.ForeignKey(
-        Order, on_delete=models.SET_NULL, null=True)  # Linked to Order
-    profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+        'store.Order', on_delete=models.SET_NULL, null=True)  # Linked to Order from store app
+    profile = models.ForeignKey(
+        'users.Profile', on_delete=models.SET_NULL, null=True)  # Linked to Profile from users app
     amount = models.DecimalField(
         max_digits=10, decimal_places=2)  # Payment amount
     stripe_payment_intent_id = models.CharField(
         max_length=255)  # Stripe Payment Intent ID
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='pending')  # status
-    timestamp = models.DateTimeField(
-        auto_now_add=True)  # Auto timestamp for creation
-    
-    
+        max_length=10, choices=STATUS_CHOICES, default='pending')  # Payment status
+
 
     def __str__(self):
         return f"Payment of {self.amount} for {self.user.username}"

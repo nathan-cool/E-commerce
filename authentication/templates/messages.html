@@ -4,7 +4,6 @@
     {% for message in messages %}
     <div{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}" {% endif %}>
         {{ message }}
-        <a href="#" rel="noopener noreferrer">Learn more</a>
     </div>
     {% endfor %}
 </div>
