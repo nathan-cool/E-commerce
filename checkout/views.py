@@ -187,8 +187,6 @@ def checkout(request):
 
 
 def payment_success(request):
-    logger.debug(
-        f"Session ID during payment_success: {request.session.session_key}")
     """
     Handle successful payment by updating order and payment records.
     """
