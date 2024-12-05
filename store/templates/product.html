@@ -2,10 +2,11 @@
 {% load static %}
 {% block content %}
 {% include "messages.html" %}
+{% block title %}{{ product.name }} - CodeCommerce{% endblock %}
 
-
-
-
+{% block meta_description %}
+<meta name="description" content="Explore the features of {{ product.name }}. Get the best deals and latest offerings on {{ category.name }} products at CodeCommerce.">
+{% endblock %}
 
 <div class="jumbotron text-center">
     <h1 class="display-4">{{ product.name }}</h1>

@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block meta_description %}
+<meta name="description" content="Explore our collection of {{ category.name }} products. Find the best deals and latest offerings in the {{ category.name }} category.">
+{% endblock %}
 
 {% block content %}
 <div class="jumbotron text-center">
