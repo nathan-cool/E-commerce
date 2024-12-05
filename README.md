@@ -378,6 +378,22 @@ This Agile approach enabled me to:
 ## Design
 ### Wireframes
 
+Home Page
+
+<img width="1055" alt="image" src="https://github.com/user-attachments/assets/218cbe65-bca7-4257-89f5-8cfe14331ca9">
+
+About Page 
+
+<img width="1071" alt="image" src="https://github.com/user-attachments/assets/e626e9c3-8ec5-4ea4-9911-de1e6c84da6e">
+
+
+Login/register page
+
+<img width="1086" alt="image" src="https://github.com/user-attachments/assets/7b47e23c-2aa4-43a3-b1e7-a099e9b1712b">
+
+
+
+
 ### Site map
 
 ![image](https://github.com/user-attachments/assets/22fa47b4-11d5-4051-9d48-6a0f3b4e9b43)
@@ -556,12 +572,8 @@ Represents a payment transaction.
 
 
 ## The Surface Plane
-### Design
-#### Colour Scheme
-#### Typography
-#### Layout and Elements
-#### Special Elements
-#### Imagery
+
+
 
 ## Planning
 
