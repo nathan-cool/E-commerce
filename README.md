@@ -573,6 +573,65 @@ Represents a payment transaction.
 
 ## The Surface Plane
 
+## Design
+
+Creating an enjoyable and intuitive user experience was a top priority for **Django E-shop**. Here are some of the key design choices I made to ensure the platform is both visually appealing and easy to use.
+
+### Typography
+
+I've chosen **Bevellier-Regular** as the primary font. It's elegant and modern, which not only looks great but also makes reading content effortless for users.
+
+### Layout and Elements
+
+- **Input Fields:** Rounded corners give the input fields a sleek, modern appearance, making forms feel more inviting.
+  
+- **Cards:** Product and content cards have custom widths and subtle shadows. This adds depth and helps important information stand out without overwhelming the user.
+  
+- **Forms and Buttons:** Clean and straightforward, forms and buttons feature simple designs with hover effects. This not only looks good but also provides immediate feedback when interacting with elements.
+  
+- **Responsive Design:** Whether on a phone, tablet, or desktop, the layout adapts smoothly. This ensures a consistent and enjoyable experience no matter the device.
+
+### Special Elements
+
+- **Alerts:** Success messages pop up with a green background and white text.
+
+  
+- **Navbar:** The navbar is clean and functional with easy-to-read text. It stays transparent, blending nice with the background, and includes polished hover effects for a refined look.
+
+### Imagery
+
+I've incorporated background radial gradients and subtle patterns to add depth and texture to the site. These elements create a modern and visually appealing backdrop that complements product images without distracting from the main content.
+
+### Color Scheme
+
+- **Primary Colors:** Dark tones create a nice vibe, while lighter accents highlight important elements and actions.
+  
+- **Buttons and Interactive Elements:** Buttons feature a mix of transparent and solid backgrounds with contrasting text colors. Hovering over them changes their appearance, providing clear visual feedback and enhancing user interaction.
+
+### Custom Font Integration
+
+Using `@font-face`, I've integrated the **Bevellier-Regular** font throughout the site. This ensures consistent typography, giving the e-shop a unique and professional appearance that sets it apart from other platforms.
+
+### Footer Design
+
+The footer is both stylish and functional. It includes a MailChimp subscription form with rounded borders and subtle shadows, encouraging users to subscribe without taking up too much space. Social media links and copyright information are neatly organized for easy access.
+
+### Accessibility
+
+All design elements are crafted with accessibility in mind. High-contrast text, clear navigation, and intuitive layouts ensure that everyone, including users with visual impairments, can navigate and use the e-shop effortlessly.
+
+### Interactive Elements
+
+- **Hover Effects:** Buttons and links respond smoothly when hovered over, providing immediate visual feedback that makes interactions feel more engaging.
+  
+- **Transitions and Animations:** Subtle animations make the site feel more dynamic and responsive, enhancing the overall user experience without being distracting.
+
+### Consistency
+
+Maintaining a consistent design language across the platform was essential. From spacing and colours to typography and component styling, everything works together nicely to create a cohesive and professional look.
+
+---
+
 
 
 ## Planning
