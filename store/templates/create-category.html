@@ -41,10 +41,8 @@
 					{% for category in categories %}
 					<li class="list-group-item">
 						{{ category.name }}
-						<a
-							href="{% url 'delete_category' category.pk %}"
-							class="btn btn-secondary x-button-card"
-						>
+						<a href="{% url 'delete_category' category.pk %}" class="btn btn-secondary x-button-card" rel="nofollow">
+
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="16"

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)  # Enforce unique emails
+    email = models.EmailField(unique=True)  
     phone = models.CharField(max_length=255)
     password = models.CharField(max_length=500)
 

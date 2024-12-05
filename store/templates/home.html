@@ -14,10 +14,7 @@
 			<div class="card product-card">
 				<div class="x-button-card-container">
 					{% csrf_token %} {% if is_staff %}
-					<a
-						href="{% url 'delete_product' product.id %}"
-						class="btn btn-secondary x-button-card"
-					>
+					<a href="{% url 'delete_product' product.id %}" class="btn btn-secondary x-button-card" rel="nofollow">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="16"
@@ -31,10 +28,7 @@
 							></path>
 						</svg>
 					</a>
-					<a
-						href="{% url 'edit_product' product.id %}"
-						class="btn btn-secondary x-button-card"
-					>
+					<a href="{% url 'edit_product' product.id %}" class="btn btn-secondary x-button-card" rel="nofollow">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="16"
@@ -52,7 +46,7 @@
 				</div>
 				<div class="container-1">
 					
-					<a href="{% url 'product' product.id %}">
+					<a href="{% url 'product' product.id %}" rel="noopener noreferrer">
 						
 						<pre>{{ product|dictsort:"0" }}</pre>
 
