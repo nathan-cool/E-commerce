@@ -210,7 +210,7 @@ def admin_create_product(request):
             image = request.FILES.get('image')
 
             # Validate required fields
-            if not all([name, qty, price, category_id, description]):
+            if not all([name, qty, price, category_id, description, image]):
                 raise ValueError("All fields are required")
 
             # Convert and validate quantity
