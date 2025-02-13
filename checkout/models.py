@@ -21,6 +21,22 @@ class Payment(models.Model):
         max_length=255)  # Stripe Payment Intent ID
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='pending')  # Payment status
+    
+
+    def mark_as_paid(self):
+        self.status = 'paid'
+        self.save()
+
+    def mark_as_failed(self):
+
+        self.status = 'failed'
+        self.save()
+
+    @property
+    def is_paid(self):
+        """Returns True if the payment status is 'paid'."""
+        return self.status == 'paid'
+
 
 
     def __str__(self):
